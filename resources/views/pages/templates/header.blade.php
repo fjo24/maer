@@ -1,0 +1,82 @@
+<header>
+    {{-- BARRA PRINCIPAL --}}
+    <nav class="principal">
+        <div class="container" style="width: 93%">
+            <div class="row">
+                <div class="col l12 m12 s12">
+                    <div class="redeshead col l4 m4 s4 center">
+                            <ul class="center" style="margin-left: 38%;margin-top: 13%;">
+                                <li class="redes_head">
+                                    <a class="" href="{{ url('/') }}">
+                                        <img alt="" src="{{asset('img/layouts/facebook.png')}}">
+                                        </img>
+                                    </a>
+                                </li>
+                                <li class="redes_head">
+                                    <a class="" href="{{ url('/') }}">
+                                        <img alt="" src="{{asset('img/layouts/youtube.png')}}">
+                                        </img>
+                                    </a>
+                                </li>
+                            </ul>
+                    </div>
+                    <div class="col l4 m4 s4">
+                        <a class="brand-logo center" href="{{ url('/') }}">
+                            <img alt="" src="{{asset('img/logo_head.jpg')}}">
+                            </img>
+                        </a>
+                    </div>
+                    <div class="privadohead col l4 m4 s4 center">
+                            <ul class="center" style="margin-left: 22%;margin-top: 13%;">
+                                <li class="privado_head">
+                                    <a class="" href="{{ url('/') }}">
+                                        <img alt="" src="{{asset('img/layouts/privado.png')}}">
+                                        </img>
+                                    </a>
+                                </li>
+                                <li class="privado_head">
+                                    <a class="" href="{{ url('/') }}" style="margin-top: -4%;">
+                                        Zona privada
+                                    </a>
+                                </li>
+                            </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{-- BARRA SUPERIOR --}}
+    </nav>
+    <div class="top">
+        <div class="container hide-on-med-and-down">
+            <ul class="item-left left hide-on-med-and-down">
+                @if($activo=='home')
+                <li>
+                    <a class="activo" href="{{ url('/') }}">
+                        INICIO
+                    </a>
+                </li>
+                @else
+                <li>
+                    <a href="{{ url('/') }}">
+                        INICIO
+                    </a>
+                </li>
+                @endif
+                @if($activo=='empresa')
+                <li>
+                    <a class="activo" href="{{ url('/empresa') }}">
+                        QUIÉNES SOMOS
+                    </a>
+                </li>
+                @else
+                <li>
+                    <a href="{{ url('/empresa') }}">
+                        QUIÉNES SOMOS
+                    </a>
+                </li>
+                @endif
+            </ul>
+        </div>
+    </div>
+
+</header>

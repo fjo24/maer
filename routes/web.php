@@ -18,8 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+/*******************PAGINAS************************/
+//HOME
+Route::get('/', 'PaginasController@home')->name('inicio');
 
-
+/*******************ADMIN************************/
 Route::prefix('adm')->group(function () {
 
     Route::get('/', 'Adm\AdminController@dashboard')->name('dashboard');

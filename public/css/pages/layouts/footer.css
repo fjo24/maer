@@ -1,0 +1,149 @@
+.page-footer {
+    height: 100%;
+    background-color: #F2F2F2!important;
+}
+footer .logfooter {
+    
+}
+footer .titulo-footer {
+        font-family: 'Lato';
+    color: #B3004A;
+    font-size: 17px;
+    font-weight: bold;
+    padding-left: 77px;
+}
+footer .linksb {
+        font-family: 'Lato';
+    padding-left: 78px;
+        line-height: 33px!important;
+    font-weight: bold;
+    font-size: 15px;
+}
+footer .listlinks {
+    font-family: 'Lato';
+    color: #ffffff;
+    font-size: 15px;
+}
+
+footer .listlinks li{
+	margin-bottom: 10px;
+	font-family: 'Lato';
+}
+
+footer .row .col.l6 {
+	width: 40%;
+}
+
+footer .footer-b a{
+	position: relative;
+	top: 3px!important;
+	color: #595959!important;
+}
+
+footer .rightitems{
+	position: relative;
+	top: -4px;
+	left: -14px!important;
+}
+
+footer .links2 {
+        padding-left: 68px;
+}
+footer .listlinks2 {
+    color: #595959!important;
+    font-family: 'Lato';
+    line-height: 33px!important;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+footer .rightlist{
+	margin-bottom: 5px;
+	font-family: 'Lato';
+}
+
+footer .item-redesf{
+    display: inline;
+    margin: 7px;
+}
+
+footer .li-redes-footer{
+
+}
+
+footer .footer-a{
+    margin-top: 4%;
+    height: 80%;
+}
+
+footer .titulo-footer2 {
+        font-family: 'Lato';
+    color: #B3004A;
+    font-size: 17px;
+    font-weight: bold;
+    padding-left: 77px;
+}
+
+footer .leftitems a{
+        text-transform: uppercase;
+    position: relative;
+    top: 3px;
+    color: #595959!important;
+    font-family: 'Lato';
+    line-height: 33px!important;
+    font-weight: bold;
+    font-size: 15px;
+
+}
+
+footer .titulo-footer3 {
+        font-family: 'Lato';
+    color: #B3004A;
+    font-size: 17px;
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+footer .footer_c a{
+    display: table;
+    text-align: center;
+    position: relative;
+    top: 3px;
+    color: #595959!important;
+    font-family: 'Lato';
+    line-height: 33px!important;
+    font-weight: bold;
+    font-size: 15px;
+
+}
+
+@media only screen and (max-width: 1001px){
+    footer .titulo-footer3 {
+    
+    text-align: center;
+    padding-left: 0px!important;
+        margin-top: 26px!important;
+}
+
+footer .linksb {
+
+    text-align: center;
+    padding-left: 0px!important;
+}
+
+footer .listlinks2 {
+    display: table-cell;
+    text-align: center;
+    padding-left: 0px!important;
+}
+footer .titulo-footer2 {
+    text-align: center;
+    padding-left: 0px!important;
+        margin-top: 26px!important;
+}
+footer .titulo-footer {
+    text-align: center;
+    padding-left: 0px!important;
+        margin-top: 50px!important;
+}
+}

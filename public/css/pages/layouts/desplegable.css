@@ -1,0 +1,85 @@
+#menu_productos{
+    position: relative;
+}
+
+#menu_productos:hover{
+    position: relative;
+
+}
+
+
+#menu_productos ul li{
+    position: relative;
+    background-color: white;
+    border: 1px solid white;
+    text-align: left;
+    width: 427px;
+    height: 40px;
+    line-height: 35px;
+    float: none;
+    z-index: 7;
+}
+
+#menu_productos ul li:hover{
+    position: relative;
+    background-color: #FAFAFA;
+    border: 1px solid white;
+    text-align: left;
+    width: 427px;
+    height: 40px;
+    line-height: 35px;
+    float: none;
+    z-index: 7;
+}
+
+#menu_productos ul li:hover{
+    position: relative;
+    background-color: #FAFAFA;
+    border: 1px solid white;
+    text-align: left;
+    width: 427px;
+    height: 40px;
+    line-height: 35px;
+    float: none;
+    z-index: 7;
+}
+
+#menu_productos ul li a{
+    color: #595959!important;
+    display: block;
+    font-size: 18px;
+    font-family: 'Asap';
+}
+
+#menu_productos ul li a:hover{
+    color: #595959!important;
+    display: block;
+    font-size: 18px;
+    font-family: 'Asap';
+    border-bottom: none!important;
+}
+
+#menu_productos ul{
+   display: none;
+    position: absolute;
+}
+
+#menu_productos:hover ul{
+    display: block;
+}
+
+#menu_productos:hover .prod_menu{
+    border-bottom: 3px solid #7D0045 !important;
+}
+
+#menu_productos .menu_subcate li{   
+    display: none;
+}
+
+#menu_productos .menu_cate:hover li{
+    display: block;
+    margin-left: 426px;
+    top:-35px;
+    line-height: 35px;
+    width: 295px;
+}
