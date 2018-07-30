@@ -69,10 +69,6 @@
                         {!!Form::text('presentacion', null , ['class'=>'', ''])!!}
             </div>
             <div class="input-field col l6 s12">
-                {!! Form::label('Aplicaciones') !!}<br />
-                {!! Form::select('aplicaciones[]', $aplicaciones, null, ['class' => 'form-control', 'multiple' => 'multiple']) !!}
-            </div>
-            <div class="input-field col l6 s12">
                 {!! Form::select('categoria_id', $categorias, null, ['class' => 'form-control', 'placeholder' => 'Sistema', 'required']) !!}
             </div>
             <div class="input-field col l6 s12">
@@ -80,6 +76,9 @@
             </div>
             <div class="input-field col l6 s12">
                 {!! Form::select('modelo_id', $modelos, null, ['class' => 'form-control', 'placeholder' => 'Modelos']) !!}
+            </div>
+            <div class="input-field col l6 s12">
+                {!! Form::select('categoria_pregunta_id', $categoria_preguntas, null, ['class' => 'form-control', 'placeholder' => 'Categoria de preguntas']) !!}
             </div>
             <div class="input-field col l6 s12">
                 {!! Form::select('visible', ['publico' => 'publico', 'privado' => 'privado', 'ambos' => 'ambos'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione visibilidad']) !!}
@@ -90,6 +89,11 @@
             </div>
             <div class="input-field col l6 s12">
                 {!! Form::select('tipo', ['novedad' => 'novedad', 'oferta' => 'oferta', 'ninguna' => 'ninguna'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione tipo de producto']) !!}
+            </div>
+
+            <div class="input-field col l6 s12">
+                {!! Form::label('Aplicaciones') !!}<br />
+                {!! Form::select('aplicaciones[]', $aplicaciones, null, ['class' => 'form-control', 'multiple' => 'multiple']) !!}
             </div>
         </div>
         <label class="col l12 s12" for="descripcion">

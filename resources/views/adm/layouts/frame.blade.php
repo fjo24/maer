@@ -221,6 +221,104 @@
                     <li class="bold">
                         <a class="collapsible-header waves-effect waves-admin">
                             <i class="material-icons">
+                                library_books
+                            </i>
+                            Catalogos
+                        </a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li>
+                                    <a href="{{route('catalogos.create')}}">
+                                        Agregar Catalogo
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('catalogos.index')}}">
+                                        Editar Catalogo
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="bold">
+                        <a class="collapsible-header waves-effect waves-admin">
+                            <i class="material-icons">
+                                monetization_on
+                            </i>
+                            Descuentos
+                        </a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li>
+                                    <a href="{{route('descuentos.create')}}">
+                                        Crear Descuento
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('descuentos.index')}}">
+                                        Editar Descuento
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="bold">
+                        <a class="collapsible-header waves-effect waves-admin">
+                            <i class="material-icons">
+                                question_answer
+                            </i>
+                            Preguntas
+                        </a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li>
+                                    <a href="{{route('categoria_preguntas.create')}}">
+                                        Crear Categoria
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('categoria_preguntas.index')}}">
+                                        Editar Categoria
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('preguntas.create')}}">
+                                        Crear Pregunta
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('preguntas.index')}}">
+                                        Editar Pregunta
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="bold">
+                        <a class="collapsible-header waves-effect waves-admin">
+                            <i class="material-icons">
+                                ondemand_video
+                            </i>
+                            Videos
+                        </a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li>
+                                    <a href="{{route('videos.create')}}">
+                                        Crear Video
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('videos.index')}}">
+                                        Editar Video
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="bold">
+                        <a class="collapsible-header waves-effect waves-admin">
+                            <i class="material-icons">
                                 home
                             </i>
                             Calidad
@@ -229,7 +327,12 @@
                             <ul>
                                 <li>
                                     <a href="{{route('calidades.create')}}">
-                                        Editar Contenido
+                                        Editar Contenido superior
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('calidad.create')}}">
+                                        Editar Contenido inferior
                                     </a>
                                 </li>
                                 <li>
@@ -245,6 +348,28 @@
                                 <li>
                                     <a href="{{route('banner')}}">
                                         Editar Banner
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="bold">
+                        <a class="collapsible-header waves-effect waves-admin">
+                            <i class="material-icons">
+                                lightbulb_outline
+                            </i>
+                            Novedades
+                        </a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li>
+                                    <a href="{{route('novedades.create')}}">
+                                        Crear Novedad
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('novedades.index')}}">
+                                        Ver/Editar Novedades
                                     </a>
                                 </li>
                             </ul>

@@ -60,10 +60,16 @@ Route::prefix('adm')->group(function () {
     /*------------CONTENIDO CALIDADES----------------*/
     Route::resource('calidades', 'Adm\ContenidocalidadesController');
 
+    /*------------CALIDAD----------------*/
+    Route::resource('calidad', 'Adm\CalidadesController');
+
     /*---------------BANNER CALIDAD------------------*/
     Route::get('/banner', 'adm\ContenidocalidadesController@banner')->name('banner');
     Route::get('/banner/{banner_id}', 'adm\ContenidocalidadesController@banneredit')->name('banneredit');
     Route::put('/banner/{banner_id}/update', 'adm\ContenidocalidadesController@bannerupdate')->name('bannerupdate');
+
+    /*------------NOVEDADES----------------*/
+    Route::resource('novedades', 'Adm\NovedadesController');
 
     /*------------DATOS----------------*/
     Route::resource('datos', 'Adm\DatosController');
@@ -88,5 +94,22 @@ Route::prefix('adm')->group(function () {
 
     /*------------METADATOS----------------*/
     Route::resource('metadatos', 'Adm\MetadatosController');
+
+    /*------------CATEGORIA DE PREGUNTAS----------------*/
+    Route::resource('categoria_preguntas', 'Adm\CategoriapreguntasController');
+
+    /*------------PREGUNTAS----------------*/
+    Route::resource('preguntas', 'Adm\PreguntasController');
+
+    /*------------VIDEOS----------------*/
+    Route::resource('videos', 'Adm\VideosController');
+
+    /*------------DESCUENTOS----------------*/
+    Route::resource('descuentos', 'Adm\DescuentosController');
+
+    /*------------CATALOGOS----------------*/
+    Route::resource('catalogos', 'Adm\CatalogosController');
+    // Rutas de reportes pdf
+    Route::get('pdf/{id}', ['uses' => 'Adm\CatalogosController@downloadPdf', 'as' => 'file-pdf']);
     
 });

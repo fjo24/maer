@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductosRequest;
 use App\Imgproducto;
+use App\Categoria_pregunta;
 use App\Producto;
 
 class ProductosController extends Controller
@@ -24,11 +25,12 @@ class ProductosController extends Controller
 
     public function create()
     {
+        $categoria_preguntas = Categoria_pregunta::orderBy('nombre', 'ASC')->pluck('nombre', 'id')->all();
         $aplicaciones = Aplicacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id')->all();
         $categorias = Categoria::orderBy('nombre', 'ASC')->pluck('nombre', 'id')->all();
         $modelos = Modelo::orderBy('codigo', 'ASC')->pluck('codigo', 'id')->all();
         $rubros = Rubro::orderBy('nombre', 'ASC')->pluck('nombre', 'id')->all();
-        return view('adm.productos.create', compact('categorias', 'rubros', 'modelos', 'aplicaciones'));
+        return view('adm.productos.create', compact('categorias', 'rubros', 'modelos', 'aplicaciones', 'categoria_preguntas'));
     }
 
     public function store(Request $request)
@@ -44,6 +46,7 @@ class ProductosController extends Controller
         $producto->modelo_id         = $request->modelo_id;
         $producto->caracteristicas   = $request->caracteristicas;
         $producto->visible           = $request->visible;
+        $producto->categoria_pregunta= $request->categoria_pregunta;
         $producto->orden             = $request->orden;
         $producto->presentacion      = $request->presentacion;
         $producto->precio            = $request->precio;
@@ -90,12 +93,13 @@ class ProductosController extends Controller
 
     public function edit($id)
     {
+        $categoria_preguntas = Categoria_pregunta::orderBy('nombre', 'ASC')->pluck('nombre', 'id')->all();
         $aplicaciones = Aplicacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id')->all();
         $producto                    = Producto::find($id);
         $categorias = Categoria::orderBy('nombre', 'ASC')->pluck('nombre', 'id')->all();
         $modelos = Modelo::orderBy('codigo', 'ASC')->pluck('codigo', 'id')->all();
         $rubros = Rubro::orderBy('nombre', 'ASC')->pluck('nombre', 'id')->all();
-        return view('adm.productos.edit', compact('categorias', 'rubros', 'modelos', 'producto', 'aplicaciones'));
+        return view('adm.productos.edit', compact('categorias', 'rubros', 'modelos', 'producto', 'aplicaciones', 'categoria_preguntas'));
     }
 
     public function update(Request $request, $id)
@@ -110,6 +114,7 @@ class ProductosController extends Controller
         $producto->modelo_id         = $request->modelo_id;
         $producto->caracteristicas   = $request->caracteristicas;
         $producto->visible           = $request->visible;
+        $producto->categoria_pregunta_id= $request->categoria_pregunta_id;
         $producto->orden             = $request->orden;
         $producto->presentacion      = $request->presentacion;
         $producto->precio            = $request->precio;
