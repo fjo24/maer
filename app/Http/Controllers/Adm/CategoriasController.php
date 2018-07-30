@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Adm;
 
 use App\Categoria;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoriasRequest;
 
@@ -20,11 +21,10 @@ class CategoriasController extends Controller
         return view('adm.categorias.create', compact('categorias'));
     }
 
-    public function store(CategoriasRequest $request)
+    public function store(Request $request)
     {
 
         $categoria              = new Categoria();
-        $categoria->id_superior = $request->id_superior;
         $categoria->nombre      = $request->nombre;
         $categoria->orden       = $request->orden;
         $id                     = Categoria::all()->max('id');
@@ -53,12 +53,9 @@ class CategoriasController extends Controller
         return view('adm.categorias.edit', compact('categoria', 'categorias'));
     }
 
-    public function update(CategoriasRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $categoria = Categoria::find($id);
-        if ($id != $request->id_superior) {
-            $categoria->id_superior = $request->id_superior;
-        }
         $categoria->nombre = $request->nombre;
         $categoria->orden  = $request->orden;
 
@@ -80,7 +77,7 @@ class CategoriasController extends Controller
         $categoria->delete();
         return redirect()->route('categorias.index');
     }
-
+//opcional: carga por excel
     public function excelcat()
     {
         return view('adm.categorias.carga', compact('categorias'));

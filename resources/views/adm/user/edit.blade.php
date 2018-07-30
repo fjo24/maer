@@ -47,9 +47,9 @@
 						{!! Form::select('nivel', ['administrador' => 'Administrador', 'usuario' => 'Usuario'], null, ['class' => 'form-control', 'placeholder' => 'Indique tipo de usuario']) !!}
 					</div>
 				</div>
-				<div class="col s12 no-padding">
-					{!!Form::submit('Crear', ['class'=>'waves-effect waves-light red btn-large right'])!!}
-				</div>
+				<button class="boton btn-large right" name="action" type="submit">
+                Editar
+            </button>
 			{!!Form::close()!!} 
 		</div>
 		</div>

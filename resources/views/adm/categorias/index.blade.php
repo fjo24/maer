@@ -1,6 +1,6 @@
 @extends('adm.layouts.frame')
 
-@section('titulo', 'Categoria de productos')
+@section('titulo', 'Sistemas de productos')
 
 @section('contenido')
 	    @if(count($errors) > 0)
@@ -60,6 +60,14 @@
                 @endforeach
             </tbody>
         </table>
+        <br>
+        <a href="{{ route('categorias.create') }}">
+            <div class="col l12 s12 no-padding" href="">
+                <button class="boton btn-large right" name="action" type="submit">
+                    Nuevo
+                </button>
+            </div>
+        </a>
     </div>
 </div>
 <script src="{{ asset('js/eliminar.js') }}" type="text/javascript">

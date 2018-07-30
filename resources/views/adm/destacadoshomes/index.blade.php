@@ -53,18 +53,19 @@
                                 create
                             </i>
                         </a>
-                        {!!Form::open(['class'=>'en-linea', 'route'=>['destacadoshomes.destroy', $destacado->id], 'method' => 'DELETE'])!!}
-                        <button class="submit-button" onclick="return confirm_delete(this);" type="submit">
-                            <i class="material-icons red-text">
-                                cancel
-                            </i>
-                        </button>
-                        {!!Form::close()!!}
                     </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
+        <br>
+        <a href="{{ route('rubros.create') }}">
+            <div class="col l12 s12 no-padding" href="">
+                <button class="boton btn-large right" name="action" type="submit">
+                    Nuevo
+                </button>
+            </div>
+        </a>
     </div>
 </div>
 <script src="{{ asset('js/eliminar.js') }}" type="text/javascript">

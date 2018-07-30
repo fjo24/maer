@@ -156,7 +156,7 @@
                             </ul>
                         </div>
                     </li>
-          <!--          <li class="bold">
+                    <li class="bold">
                         <a class="collapsible-header waves-effect waves-admin">
                             <i class="material-icons">
                                 watch
@@ -167,26 +167,51 @@
                             <ul>
                                 <li>
                                     <a href="{{route('categorias.create')}}">
-                                        Crear Categoria
+                                        Crear Sistema
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{{route('categorias.index')}}">
-                                        Editar Categoria
+                                        Editar Sistema
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="">
-                                        Cargar Excel Categorias
+                                    <a href="{{route('rubros.create')}}">
+                                        Crear Rubro
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="">
+                                    <a href="{{route('rubros.index')}}">
+                                        Editar Rubro
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('modelos.create')}}">
+                                        Crear Modelo
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('modelos.index')}}">
+                                        Editar Modelo
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('aplicaciones.create')}}">
+                                        Crear aplicacion
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('aplicaciones.index')}}">
+                                        Editar aplicacion
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('productos.create')}}">
                                         Crear Producto
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="">
+                                    <a href="{{route('productos.index')}}">
                                         Editar Producto
                                     </a>
                                 </li>
@@ -196,25 +221,52 @@
                     <li class="bold">
                         <a class="collapsible-header waves-effect waves-admin">
                             <i class="material-icons">
-                                lightbulb_outline
+                                home
                             </i>
-                            Novedades
+                            Calidad
                         </a>
                         <div class="collapsible-body">
                             <ul>
                                 <li>
-                                    <a href="">
-                                        Crear Novedad
+                                    <a href="{{route('calidades.create')}}">
+                                        Editar Contenido
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="">
-                                        Ver/Editar Novedades
+                                    <a href="{{route('tiempos.create')}}">
+                                        Crear tiempo 
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('tiempos.index')}}">
+                                        Editar tiempo
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('banner')}}">
+                                        Editar Banner
                                     </a>
                                 </li>
                             </ul>
                         </div>
-                    </li>-->
+                    </li>
+                    <li class="bold">
+                        <a class="collapsible-header waves-effect waves-admin">
+                            <i class="material-icons">
+                                pin_drop
+                            </i>
+                            Metadatos
+                        </a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li>
+                                    <a href="{{route('metadatos.index')}}">
+                                        Editar Metadatos
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
                     <li class="bold">
                         <a class="collapsible-header waves-effect waves-admin">
                             <i class="material-icons">
@@ -244,6 +296,28 @@
                                 <li>
                                     <a href="{{route('redes.index')}}">
                                         Editar redes
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="bold">
+                        <a class="collapsible-header waves-effect waves-admin">
+                            <i class="material-icons">
+                                assignment_ind
+                            </i>
+                            Distribuidores
+                        </a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li>
+                                    <a href="{{route('distribuidores.create')}}">
+                                        Crear Distribuidores
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('distribuidores.index')}}">
+                                        Editar Distribuidores
                                     </a>
                                 </li>
                             </ul>

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Adm;
 
 use App\Empresa;
-use App\Http\Requests\EmpresaRequest;
-
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\EmpresaRequest;
 
 class EmpresasController extends Controller
 {
@@ -24,13 +24,19 @@ class EmpresasController extends Controller
             ->with('empresa', $empresa);
     }
 
-    public function update(empresaRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $empresa              = Empresa::find($id);
         $empresa->nombre      = $request->nombre;
         $empresa->descripcion = $request->descripcion;
         $empresa->contenido   = $request->contenido;
         $empresa->link        = $request->link;
+        $empresa->texto1      = $request->texto1;
+        $empresa->numero1     = $request->numero1;
+        $empresa->texto2      = $request->texto2;
+        $empresa->numero2     = $request->numero2;
+        $empresa->texto3      = $request->texto3;
+        $empresa->numero3     = $request->numero3;
 
         if ($request->hasFile('imagen')) {
             if ($request->file('imagen')->isValid()) {

@@ -21,7 +21,7 @@ class RedesController extends Controller
         return view('adm.redes.create');
     }
 
-    public function store(redesRequest $request)
+    public function store(Request $request)
     {
 
         $red        = new Red();
@@ -38,7 +38,7 @@ class RedesController extends Controller
         return view('adm.redes.edit', compact('red'));
     }
 
-    public function update(redesRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $red = Red::find($id);
        

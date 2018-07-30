@@ -63,11 +63,8 @@
             </div>
         </div>
         <div class="col l12 s12 no-padding">
-            <button class="btn-large waves-effect waves-light right" style="background: #FF5E88;" name="action" type="submit">
+            <button class="boton btn-large right" name="action" type="submit">
                 Editar
-                <i class="material-icons right">
-                    send
-                </i>
             </button>
         </div>
         {!!Form::close()!!}

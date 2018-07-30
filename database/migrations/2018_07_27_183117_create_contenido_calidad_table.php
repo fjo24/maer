@@ -17,6 +17,9 @@ class CreateContenidoCalidadTable extends Migration
             $table->increments('id');
             $table->text('nombre');
             $table->text('descripcion');
+            $table->text('descripcion2');
+            $table->string('imagen')->nullable();
+            $table->text('contenido');
             $table->timestamps();
         });
     }

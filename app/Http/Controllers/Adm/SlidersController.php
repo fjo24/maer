@@ -21,7 +21,7 @@ class SlidersController extends Controller
         return view('adm.sliders.create');
     }
 
-    public function store(SliderRequest $request)
+    public function store(Request $request)
     {
         $slider          = new Slider();
         $slider->texto   = $request->texto;
@@ -55,7 +55,7 @@ class SlidersController extends Controller
 
     }
 
-    public function update(SliderRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $slider          = Slider::find($id);
         $id              = Slider::all()->max('id');

@@ -1,6 +1,6 @@
 @extends('adm.layouts.frame')
 
-@section('titulo', 'Categoria de productos')
+@section('titulo', 'Sistemas de productos')
 
 @section('contenido')
 		@if(count($errors) > 0)
@@ -31,9 +31,6 @@
                 {!!Form::label('orden:')!!}
 						{!!Form::text('orden', null , ['class'=>'', 'required'])!!}
             </div>
-            <div class="input-field col l6 s12">
-                {!! Form::select('id_superior', $categorias, null, ['class' => 'form-control', 'placeholder' => 'Categoria']) !!}
-            </div>
             <div class="file-field input-field col l6 s12">
                 <div class="btn">
                     <span>
@@ -43,16 +40,13 @@
                 </div>
                 <div class="file-path-wrapper">
                     {!! Form::text('imagen',null, ['class'=>'file-path']) !!}
-                    {!!Form::label('Recomendado: 350px - 395px')!!}
+                    {!!Form::label('Recomendado: 311px - 311px')!!}
                 </div>
             </div>
         </div>
         <div class="col l12 s12 no-padding">
-            <button class="btn-large waves-effect waves-light pink right" name="action" type="submit">
+            <button class="boton btn-large right" name="action" type="submit">
                 Crear
-                <i class="material-icons right">
-                    send
-                </i>
             </button>
         </div>
         {!!Form::close()!!}

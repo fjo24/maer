@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Adm;
 
 use App\Contenido_home;
+use Illuminate\Http\Request;
 use App\Http\Requests\HomesRequest;
 use App\Http\Controllers\Controller;
 
@@ -23,7 +24,7 @@ class ContenidohomesController extends Controller
             ->with('homes', $homes);
     }
 
-    public function update(HomesRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $homes              = Contenido_home::find($id);
         $homes->nombre      = $request->nombre;

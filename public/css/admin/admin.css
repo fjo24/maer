@@ -58,7 +58,7 @@ nav.top-nav{
 }
 
 .btn, .btn:hover, .nav-wrapper{
-  background-color: #FF5E88;
+  background-color: #F07D00;
   padding-left: 20%;
 }
 
@@ -129,7 +129,7 @@ button:focus {
 
 side-nav li>a>i, .sidenav li>a>[class^="mdi-"], .sidenav li>a li>a>[class*="mdi-"], .sidenav li>a>i.material-icons {
     margin: 0 5px 0 0;
-    color: #FF5E88;
+    color: #F07D00;
     transform: translateY(-2px);
 }
 
@@ -143,8 +143,8 @@ side-nav li>a>i, .sidenav li>a>[class^="mdi-"], .sidenav li>a li>a>[class*="mdi-
  }
  /* label underline focus color */
  .row .input-field input:focus {
-   border-bottom: 1px solid #FF5E88 !important;
-   box-shadow: 0 1px 0 0 #FF5E88 !important
+   border-bottom: 1px solid #F07D00 !important;
+   box-shadow: 0 1px 0 0 #F07D00 !important
  }
 
 select option{
@@ -181,4 +181,37 @@ select option{
 form .btn input {
     padding: 0 2rem!important;
     height: 100%!important;
+}
+
+.boton{
+  background-color: #F07D00;
+  color: white;
+  font-weight: bold;
+}
+
+.boton:hover{
+  background-color: black;
+  color:  white;
+  font-weight: bold;
+}
+
+.imagen_listado img{
+  height:32%;
+  width:72%;
+}
+
+.sidenav .collapsible-header:hover, .sidenav.fixed .collapsible-header:hover {
+    background-color: rgba(0,0,0,0.05);
+    background: black;
+    color: #F07D00;
+}
+
+.sidenav li.active {
+    background-color: rgba(0,0,0,0.05);
+    background: black;
+    color: #F07D00;
+}
+
+.sidenav li>a {
+    color: #F07D00!important;
 }

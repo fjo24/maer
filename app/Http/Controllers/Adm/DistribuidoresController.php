@@ -34,8 +34,6 @@ class DistribuidoresController extends Controller
         $distribuidor->telefono  = $request->telefono;
         $distribuidor->direccion = $request->direccion;
         $distribuidor->postal    = $request->postal;
-        $distribuidor->lat       = $request->lat;
-        $distribuidor->lng       = $request->lng;
         $distribuidor->email     = $request->email;
         $distribuidor->nivel     = 'distribuidor';
         $distribuidor->password  = \Hash::make($request->password);
@@ -67,14 +65,12 @@ class DistribuidoresController extends Controller
         $distribuidor->telefono  = $request->telefono;
         $distribuidor->direccion = $request->direccion;
         $distribuidor->postal    = $request->postal;
-        $distribuidor->lat       = $request->lat;
-        $distribuidor->lng       = $request->lng;
         $distribuidor->email     = $request->email;
         $distribuidor->password  = \Hash::make($request->password);
         $distribuidor->save();
         }
 
-        $distribuidores = User::orderBy('id', 'ASC')->get();
+        $distribuidores = User::orderBy('username', 'ASC')->Where('nivel', 'distribuidor')->get();
         return view('adm.distribuidores.index')
             ->with('distribuidores', $distribuidores);
     }

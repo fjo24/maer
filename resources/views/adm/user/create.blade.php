@@ -46,11 +46,8 @@
 						{!! Form::select('nivel', ['administrador' => 'Administrador', 'usuario' => 'Usuario'], null, ['class' => 'form-control', 'placeholder' => 'Indique tipo de usuario']) !!}
 					</div>
 				</div>
-				<button class="btn-large waves-effect pink waves-light right" name="action" type="submit">
+				<button class="boton btn-large right" name="action" type="submit">
                 Crear
-                <i class="material-icons right">
-                    send
-                </i>
             </button>
 				{!!Form::close()!!} 
 			</div>

@@ -24,24 +24,16 @@
         {!!Form::model($empresa, ['route'=>['empresas.update',$empresa->id], 'method'=>'PUT', 'files' => true])!!}
         <div class="row">
             <div class="input-field col l6 s12">
-                {!!Form::label('Nombre:')!!}
+                {!!Form::label('Titulo:')!!}
                         {!!Form::text('nombre', null , ['class'=>'', ''])!!}
             </div>
             <div class="input-field col l6 s12">
-                {!!Form::label('Link:')!!}
-                        {!!Form::text('link', null , ['class'=>'', ''])!!}
+                {!!Form::label('Descripcion:')!!}
+                        {!!Form::text('descripcion', null , ['class'=>'', ''])!!}
             </div>
         </div>
         <div class="row">
             <div class="col s12">
-                <label class="col l12 s12" for="parrafo">
-                    Descripción
-                </label>
-                <div class="input-field col s12">
-                    <textarea class="materialize-textarea" id="descripcion" name="descripcion" required="">
-                        {{$empresa->descripcion}}
-                    </textarea>
-                </div>
                 <label class="col l12 s12" for="parrafo">
                     Contenido
                 </label>
@@ -53,7 +45,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="file-field input-field col l6 s12">
+            <div class="file-field input-field col l12 s12">
                 <div class="btn">
                     <span>
                         Imagen
@@ -65,12 +57,39 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="input-field col l6 s12">
+                {!!Form::label('Primer dato:')!!}
+                        {!!Form::text('numero1', null , ['class'=>'', ''])!!}
+            </div>
+            <div class="input-field col l6 s12">
+                {!!Form::label('Texto de dato 1:')!!}
+                        {!!Form::text('texto1', null , ['class'=>'', ''])!!}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col l6 s12">
+                {!!Form::label('Segundo dato:')!!}
+                        {!!Form::text('numero2', null , ['class'=>'', ''])!!}
+            </div>
+            <div class="input-field col l6 s12">
+                {!!Form::label('Texto de dato 2:')!!}
+                        {!!Form::text('texto2', null , ['class'=>'', ''])!!}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col l6 s12">
+                {!!Form::label('Tercer dato:')!!}
+                        {!!Form::text('numero3', null , ['class'=>'', ''])!!}
+            </div>
+            <div class="input-field col l6 s12">
+                {!!Form::label('Texto de dato 3:')!!}
+                        {!!Form::text('texto3', null , ['class'=>'', ''])!!}
+            </div>
+        </div>
         <div class="col l12 s12 no-padding">
-            <button class="btn-large waves-effect waves-light right" name="action" type="submit">
+            <button class="boton btn-large right" name="action" type="submit">
                 Editar
-                <i class="material-icons right">
-                    send
-                </i>
             </button>
         </div>
         {!!Form::close()!!}
@@ -79,7 +98,6 @@
 <script src="//cdn.ckeditor.com/4.9.2/full/ckeditor.js">
 </script>
 <script>
-    CKEDITOR.replace('descripcion');
     CKEDITOR.replace('contenido');
     CKEDITOR.config.height = '150px';
     CKEDITOR.config.width = '100%';

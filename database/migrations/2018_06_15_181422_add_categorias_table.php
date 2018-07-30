@@ -11,7 +11,6 @@ class AddCategoriasTable extends Migration
     {
         Schema::create('categorias', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('id_superior')->nullable();
             $table->string('nombre');
             $table->string('imagen')->nullable();
             $table->string('orden');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Adm;
 
 use App\Destacado_home;
+use Illuminate\Http\Request;
 use App\Http\Requests\HomesRequest;
 use App\Http\Controllers\Controller;
 
@@ -20,7 +21,7 @@ class DestacadohomesController extends Controller
         return view('adm.destacadoshomes.create');
     }
 
-    public function store(HomesRequest $request)
+    public function store(Request $request)
     {
         $destacados         = new Destacado_home();
         $destacados->nombre = $request->nombre;
@@ -39,7 +40,7 @@ class DestacadohomesController extends Controller
         }
         $destacados->save();
 
-        return view('adm.dashboard');
+        return redirect()->route('destacadoshomes.index');
     }
 
     public function edit($id)
@@ -49,7 +50,7 @@ class DestacadohomesController extends Controller
             ->with('destacado', $destacado);
     }
 
-    public function update(HomesRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $destacados         = Destacado_home::find($id);
         $destacados->nombre = $request->nombre;
@@ -66,14 +67,14 @@ class DestacadohomesController extends Controller
         }
         $destacados->update();
 
-        return view('adm.dashboard');
+        return redirect()->route('destacadoshomes.index');
     }
 
     public function destroy($id)
     {
         $slider = Destacado_home::find($id);
         $slider->delete();
-        return redirect()->route('sliders.index');
+        return redirect()->route('destacadoshomes.index');
     }
 
 }
