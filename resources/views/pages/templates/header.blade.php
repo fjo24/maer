@@ -45,10 +45,9 @@
             </div>
         </div>
         {{-- BARRA SUPERIOR --}}
-    </nav>
     <div class="top">
         <div class="container hide-on-med-and-down">
-            <ul class="item-left left hide-on-med-and-down">
+            <ul class="item-left center hide-on-med-and-down">
                 @if($activo=='home')
                 <li>
                     <a class="activo" href="{{ url('/') }}">
@@ -75,8 +74,73 @@
                     </a>
                 </li>
                 @endif
+                @if($activo=='productos')
+                <li>
+                    <a class="activo" href="{{ url('/') }}">
+                        PRODUCTOS
+                    </a>
+                </li>
+                @else
+                <li>
+                    <a href="{{ url('/') }}">
+                        PRODUCTOS
+                    </a>
+                </li>
+                @endif
+                @if($activo=='videos')
+                <li>
+                    <a class="activo" href="{{ url('/empresa') }}">
+                        VIDEOS
+                    </a>
+                </li>
+                @else
+                <li>
+                    <a href="{{ url('/empresa') }}">
+                        VIDEOS
+                    </a>
+                </li>
+                @endif
+                @if($activo=='home')
+                <li>
+                    <a class="calidad" href="{{ url('/') }}">
+                        CALIDAD
+                    </a>
+                </li>
+                @else
+                <li>
+                    <a href="{{ url('/') }}">
+                        CALIDAD
+                    </a>
+                </li>
+                @endif
+                @if($activo=='novedades')
+                <li>
+                    <a class="activo" href="{{ url('/empresa') }}">
+                        NOVEDADES
+                    </a>
+                </li>
+                @else
+                <li>
+                    <a href="{{ url('/empresa') }}">
+                        NOVEDADES
+                    </a>
+                </li>
+                @endif
+                @if($activo=='contacto')
+                <li>
+                    <a class="activo" href="{{ url('/empresa') }}">
+                        CONTACTO
+                    </a>
+                </li>
+                @else
+                <li>
+                    <a href="{{ url('/empresa') }}">
+                        CONTACTO
+                    </a>
+                </li>
+                @endif
             </ul>
         </div>
     </div>
-
+    </nav>
 </header>

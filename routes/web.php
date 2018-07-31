@@ -22,6 +22,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 //HOME
 Route::get('/', 'PaginasController@home')->name('inicio');
 
+//REGISTRO DE DISTRIBUIDORES
+Route::get('registro', ['uses' => 'DistribuidorController@index', 'as' => 'registro']);
+Route::post('/registro', ['uses' => 'DistribuidorController@store', 'as' => 'cliente.store']);
+Route::post('/nuevousuario', ['uses' => 'DistribuidorController@registroStore', 'as' => 'registro.store']);
+
 /*******************ADMIN************************/
 Route::prefix('adm')->group(function () {
 

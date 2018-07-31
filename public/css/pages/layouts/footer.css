@@ -1,43 +1,46 @@
 .page-footer {
-    height: 100%;
-    background-color: #F2F2F2!important;
+    margin-top: 10%;
+    height: 290px;
+    background-color: #1D1D1B!important;
 }
 footer .logfooter {
     
 }
 footer .titulo-footer {
-        font-family: 'Lato';
-    color: #B3004A;
+    font-family: 'Montserrat', sans-serif;
+    color: #F27D00;
     font-size: 17px;
     font-weight: bold;
     padding-left: 77px;
 }
 footer .linksb {
-        font-family: 'Lato';
+    font-family: 'Montserrat', sans-serif;
     padding-left: 78px;
-        line-height: 33px!important;
-    font-weight: bold;
-    font-size: 15px;
+    line-height: 31px!important;
+    font-size: 16px;
+    margin-top: -4%;
 }
 footer .listlinks {
-    font-family: 'Lato';
+    font-family: 'Montserrat', sans-serif;
     color: #ffffff;
     font-size: 15px;
 }
 
 footer .listlinks li{
 	margin-bottom: 10px;
-	font-family: 'Lato';
+	font-family: 'Montserrat', sans-serif;
 }
 
 footer .row .col.l6 {
-	width: 40%;
+	/*width: 40%;*/
+    padding-left: 0%;
+    font-weight: 300;
 }
 
 footer .footer-b a{
 	position: relative;
 	top: 3px!important;
-	color: #595959!important;
+	color: #DFDFDF!important;
 }
 
 footer .rightitems{
@@ -50,34 +53,34 @@ footer .links2 {
         padding-left: 68px;
 }
 footer .listlinks2 {
-    color: #595959!important;
-    font-family: 'Lato';
+    color: #DFDFDF!important;
+    font-family: 'Montserrat', sans-serif, sans-serif;
     line-height: 33px!important;
-    font-weight: bold;
     font-size: 15px;
 }
 
 footer .rightlist{
 	margin-bottom: 5px;
-	font-family: 'Lato';
+	font-family: 'Montserrat', sans-serif, sans-serif;
 }
 
 footer .item-redesf{
     display: inline;
-    margin: 7px;
+    margin: 10px;
 }
 
 footer .li-redes-footer{
-
+    margin-left: 32%;
+    margin-top: 4%;
 }
 
 footer .footer-a{
-    margin-top: 4%;
+    margin-top: 3%;
     height: 80%;
 }
 
 footer .titulo-footer2 {
-        font-family: 'Lato';
+    font-family: 'Montserrat', sans-serif, sans-serif, sans-serif;
     color: #B3004A;
     font-size: 17px;
     font-weight: bold;
@@ -89,7 +92,7 @@ footer .leftitems a{
     position: relative;
     top: 3px;
     color: #595959!important;
-    font-family: 'Lato';
+    font-family: 'Montserrat', sans-serif, sans-serif, sans-serif;
     line-height: 33px!important;
     font-weight: bold;
     font-size: 15px;
@@ -97,11 +100,11 @@ footer .leftitems a{
 }
 
 footer .titulo-footer3 {
-        font-family: 'Lato';
-    color: #B3004A;
+        font-family: 'Montserrat';
+    color: #F27D00;
     font-size: 17px;
     font-weight: bold;
-    padding-left: 10px;
+    padding-left: 13%;
 }
 
 footer .footer_c a{
@@ -110,7 +113,7 @@ footer .footer_c a{
     position: relative;
     top: 3px;
     color: #595959!important;
-    font-family: 'Lato';
+    font-family: 'Montserrat';
     line-height: 33px!important;
     font-weight: bold;
     font-size: 15px;

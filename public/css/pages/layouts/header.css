@@ -14,7 +14,11 @@ nav .brand-logo {
 
 .top {
     background-color: #FF5B88;
-    height: 38px;
+    height: 65px;
+    margin-top: 43px;
+    width: 100%;
+    background: #3F3F3F;
+    font-family: 'Montserrat', sans-serif;
 }
 /*BUSCADOR*/
 
@@ -97,7 +101,7 @@ header .li-distribuidor {
     float: right;
     height: 35px;
     width: 245px;
-    font-family: 'Asap';
+    font-family: 'Montserrat';
     font-weight: 600;
     display: flex;
     justify-content: center;
@@ -106,7 +110,7 @@ header .li-distribuidor {
     /*vertical*/
 }
 header .li-presupuesto a {
-    font-family: arial;
+    font-family: 'Montserrat';
     color: #DDDDDD;
     font-size: 15px;
 }
@@ -125,7 +129,7 @@ header .li-presupuesto {
     border-left: 2px solid #777777;
 }
 header .li-redes a {
-    font-family: arial;
+    font-family: 'Montserrat';
     color: #DDDDDD;
     font-size: 16px;
     margin: 0px 11px;
@@ -168,50 +172,58 @@ header .li-red {
 header .principal {
     height: 159px!important;
     background-color: #1D1D1B;
-    font-family: 'Asap';
+    font-family: 'Montserrat';
 }
 nav ul a {
-    color: #F07D00!important;
     font-size: 15px!important;
-    font-family: 'Arial';
+    font-family: ''Montserrat'';
     margin: 0 12px;
     padding: 0!important;
 }
 
 nav ul a:hover {
     background-color: transparent!important;
-    font-family: 'Asap';
+    font-family: 'Montserrat';
     margin: 0 12px;
     padding: 0!important;
 }
 .activo {
     background-color: transparent!important;
-    font-family: 'Asap';
-    border-bottom: 3px solid #7D0045 !important;
+    font-family: 'Montserrat';
+    color: #F07D00!important;
 }
 nav .item-left a {
-    color: #7D0045!important;
+    color: white;
     font-size: 16px!important;
-    font-family: arial;
+    font-family: 'Montserrat';
     margin: 0 22px;
     padding: 0!important;
 }
+
 nav .item-left a:hover {
-    color: #7D0045!important;
+    color: #F07D00!important;
     font-size: 16px!important;
-    font-family: arial;
+    font-family: 'Montserrat';
+    margin: 0 22px;
+    padding: 0!important;
+}
+nav .item-left a:activo {
+    color: #F07D00!important;
+    font-size: 16px!important;
+    font-family: 'Montserrat';
     margin: 0 22px;
     padding: 0!important;
 }
 nav .item-left {
     position: relative;
-    top: 77px;
-    left: 19px;
-    width: 468px;
+    padding-left: 0%!important;
+    /* top: 77px; */
+    /* left: 19px; */
+    /* width: 468px; */
     font-size: 18px;
-    font-family: 'Asap';
-    font-weight: 600;
-    line-height: 46px;
+    font-family: 'Montserrat';
+    font-weight: 400;
+    line-height: 67px;
 }
 nav .item-right {
     position: relative;
@@ -219,12 +231,12 @@ nav .item-right {
     right: 28px;
     font-size: 18px;
     word-spacing: 0px;
-    font-family: 'Asap';
+    font-family: 'Montserrat';
     font-weight: 600;
     line-height: 46px;
 }
 nav ul li {
-    margin: 0px 2px;
+    margin: 0px 0px;
 }
 .colorboton {
     background-color: #7D0045!important;
