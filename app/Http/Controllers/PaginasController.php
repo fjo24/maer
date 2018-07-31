@@ -12,6 +12,7 @@ use App\Empresa;
 use App\Local;
 use App\Novedad;
 use App\Contactotext;
+use App\Metadato;
 use App\Producto;
 use App\Servicio;   
 use App\Slider;
@@ -26,18 +27,11 @@ class PaginasController extends Controller
         return view('pages.home', compact('sliders', 'servicios', 'banner', 'contenido', 'activo', 'bloque1', 'bloque2', 'bloque3', 'bloque4'));
     }
 
-    public function categ()
-    {
-        $ref           = 'none';
-        $subref       = 'none';
-        $activo        = 'productos';
-        $categorias    = Categoria::where('id_superior', null)->orderBy('orden', 'asc')->get();
-        $subcategorias = Categoria::whereNotNull('id_superior')->orderBy('orden', 'asc')->get();
-        $productos     = Producto::orderBy('categoria_id')->get();
-        $todos         = Producto::OrderBy('orden', 'ASC')->get();
-        $ready         = 0;
-
-        return view('pages.cate', compact('categorias', 'subcategorias', 'productos', 'productos_directos', 'activo', 'todos', 'ready', 'ref', 'subref'));
+    public function categorias(){
+        $activo    = 'productos';
+        $metadato= metadato::where('seccion','productos')->first();
+        $categorias = Categoria::OrderBy('orden', 'asc')->get();
+        return view('pages.categorias', compact('categorias', 'metadato', 'activo'));
     }
 
     public function productos()
@@ -52,20 +46,6 @@ class PaginasController extends Controller
         return view('pages.productos', compact('categorias', 'subcategorias', 'productos', 'productos_directos', 'activo', 'todos', 'ready'));
     }
 
-    public function categorias($id)
-    {
-        $ref           = $id;
-        $ready         = 0;
-        $subref       = 'none';
-        $cat           = Categoria::find($id);
-        $activo        = 'productos';
-        $categorias    = Categoria::where('id_superior', null)->orderBy('orden', 'asc')->get();
-        $subcategorias = Categoria::whereNotNull('id_superior')->orderBy('orden', 'asc')->get();
-        $productos     = Producto::orderBy('categoria_id')->get();
-        $todos         = Producto::where('categoria_id', $id)->OrderBy('orden', 'ASC')->get();
-
-        return view('pages.categorias', compact('categorias', 'subcategorias', 'productos', 'productos_directos', 'activo', 'ready', 'todos', 'ref', 'cat', 'subref'));
-    }
 
     public function subcategorias($id)
     {

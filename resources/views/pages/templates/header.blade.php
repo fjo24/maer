@@ -76,13 +76,13 @@
                 @endif
                 @if($activo=='productos')
                 <li>
-                    <a class="activo" href="{{ url('/') }}">
+                    <a class="activo" href="{{ url('categorias') }}">
                         PRODUCTOS
                     </a>
                 </li>
                 @else
                 <li>
-                    <a href="{{ url('/') }}">
+                    <a href="{{ url('categorias') }}">
                         PRODUCTOS
                     </a>
                 </li>

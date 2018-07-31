@@ -29,6 +29,15 @@ Route::post('productos/buscar', [
     'as'   => 'buscar',
 ]);
 
+//INFO DE PRODUCTO
+Route::get('productoinfo/{id}', 'PaginasController@productoinfo')->name('productoinfo');
+
+//PRODUCTOS
+Route::get('/productos/{categoria_id}',  'PaginasController@productos')->name('productos');
+
+//CATEGORIAS
+Route::get('/categorias', 'PaginasController@categorias');
+
 //REGISTRO DE DISTRIBUIDORES
 Route::get('registro', ['uses' => 'DistribuidorController@index', 'as' => 'registro']);
 Route::post('/registro', ['uses' => 'DistribuidorController@store', 'as' => 'cliente.store']);
