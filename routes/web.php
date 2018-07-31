@@ -16,11 +16,18 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::post('logindistribuidor', 'Auth\LoginDistribuidorController@login')->name('logindistribuidor');
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 /*******************PAGINAS************************/
 //HOME
 Route::get('/', 'PaginasController@home')->name('inicio');
+//BUSCADOR
+Route::post('productos/buscar', [
+    'uses' => 'PaginasController@buscar',
+    'as'   => 'buscar',
+]);
 
 //REGISTRO DE DISTRIBUIDORES
 Route::get('registro', ['uses' => 'DistribuidorController@index', 'as' => 'registro']);
@@ -120,4 +127,17 @@ Route::prefix('adm')->group(function () {
     // Rutas de reportes pdf
     Route::get('pdf/{id}', ['uses' => 'Adm\CatalogosController@downloadPdf', 'as' => 'file-pdf']);
     
+});
+
+//****************************************ZONA PRIVADA**************************************************************************************************************************************************
+Route::get('/zonaprivada/productos', 'ZprivadaController@productos')->name('zproductos')->middleware('auth');
+//BUSCADOR
+Route::post('/buscador', ['uses' => 'BuscadorController@getProducts', 'as' => 'buscador']);
+
+//CARRITO
+Route::group(['prefix' => 'carrito'], function () {
+    Route::post('add', ['uses' => 'ZprivadaController@add', 'as' => 'carrito.add'])->middleware('auth');
+    Route::get('carrito', ['uses' => 'ZprivadaController@carrito', 'as' => 'carrito'])->middleware('auth');
+    Route::get('delete/{id}', ['uses' => 'ZprivadaController@delete', 'as' => 'carrito.delete'])->middleware('auth');
+    Route::post('enviar', ['uses' => 'ZprivadaController@send', 'as' => 'carrito.enviar'])->middleware('auth');
 });

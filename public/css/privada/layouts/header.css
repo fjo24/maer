@@ -1,0 +1,281 @@
+.redeshead ul a {
+    background-color: transparent!important;
+    padding: 0!important;
+    border-bottom: none;
+}
+.redes_head ul {
+    padding-top: 4%;
+}
+
+nav .brand-logo {
+    top: 10px;
+    height: 113px!important;
+}
+
+.top {
+    background-color: #FF5B88;
+    height: 65px;
+    margin-top: 43px;
+    width: 100%;
+    background: #3F3F3F;
+    font-family: 'Montserrat', sans-serif;
+}
+/*BUSCADOR*/
+
+.dropdown-menu {
+    right: 0% !important;
+    left: -200% !important;
+    background-color: #787950 !important;
+}
+#dropdown1 {}
+input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):focus:not([readonly]), input[type=password]:not(.browser-default):focus:not([readonly]), input[type=email]:not(.browser-default):focus:not([readonly]), input[type=url]:not(.browser-default):focus:not([readonly]), input[type=time]:not(.browser-default):focus:not([readonly]), input[type=date]:not(.browser-default):focus:not([readonly]), input[type=datetime]:not(.browser-default):focus:not([readonly]), input[type=datetime-local]:not(.browser-default):focus:not([readonly]), input[type=tel]:not(.browser-default):focus:not([readonly]), input[type=number]:not(.browser-default):focus:not([readonly]), input[type=search]:not(.browser-default):focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #FF608A!important;
+    -webkit-box-shadow: 0 1px 0 0 #FF608A!important;
+    box-shadow: 0 1px 0 0 #FF608A!important;
+}
+.dropdown-content {
+    background-color: #fafafa!important;
+    margin: 0;
+    display: none;
+    min-width: 100px;
+    overflow-y: auto;
+    opacity: 0;
+    position: absolute;
+    right: 0%!important;
+    left: 43%!important;
+    width: 300px!important;
+    height: 265px;
+    top: 0;
+    z-index: 9999;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+header #buscador {
+    float: right;
+}
+header #buscador input[type=search] {
+    margin: 0px;
+    width: 141px!important;
+    height: 24px;
+    color: black;
+    cursor: pointer;
+    background-color: #FFFFFF;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    transition: all .5s;
+    border-bottom: 0px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+/* FIN BUSCADOR */
+
+header .list-top {
+    margin: 0px -98px;
+    margin-right: -18px;
+}
+header .li-icondistribuidor {
+    position: relative;
+    right: 90px;
+    top: 5px;
+    background-color: transparent;
+    border-radius: 0px;
+    float: right;
+    height: 26px;
+    width: 62px;
+    line-height: 10px;
+    display: flex;
+    justify-content: center;
+    /* horizontal*/
+    align-items: center;
+    /*vertical*/
+    border-right: 1px solid #ffffff;
+}
+header .li-distribuidor a {
+    color: #FFFFFF;
+    font-size: 16px;
+}
+header .li-distribuidor {
+    position: relative;
+    right: 48px;
+    border-radius: 0px;
+    float: right;
+    height: 35px;
+    width: 245px;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    /* horizontal*/
+    align-items: center;
+    /*vertical*/
+}
+header .li-presupuesto a {
+    font-family: 'Montserrat';
+    color: #DDDDDD;
+    font-size: 15px;
+}
+header .li-presupuesto {
+    background-color: transparent;
+    border-radius: 0px;
+    float: right;
+    height: 35px;
+    width: 243px;
+    display: flex;
+    justify-content: center;
+    /* horizontal*/
+    align-items: center;
+    /*vertical*/
+    border-right: 2px solid #777777;
+    border-left: 2px solid #777777;
+}
+header .li-redes a {
+    font-family: 'Montserrat';
+    color: #DDDDDD;
+    font-size: 16px;
+    margin: 0px 11px;
+}
+header .li-redes {
+    background-color: transparent;
+    border-radius: 0px;
+    float: left;
+    color: white;
+    position: relative;
+    top: 4px;
+    left: -30px;
+    height: 35px;
+    width: 145px;
+    display: flex;
+    justify-content: center;
+    /* horizontal*/
+    align-items: center;
+    /*vertical*/
+}
+header .numero {
+    position: relative;
+    bottom: 0px;
+    left: 5px;
+}
+header .li-red {
+    background-color: transparent;
+    border-radius: 0px;
+    list-style: none;
+    float: right;
+    height: 37px;
+    width: 35px;
+    margin-right: -22px;
+    display: flex;
+    justify-content: center;
+    /* horizontal*/
+    align-items: center;
+    /*vertical*/
+}
+header .principal {
+    height: 159px!important;
+    background-color: #1D1D1B;
+    font-family: 'Montserrat';
+}
+nav ul a {
+    font-size: 15px!important;
+    font-family: ''Montserrat'';
+    margin: 0 12px;
+    padding: 0!important;
+}
+
+nav ul a:hover {
+    background-color: transparent!important;
+    font-family: 'Montserrat';
+    margin: 0 12px;
+    padding: 0!important;
+}
+.activo {
+    background-color: transparent!important;
+    font-family: 'Montserrat';
+    color: #F07D00!important;
+}
+nav .item-left a {
+    color: white;
+    font-size: 16px!important;
+    font-family: 'Montserrat';
+    margin: 0 22px;
+    padding: 0!important;
+}
+
+nav .item-left a:hover {
+    color: #F07D00!important;
+    font-size: 16px!important;
+    font-family: 'Montserrat';
+    margin: 0 22px;
+    padding: 0!important;
+}
+nav .item-left a:activo {
+    color: #F07D00!important;
+    font-size: 16px!important;
+    font-family: 'Montserrat';
+    margin: 0 22px;
+    padding: 0!important;
+}
+nav .item-left {
+    position: relative;
+    padding-left: 0%!important;
+    /* top: 77px; */
+    /* left: 19px; */
+    /* width: 468px; */
+    font-size: 18px;
+    font-family: 'Montserrat';
+    font-weight: 400;
+    line-height: 67px;
+}
+nav .item-right {
+    position: relative;
+    top: 77px;
+    right: 28px;
+    font-size: 18px;
+    word-spacing: 0px;
+    font-family: 'Montserrat';
+    font-weight: 600;
+    line-height: 46px;
+}
+nav ul li {
+    margin: 0px 0px;
+}
+.colorboton {
+    background-color: #7D0045!important;
+}
+.colorboton input {
+    color: white;
+    font-family: 'Lato';
+    font-weight: bold;
+}
+nav .sidenav-trigger {
+    color: #FF5B88!important;
+}
+/* lupita para buscador en movil*/
+
+#mobile_search {
+    display: none;
+    width: 45px;
+    /*ancho por defecto*/
+    background: #ededed url(/img/lupaa.png) no-repeat 9px center;
+    /*icono lupa*/
+    padding: 9px 10px 9px 32px;
+    border-radius: 15em;
+    -webkit-transition: all .5s;
+    /* transición de .5seg a todos los elementos para chrome*/
+    -moz-transition: all .5s;
+    /* transición de .5seg a todos los elementos para mozilla*/
+    -o-transition: all .5s;
+    /* transición de .5seg a todos los elementos para ophera*/
+    transition: all .5s;
+    /* transición de .5seg a todos los elementos*/
+    outline: none;
+    /* ocultar el fucos automático de los input */
+}
+#mobile_search:focus {
+    width: 130px;
+    /*tamaño del boton buscar al hacer click*/
+    padding-left: 32px;
+    /*espacio entre el icono lupa y el placeholder*/
+    color: #000;
+    background-color: #FFF;
+}
+

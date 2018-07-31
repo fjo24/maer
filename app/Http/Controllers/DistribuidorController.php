@@ -27,8 +27,6 @@ class DistribuidorController extends Controller
         $usuario->cuit      = $request->cuit;
         $usuario->telefono  = $request->telefono;
         $usuario->direccion = $request->direccion;
-        $usuario->lat       = $request->lat;
-        $usuario->lng       = $request->lng;
         $usuario->postal       = $request->postal;
         $usuario->email     = $request->email;
         $usuario->password       = \Hash::make($request->password);
