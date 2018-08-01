@@ -35,9 +35,51 @@
                                     </a>
                                 </li>
                                 <li class="privado_head">
-                                    <a class="" href="{{ url('/') }}" style="margin-top: -4%;">
-                                        Zona privada
-                                    </a>
+                                                    <div class="dropdown-trigger" data-target="dropdown1">
+                                        <a href="zonaprivada/productos" style="color: #F07D00;margin-top: -4%;">
+                                            Zona privada
+                                        </a>
+                                    </div>
+                    <!-- Dropdown LOGIN -->
+                <div class="areaprivada">
+                    <ul class="dropdown-content" id="dropdown1" style="background: none, width:400px!important; height: 282px!important;">
+                        <div class="container" style="background: #FAFAFA; margin-top: 19px !important; outline: none; width: 282px;">
+                            {!!Form::open(['route'=>'logindistribuidor', 'method'=>'POST'])!!}
+                            <div class="input-field col s12" style="padding-left: 10px;    border-bottom: 1px solid #595959; margin: 2px; margin-top: 1px; margin-bottom: 9px;">
+                                {!!Form::text('username',null,['class'=>'', 'required'])!!}
+                                <label for="username" style="color:gray; font-weight: 500; font-family: 'Lato'; font-size: 15px;">
+                                    Username
+                                </label>
+                            </div>
+                            <div class="input-field col s12" placeholder="password" style="padding-left: 10px;    border-bottom: 1px solid #595959; margin: 2px;">
+                                {!!Form::password('password',null,['class'=>'', 'required'])!!}
+                                <label for="password" style="color:gray; font-weight: 500; font-family: 'Lato'; font-size: 15px;">
+                                    Contraseña
+                                </label>
+                            </div>
+                            <style type="text/css">
+                                .color-del-boton{
+                 background-color: #01A0E2;
+            }
+            .color-del-boton:hover{
+                 background-color: #01A0E2;
+            }
+                            </style>
+                            <div class="col s12" style="position: relative;right: 24%;margin-top: 9%;
+    margin-bottom: 2%;">
+                                <input class="waves-effect waves-light btn right colorboton" style="color: white;font-family: 'Lato';font-weight: bold;" type="submit" value="INGRESAR">
+                                </input>
+                            </div>
+                            <li class="center" style="font-size: 12px;color: pink; text-decoration: none;">
+                                <a href="{{ url('registro') }}" style="color: #F07D00!important; text-align: center;">
+                                    CREAR UNA CUENTA NUEVA
+                                </a>
+                            </li>
+                            {!!Form::close()!!}
+                        </div>
+                    </ul>
+                </div>
+                <!-- Dropdown LOGIN FIN -->
                                 </li>
                             </ul>
                     </div>

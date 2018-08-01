@@ -42,10 +42,10 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
     opacity: 0;
     position: absolute;
     right: 0%!important;
-    left: 43%!important;
+    left: 73%!important;
+    height: 280px!important;
+    top: 15%!important;
     width: 300px!important;
-    height: 265px;
-    top: 0;
     z-index: 9999;
     -webkit-transform-origin: 0 0;
     transform-origin: 0 0;
@@ -196,7 +196,7 @@ nav .item-left a {
     color: white;
     font-size: 16px!important;
     font-family: 'Montserrat';
-    margin: 0 22px;
+    margin: 0 20px;
     padding: 0!important;
 }
 
@@ -204,7 +204,7 @@ nav .item-left a:hover {
     color: #F07D00!important;
     font-size: 16px!important;
     font-family: 'Montserrat';
-    margin: 0 22px;
+    margin: 0 20px;
     padding: 0!important;
 }
 nav .item-left a:activo {
@@ -239,7 +239,7 @@ nav ul li {
     margin: 0px 0px;
 }
 .colorboton {
-    background-color: #7D0045!important;
+    background-color: #F07D00!important;
 }
 .colorboton input {
     color: white;
@@ -279,3 +279,12 @@ nav .sidenav-trigger {
     background-color: #FFF;
 }
 
+/*.areaprivada input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea {
+    border-bottom: none!important;
+}
+/*
+input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):focus:not([readonly]), input[type=password]:not(.browser-default):focus:not([readonly]), input[type=email]:not(.browser-default):focus:not([readonly]), input[type=url]:not(.browser-default):focus:not([readonly]), input[type=time]:not(.browser-default):focus:not([readonly]), input[type=date]:not(.browser-default):focus:not([readonly]), input[type=datetime]:not(.browser-default):focus:not([readonly]), input[type=datetime-local]:not(.browser-default):focus:not([readonly]), input[type=tel]:not(.browser-default):focus:not([readonly]), input[type=number]:not(.browser-default):focus:not([readonly]), input[type=search]:not(.browser-default):focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom:none!important;
+    -webkit-box-shadow:none!important;
+    box-shadow: none!important;
+}

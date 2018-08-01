@@ -196,7 +196,7 @@ nav .item-left a {
     color: white;
     font-size: 16px!important;
     font-family: 'Montserrat';
-    margin: 0 22px;
+    margin: 0 20px;
     padding: 0!important;
 }
 
@@ -204,7 +204,7 @@ nav .item-left a:hover {
     color: #F07D00!important;
     font-size: 16px!important;
     font-family: 'Montserrat';
-    margin: 0 22px;
+    margin: 0 20px;
     padding: 0!important;
 }
 nav .item-left a:activo {

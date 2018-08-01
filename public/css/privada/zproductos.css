@@ -2,13 +2,12 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     color: #F07D00;
-    margin-top: 40px;
+    margin-top: 11%;
     font-size: 22px;
-    margin-left: -20%;
     margin-bottom: 21px;
 }
 .lista_precios{
-    font-family: 'Asap';
+    font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     color: #FF5E87;
     margin-top: 40px;
@@ -18,7 +17,7 @@
 }
 
 .descargar_catalogo{
-    font-family: 'Lato';
+    font-family: 'Montserrat', sans-serif;
     font-size: 22px;
     color: #595959;
     margin-left: 3%;
@@ -48,9 +47,9 @@ label {
 }
 
 thead {
-    font-family: 'Lato';
-    font-size: 18px!important;
-    color:#7D0045!important;
+    font-family: 'Montserrat';
+    font-size: 13px!important;
+    color:#3F3F3F!important;
     }
 
 
@@ -92,7 +91,9 @@ table.dataTable tbody tr {
 
 .buscadorprivado input{
 	background: url(/img/fondoinput.png);
-	margin-bottom: 41px;
+	margin-bottom: 5%;
+    margin-top: 1%;
+    margin-right: 0%;
 }
 
 .buscadorprivado input:focus{
@@ -112,8 +113,8 @@ table.dataTable tbody tr {
 }
 
 .trprincipal {
-    border-bottom: 3px solid #FF608A;
-    
+    border-bottom: 3px solid #5B462D;
+    background: #ECECEC;
 }
 
 .timagen img{
@@ -125,13 +126,13 @@ table.dataTable tbody tr {
 .tcodigo{
 	color:#595959;
 	font-size: 17;
-	font-family: 'Lato';
+	font-family: 'Montserrat', sans-serif;
 }
 
 .tdescripcion{
 	color: #7D0045;
 	font-size: 17;
-	font-family: 'Lato';
+	font-family: 'Montserrat', sans-serif;
 }
 
 [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
@@ -159,11 +160,11 @@ table.dataTable tbody tr {
 }
 
 .mipedido{
-    font-family: 'Asap';
+    font-family: 'Montserrat', sans-serif;
     font-weight: 400;
-    color: #FF5E87;
-    margin-top: 7%;
-    font-size: 26px;
+    color: #F07D00;
+    margin-top: 9.5%;
+    font-size: 22px;
     margin-bottom: 3%;
     margin-left: 6%;
 }
@@ -196,7 +197,7 @@ table.dataTable tbody tr {
 }
 
 .oyn h2 {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 20px;
     font-weight: 400px!important;
     color: #B3004A;
@@ -215,20 +216,20 @@ table.dataTable tbody tr {
 }
 
 .modal-content h4{
-    font-family: 'Asap';
+    font-family: 'Montserrat', sans-serif;
     font-weight: 400;
     color: #FF5E87;
     font-size: 32px;
 }
 
 .modal_descripcion{
-    font-family: 'Lato';
+    font-family: 'Montserrat', sans-serif;
     color: #FF5E87;
     font-weight: bold;
     font-size: 16px;
 }
 .modal_contenido{
-    font-family: 'Lato';
+    font-family: 'Montserrat', sans-serif;
 
 }
 

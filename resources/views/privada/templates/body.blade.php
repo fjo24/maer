@@ -7,7 +7,7 @@
                     <meta content="" name="description"/>
                         <meta content="" name="author"/>
                             <title>
-                                :: Parpen :: - @yield('titulo')
+                                :: Maer :: - @yield('titulo')
                             </title>
                  
                             <link href="{{ asset('img/favicon.png') }}" rel="icon" type="image/png"/>

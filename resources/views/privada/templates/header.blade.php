@@ -35,9 +35,18 @@
                                     </a>
                                 </li>
                                 <li class="privado_head">
-                                    <a class="" href="{{ url('/') }}" style="margin-top: -4%;">
-                                        Zona privada
-                                    </a>
+                                    <div class="dropdown-trigger" data-target="dropdown1">
+                                        <a class="right" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();" style="text-transform: capitalize;line-height: 125%;margin-top: 8%;color: #F07D00">
+                            Bienvenido, {{ Auth::User()->name }}<br>
+                            (Cerrar Sesión)
+                     
+                                        </a>
+                                        <form action="{{ route('logout') }}" id="logout-form" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+
+                                    </div>
                                 </li>
                             </ul>
                     </div>
@@ -63,13 +72,13 @@
                 @endif
                 @if($activo=='empresa')
                 <li>
-                    <a class="activo" href="{{ url('/empresa') }}">
+                    <a class="activo" href="{{ route('carrito') }}">
                         CARRITO
                     </a>
                 </li>
                 @else
                 <li>
-                    <a href="{{ url('/empresa') }}">
+                    <a href="{{ route('carrito') }}">
                         CARRITO
                     </a>
                 </li>

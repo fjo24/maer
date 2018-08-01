@@ -8,7 +8,7 @@
 <body class="wide comments tprivada">
     <div class="fw-body">
         <div class="container" style="width: 85%">
-    <div class="masiva left">
+    <div class="masiva">
         PEDIDOS
     </div>
     <br>
@@ -20,32 +20,32 @@
                 </input>
                     {!! Form::close() !!}
             </div>
-            <table class="display" id="tprivada" style="width:100%;margin-bottom: 13%;">
+            <table class="display" id="tprivada" style="width:100%;margin-bottom: 11%;">
                 <thead>
                     <tr class="trprincipal">
                         <th class="">
-                            Imagen
+                            
                         </th>
                         <th class="">
-                            Categoria
+                            FAMILIA
                         </th>
                         <th class="">
-                            Descripción
+                            PRODUCTO
                         </th>
                         <th class="">
-                            Medidas
+                            MODELO
                         </th>
                         <th class="">
-                            Embalaje
+                            MEDIDA
                         </th>
                         <th style="width: 128px" class="">
-                            Cantidad de Embalajes
+                            PRECIO UNITARIO
                         </th>
                         <th style="width: 128px" class="">
-                            Precio Unitario
+                            CANTIDAD
                         </th>
                         <th>
-                            Pedir
+                            AÑADIR
                         </th>
                     </tr>
                 </thead>
@@ -94,15 +94,14 @@
     </div>
   </div>
                             </td>
-                            <td class="" value="medida" name="medida">{!! $producto->medidas !!}</td>
-                            {{ Form::hidden('medidas', $producto->medidas) }}
-                            <td class="">{!! $producto->embalaje !!}</td>
+                            <td class="" value="medida" name="medida">{!! $producto->modelo->codigo !!}</td>
+                            <td class="">{!! $producto->modelo->medida !!}</td>
+                            <td class="">
+                                {!! $producto->precio !!}
+                            </td>
                             <td class="">
                                 <label for="cantidad">Cantidad</label>
                             <input type="number" name="cantidad" value="1" style="width: 46px;">
-                            </td>
-                            <td class="">
-                                {!! $producto->precio !!}
                             </td>
                             {{ Form::hidden('precio', $producto->precio) }}
 
@@ -118,7 +117,7 @@
                             @endforeach
                             @endisset
                             @if($shop==0)
-                                <button type="submit" name="submit" style="padding-bottom: 0px;padding-right: 0px;border-top-width: 0px;padding-left: 0px;background-color: white;border-left-width: 0px;margin-right: 0px;border-right-width: 0px;    border-bottom-width: 0px;"><i class="material-icons" style="color: #FF5F8A; background-color: transparent!important;">shopping_cart</i></button>
+                                <button type="submit" name="submit" style="padding-bottom: 0px;padding-right: 0px;border-top-width: 0px;padding-left: 0px;background-color: white;border-left-width: 0px;margin-right: 0px;border-right-width: 0px;    border-bottom-width: 0px;"><i class="material-icons" style="color: #F07D00; background-color: transparent!important;">shopping_cart</i></button>
                             @endif
                             <?php $shop = 0; ?>
                             </td>
