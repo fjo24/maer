@@ -37,6 +37,18 @@ class CreateProductosTable extends Migration
             $table->foreign('modelo_id')->references('id')->on('modelos')->onDelete('cascade');
             $table->timestamps();
         });
+
+        Schema::create('pedido_producto', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('pedido_id')->unsigned();
+            $table->integer('producto_id')->unsigned();
+            $table->string('cantidad');
+            $table->string('costo');
+            $table->timestamps();
+
+            $table->foreign('pedido_id')->references('id')->on('pedidos')->onDelete('cascade');
+            $table->foreign('producto_id')->references('id')->on('productos')->onDelete('cascade');
+        });
     }
 
     /**
@@ -46,6 +58,7 @@ class CreateProductosTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('pedido_producto');
         Schema::dropIfExists('productos');
     }
 }

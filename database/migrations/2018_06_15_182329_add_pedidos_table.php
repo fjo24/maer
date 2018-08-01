@@ -25,21 +25,7 @@ class AddPedidosTable extends Migration
             $table->timestamps();
         });
 
-     /*   Schema::create('pedido_producto', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('pedido_id')->unsigned();
-            $table->integer('producto_id')->unsigned();
-            $table->string('cantidad');
-            $table->string('costo');
-            $table->integer('user_id')->unsigned();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->timestamps();
-
-            $table->foreign('pedido_id')->references('id')->on('pedidos')->onDelete('cascade');
-            $table->foreign('producto_id')->references('id')->on('productos')->onDelete('cascade');
-        });*/
-
+        
     }
 
     /**      
@@ -50,7 +36,6 @@ class AddPedidosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pedido_producto');
         Schema::dropIfExists('pedidos');
     }
 }

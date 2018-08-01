@@ -20,7 +20,7 @@
 	@endif
 
 	@if($success == 'Pedido enviado correctamente')
-		<div class="col s12 card-panel green lighten-4 black-text text-darken-4" style="height: 70px;margin-top: 10%;">
+		<div class="col s12 card-panel green lighten-4 black-text text-darken-4" style="height: 70px;margin-top: 4%;">
 		{{($success) }}
 		</div>
 	@endif

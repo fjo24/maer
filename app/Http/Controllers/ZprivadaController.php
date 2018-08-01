@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Catalogo;
 use App\Dato;
 use App\Producto;
+use App\Pedido;
 use Laracasts\Flash\Flash;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
