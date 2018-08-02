@@ -20,7 +20,7 @@ class AddPedidosTable extends Migration
             $table->string('subtotal')->nullable();
             $table->string('total');
             $table->integer('user_id')->unsigned();
-
+            
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

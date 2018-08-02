@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Catalogo;
 use App\Dato;
-use App\Producto;
+use App\Descuento;
 use App\Pedido;
-use Laracasts\Flash\Flash;
+use App\Producto;
+use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -35,13 +36,13 @@ class ZprivadaController extends Controller
         $items     = $carrito->all();
         $ready     = 0;
         $config    = 4;
-        $im = 0;
+        $im        = 0;
         $shop      = 0;
         $productos = Producto::OrderBy('orden', 'ASC')->get();
         $producto  = Producto::find($request->id);
         foreach ($producto->imagenes as $img) {
-                $imagen= $img->imagen;
-            if ($im==0) {
+            $imagen = $img->imagen;
+            if ($im == 0) {
                 break;
             }
         }
@@ -50,7 +51,7 @@ class ZprivadaController extends Controller
 
         if ($request->cantidad > 0) {
             Cart::add(['id' => $producto->id, 'name' => $producto->nombre, 'price' => $producto->precio, 'qty' => $request->cantidad, 'options' => ['codigo' => $producto->codigo, 'orden' => $producto->orden, 'imagen' => $imagen, 'categoria' => $categoria]]);
-           //dd($categoria);
+            //dd($categoria);
             return redirect()->route('zproductos', compact('shop', 'carrito', 'activo', 'productos', 'ready', 'prod', 'config', 'items', 'codigo'));
         } else {
             return back();
@@ -67,31 +68,70 @@ class ZprivadaController extends Controller
 
     public function send(Request $request)
     {
-        $activo = 'carrito';
-        $dato   = Dato::where('tipo', 'email2')->first();
+        $fecha       = Carbon::now()->format('Y-m-d');
+        $descuentos  = Descuento::OrderBy('porcentaje', 'ASC')->get();
+        $activo      = 'carrito';
+        $total_items = 0;
+        $dato        = Dato::where('tipo', 'email')->first();
+        $subtotal    = Cart::Subtotal();
+        $total       = Cart::Total();
+        $carrito     = Cart::content();
+
+        $total      = str_replace(',', '', $total);
+        $subtotal   = str_replace(',', '', $subtotal);
+
+        foreach (Cart::content() as $row) {
+            $total_items = $total_items + $row->qty;
+        }
+        foreach ($descuentos as $descuento) {
+            if ($total_items >= $descuento->minimo) {
+                $desc    = $descuento->porcentaje;
+                $id_desc = $descuento->id;
+            } else {
+                $desc    = 0;
+                $id_desc = null;
+            }
+        }
+        $pedido               = new Pedido;
+        $pedido->fecha        = $fecha;
+        $pedido->total        = $total;
+        $iva                  = ($total - $subtotal);
+        $pedido->subtotal     = $subtotal;
+        $iva                  = number_format($iva, 2, '.', ',');
+        $pedido->iva          = $iva;
+        $pedido->fecha        = $fecha;
+        $pedido->descuento_id = $id_desc;
+        $pedido->user_id      = Auth()->user()->id;
+        $pedidoid             = Pedido::all()->max('id');
+        $pedidoid++;
+        //dd($pedidoid);
+        //dd(count($carrito));
+        $pedido->save();
+
         foreach (Cart::content() as $row) {
             $producto = $row->name;
             $cantidad = $row->qty;
             $precio   = $row->price;
             //$idproducto = $row->rowId
+            $total_items = $total_items + $row->qty;
+            $pedido->productos()->attach($producto, ['cantidad' => $row->qty, 'pedido_id' => $pedidoid, 'producto_id' => $row->id, 'costo' => $row->price * $row->qty]);
         }
+
         $carrito = Cart::content();
         $items   = $carrito->all();
 
-        $subtotal = Cart::Subtotal();
-        $total    = Cart::Total();
-        $mensaje  = $request->input('mensaje');
+        $mensaje = $request->input('mensaje');
         // dd($request->total);
-        $nombre = Auth()->user()->name;
-        $apellido = Auth()->user()->apellido;
+        $nombre       = Auth()->user()->name;
+        $apellido     = Auth()->user()->apellido;
         $emailcliente = Auth()->user()->email;
-        $username = Auth()->user()->username;
-        $social = Auth()->user()->social;
-        $cuit = Auth()->user()->cuit;
-        $telefono = Auth()->user()->telefono;
-        $direccion = Auth()->user()->direccion;
+        $username     = Auth()->user()->username;
+        $social       = Auth()->user()->social;
+        $cuit         = Auth()->user()->cuit;
+        $telefono     = Auth()->user()->telefono;
+        $direccion    = Auth()->user()->direccion;
 
-        Mail::send('privada.mailpedido', ['total' => $total,'username' => $username, 'nombre' => $nombre,'apellido' => $apellido,'social' => $social,'cuit' => $cuit,'telefono' => $telefono,'direccion' => $direccion,'emailcliente' => $emailcliente, 'items' => $items, 'row' => $row, 'subtotal' => $subtotal, 'mensaje' => $mensaje], function ($message) use ($nombre, $apellido) {
+        Mail::send('privada.mailpedido', ['total' => $total, 'username' => $username, 'nombre' => $nombre, 'apellido' => $apellido, 'social' => $social, 'cuit' => $cuit, 'telefono' => $telefono, 'direccion' => $direccion, 'emailcliente' => $emailcliente, 'items' => $items, 'row' => $row, 'subtotal' => $subtotal, 'mensaje' => $mensaje], function ($message) use ($nombre, $apellido) {
 
             $dato = Dato::where('tipo', 'email')->first();
             $message->from('info@aberturastolosa.com.ar', 'Parpen | Pedidos');
@@ -99,7 +139,7 @@ class ZprivadaController extends Controller
             $message->to($dato->descripcion);
 
             //Add a subject
-            $message->subject('Pedido de '. $nombre. ' ' .$apellido);
+            $message->subject('Pedido de ' . $nombre . ' ' . $apellido);
 
         });
         if (count(Mail::failures()) > 0) {
@@ -127,7 +167,7 @@ class ZprivadaController extends Controller
 
     public function listadeprecios()
     {
-        $activo    = 'listadeprecios';
+        $activo   = 'listadeprecios';
         $catalogo = Catalogo::orderBy('created_at', 'ASC')->first();
 
         return view('privada.listadeprecios', compact('activo', 'catalogo'));
@@ -144,9 +184,9 @@ class ZprivadaController extends Controller
 
     public function ofertasynovedades()
     {
-        $activo        = 'ofertasynovedades';
-        $productos     = Producto::OrderBy('orden', 'ASC')->orwhere('tipo', 'novedad')->orwhere('tipo', 'oferta')->get();
-        $ready         = 0;
+        $activo    = 'ofertasynovedades';
+        $productos = Producto::OrderBy('orden', 'ASC')->orwhere('tipo', 'novedad')->orwhere('tipo', 'oferta')->get();
+        $ready     = 0;
 
         return view('privada.ofertasynovedades', compact('productos', 'activo', 'ready'));
     }

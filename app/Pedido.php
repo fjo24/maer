@@ -8,27 +8,22 @@ class Pedido extends Model
 {
     protected $table    = "pedidos";
     protected $fillable = [
-        'fecha', 'iva', 'subtotal', 'total', 'distribuidor_id',
+        'fecha', 'iva', 'subtotal', 'total', 'user_id',
     ];
 
-    public function distribuidor()
+    public function user()
     {
-        return $this->belongsTo('App\Distribuidor');
+        return $this->belongsTo('App\User');
     }
 
     public function productos()
     {
-        return $this->belongsToMany('App\Producto', 'carrito_pedido_producto')->withPivot('cantidad', 'costo');
+        return $this->belongsToMany('App\Producto', 'pedido_producto')->withPivot('cantidad', 'costo');
     }
 
-    public function cproductos()
+    public function getdateAttribute($date)
     {
-        return $this->belongsToMany('App\Producto', 'carrito_pedido_producto')->withPivot('cantidad', 'costo', 'pedir');
-    }
-
-    public function getfechaAttribute($date)
-    {
-        return $date = \Carbon\Carbon::parse($date)->format('d · m · y');
+        return $date = \Carbon\Carbon::parse($date)->format('d-m-Y');
     }
 
     public function setfechaAttribute($date)
