@@ -18,21 +18,21 @@
 	position: absolute!important;
     top: 27%!important;
     left: 28%!important;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: transparent;
     width: 596px!important;
     height: 231px;
     line-height: 250%; 
     color: #FF5F8A!important;
-    text-align: center;
-    font-family: 'Asap';
+    text-align: left;
+    font-family:  'Montserrat', sans-serif;
 }
 
 .slidertext1{
-	    position: relative;
+    position: relative;
     top: 18px;
     left: -1%;
     line-height: 64px;
-    font-family: 'Asap';
+    font-family:  'Montserrat', sans-serif;
     font-size: 74px;
     font-weight: bold;
     padding: 1%;
@@ -41,7 +41,7 @@
 	position: relative;
     top: 22px;
     padding: 10px!important;
-    font-family: 'Lato';
+    font-family:  'Montserrat', sans-serif;
     font-size: 30px;
     font-weight: 400;
     padding: 3%;
@@ -60,7 +60,7 @@
     line-height: 250%;
     color: #FF5F8A!important;
     text-align: center;
-    font-family: 'Asap';
+    font-family:  'Montserrat', sans-serif;
 }
 }
 
@@ -79,7 +79,7 @@
     line-height: 250%;
     color: #FF5F8A!important;
     text-align: center;
-    font-family: 'Asap';
+    font-family:  'Montserrat', sans-serif;
 }
 
 .slidertext1 {
@@ -87,7 +87,7 @@
     top: 30px;
     left: -1%;
     line-height: 29px;
-    font-family: 'Asap';
+    font-family:  'Montserrat', sans-serif;
     font-size: 58px;
     font-weight: bold;
     padding: 1%;
@@ -97,7 +97,7 @@
     position: relative;
     top: 30px;
     padding: 10px!important;
-    font-family: 'Lato';
+    font-family:  'Montserrat', sans-serif;
     font-size: 43px;
     font-weight: 400;
     padding: 3%;
@@ -110,7 +110,7 @@
     position: relative;
     top: 30px;
     padding: 10px!important;
-    font-family: 'Lato';
+    font-family:  'Montserrat', sans-serif;
     font-size: 32px;
     font-weight: 600;
     padding: 3%;
@@ -121,7 +121,7 @@
     top: 37px;
     left: -1%;
     line-height: 29px;
-    font-family: 'Asap';
+    font-family:  'Montserrat', sans-serif;
     font-size: 40px;
     font-weight: bold;
     padding: 1%;
@@ -135,11 +135,9 @@
         top: 46px;
         left: -1%;
         line-height: 29px;
-        font-family: 'Asap';
+        font-family:  'Montserrat', sans-serif;
         font-size: 32px;
         font-weight: bold;
         padding: 1%;
     }
-
-    
 }
