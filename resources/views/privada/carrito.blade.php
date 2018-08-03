@@ -8,9 +8,9 @@
 <body>
 <main class="zonaprivada">
 
-	<div class="mipedido">PEDIDOS</div>
+	<div class="mipedido">CARRITO</div>
 
-	<div class="container" style="width:90%;">
+	<div class="container" style="width:87%;">
 
 @if(isset($success))
 	@if($success == 'Ha ocurrido un error al enviar el correo')
@@ -25,6 +25,46 @@
 		</div>
 	@endif
 @endif
+<div class="row">
+	<div class="col l12 m12 s12">
+		<div class="box_descuento1 left col l6 m6 s12">
+			<span class="descuento col l12 m12 s12">
+				Descuento
+			</span>
+			@foreach($descuentos as $d)
+				<div class="col l10 m10 s10">
+					<div class="col l10 m10 s10">
+						@if(($d->minimo==1)&&($d->maximo==null))
+							{!! $d->minimo !!} unidad
+						@else
+							@empty($d->maximo)
+								+
+							@endisset
+								{!! $d->minimo !!}
+							@isset($d->maximo)
+									a
+								{!! $d->maximo !!}
+							@endisset
+								unidades
+						@endif
+					</div>
+					<div class="col l2 m2 s2">
+						{!! $d->porcentaje !!}%
+					</div>
+					<br>
+					<hr>
+				</div>
+			@endforeach
+		</div>
+		<div class="box_descuento2 right col l6 m6 s12">
+			<div class="col l12 m12 s12">
+				Descuento del 5% por pago de contado
+				<hr/>
+				Sumando {!! $diferencia !!} productos accedés al descuento de {!! $proximo->porcentaje !!}% en el total de tu compra
+			</div>
+		</div>
+	</div>	
+</div>
 
 	  	<div class="row mb50">
 				<div class="col s12">
@@ -89,13 +129,19 @@
 								</tr>
 								<tr style="border-bottom: none;">
 									<td colspan="7"></td>
+									<td class="total fs24 azul bold">Descuento ({{ $desc .'%'}})</td>
+									<td>{{ '$'.$descuento }}</td>
+								</tr>
+								<tr style="border-bottom: none;">
+									<td colspan="7"></td>
 									<td class="total fs24 azul bold">IVA 21%</td>
-									<td>{{ '$'.$total*0.21}}</td>
+									<td>{{ '$'.$iva}}</td>
 								</tr>
 								<tr style="border-bottom: none;">
 									<td colspan="7"></td>
 									<td class="total fs24 azul bold">Total (IVA incluido)</td>
-									<td name>{{ '$'.$total*1.21 }}</td>
+									
+									<td name>{{ '$'.$totales }}</td>
 								</tr>
 								@endif
 							</tbody>

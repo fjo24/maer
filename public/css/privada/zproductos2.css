@@ -3,3 +3,15 @@
         width: 200%;
     }
 }
+
+.box_descuento1{
+	width: 561px!important;
+	height: 265px;
+	background: #D3D3D3;
+}
+
+.box_descuento2{
+	width: 561px!important;
+	height: 265px;
+	background: #F07D00;
+}

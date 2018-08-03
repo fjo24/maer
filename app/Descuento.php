@@ -10,4 +10,10 @@ class Descuento extends Model
     protected $fillable = [
         'minimo', 'maximo', 'porcentaje',
     ];
+
+    public function productos()
+    {
+        return $this->hasMany('App\Producto');
+    }
+
 }

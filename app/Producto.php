@@ -31,6 +31,11 @@ class Producto extends Model
         return $this->hasMany('App\Imgproducto');
     }
 
+    public function descuento()
+    {
+        return $this->belongsTo('App\Descuento');
+    }
+
     public function aplicaciones()
     {
         return $this->belongsToMany('App\Aplicacion', 'aplicacion_producto', 'producto_id', 'aplicacion_id');
