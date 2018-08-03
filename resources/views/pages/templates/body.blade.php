@@ -27,7 +27,9 @@ header('Access-Control-Allow-Origin: *');
                                         <link href="{{ asset('plugins/materialize/css/materialize.min.css') }}" rel="stylesheet">
 
                                             <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-                                            <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+            <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+            <script type="text/javascript" src="{{ asset('js/jquery.timelinr-0.9.6.js') }}"></script>
 
        <!--    <script type="text/javascript" src="http://osolelaravel.com/drimer/js/materialize.min.js"></script>-->
                                         </link>
@@ -51,8 +53,11 @@ header('Access-Control-Allow-Origin: *');
         </main>
             @include('pages.templates.footer')
         <!--Import jQuery before materialize.js-->
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript">
-        </script>
+        <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery.timelinr-0.9.6.js') }}"></script>
         <!-- Materialize Core JavaScript -->
         <script src="{{ asset('plugins/materialize/js/materialize.min.js') }}">
         </script>
@@ -70,13 +75,9 @@ header('Access-Control-Allow-Origin: *');
         closeOnClick:false,
     });
 
+
+
   });
-
-
-        $(".collapsible").collapsible()({
-          
-          });
-
 
 
         $('.dropdown-button').dropdown({

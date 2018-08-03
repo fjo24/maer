@@ -29,6 +29,9 @@ Route::post('productos/buscar', [
     'as'   => 'buscar',
 ]);
 
+//EMPRESAS
+Route::get('/empresa', 'PaginasController@empresa')->name('empresa');
+
 //INFO DE PRODUCTO
 Route::get('productoinfo/{id}', 'PaginasController@productoinfo')->name('productoinfo');
 

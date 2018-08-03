@@ -10,6 +10,7 @@ use App\Destacado_home;
 use App\Destacado_mantenimiento;
 use App\Empresa;
 use App\Local;
+use App\Tiempo;
 use App\Novedad;
 use App\Contactotext;
 use App\Metadato;
@@ -24,7 +25,16 @@ class PaginasController extends Controller
     public function home()
     {
         $activo    = 'home';
+        $sliders   = Slider::orderBy('orden', 'ASC')->Where('seccion', 'home')->get();
         return view('pages.home', compact('sliders', 'servicios', 'banner', 'contenido', 'activo', 'bloque1', 'bloque2', 'bloque3', 'bloque4'));
+    }
+    public function empresa()
+    {
+        $activo    = 'empresa';
+        $sliders   = Slider::orderBy('orden', 'ASC')->Where('seccion', 'empresa')->get();
+        $tiempos   = Tiempo::orderBy('ano', 'ASC')->get();
+        $empresa = Empresa::all()->first();
+        return view('pages.empresa', compact('sliders', 'empresa', 'activo', 'tiempos'));
     }
 
     public function categorias(){
@@ -109,13 +119,6 @@ class PaginasController extends Controller
         $tipon   = $novedad->seccion;
         $activo  = 'novedades';
         return view('pages.novedadinfo', compact('novedad', 'activo', 'tipon'));
-    }
-    public function empresa()
-    {
-        $activo    = 'empresa';
-        $sliders   = Slider::orderBy('orden', 'ASC')->Where('seccion', 'empresa')->get();
-        $contenido = Empresa::all()->first();
-        return view('pages.empresa', compact('sliders', 'contenido', 'activo'));
     }
 
     public function dondeComprar()
