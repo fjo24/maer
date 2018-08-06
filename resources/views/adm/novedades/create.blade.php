@@ -32,7 +32,7 @@
                         {!!Form::text('fecha', null , ['class'=>'datepicker', ''])!!}
             </div>
             <div class="input-field col l6 s12">
-                {!! Form::select('seccion', ['actualidad' => 'Actualidad', 'empresa' => 'Empresa', 'productos' => 'Productos'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione sección']) !!}
+                {!! Form::select('categoria_novedad_id', $categorias, null, ['class' => 'form-control', 'placeholder' => 'Categoria', 'required']) !!}
             </div>
             <div class="input-field col l6 s12">
                 {!!Form::label('Orden:')!!}
@@ -66,18 +66,18 @@
                 {!! Form::select('producto_id', $productos, null, ['class' => 'form-control', 'placeholder' => 'Producto involucrado', 'required']) !!}
             </div>
         </div>
-        <label class="col l12 s12" for="descripcion">
-            Descripcion
-        </label>
-        <div class="input-field col l12 s12">
-            <textarea class="materialize-textarea" id="descripcion" name="descripcion" required="">
-            </textarea>
-        </div>
         <label class="col l12 s12" for="contenido">
             Contenido
         </label>
         <div class="input-field col l12 s12">
             <textarea class="materialize-textarea" id="contenido" name="contenido" required="">
+            </textarea>
+        </div>
+        <label class="col l12 s12" for="descripcion">
+            Linea final
+        </label>
+        <div class="input-field col l12 s12">
+            <textarea class="materialize-textarea" id="descripcion" name="descripcion" required="">
             </textarea>
         </div>
         <div class="col l12 s12 no-padding">

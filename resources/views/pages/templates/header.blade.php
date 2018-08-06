@@ -117,27 +117,51 @@
                 </li>
                 @endif
                 @if($activo=='productos')
-                <li>
-                    <a class="activo" href="{{ url('categorias') }}">
-                        PRODUCTOS
+                <li id="menu_productos">
+                    <a class="activo prod_menu" href="">
+                        PRODUCTO
                     </a>
+                    <ul style="margin-top: -2%!important;">
+                        <li class="menu_cate">
+                            <a href="{{ route('sistemas')}}" style="text-transform: uppercase;">
+                                POR SISTEMA
+                            </a>
+                        </li>
+                        <li class="menu_cate">
+                            <a href="{{ route('rubros')}}" style="text-transform: uppercase;">
+                                POR RUBRO
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 @else
-                <li>
-                    <a href="{{ url('categorias') }}">
-                        PRODUCTOS
+                <li id="menu_productos">
+                    <a class="prod_menu" href="">
+                        PRODUCTO
                     </a>
+                    <ul style="margin-top: -2%!important;">
+                        <li class="menu_cate">
+                            <a href="{{ route('sistemas')}}" style="text-transform: uppercase;">
+                                POR SISTEMA
+                            </a>
+                        </li>
+                        <li class="menu_cate">
+                            <a href="{{ route('rubros')}}" style="text-transform: uppercase;">
+                                POR RUBRO
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 @endif
                 @if($activo=='videos')
                 <li>
-                    <a class="activo" href="{{ url('/empresa') }}">
+                    <a class="activo" href="{{ url('/videos') }}">
                         VIDEOS
                     </a>
                 </li>
                 @else
                 <li>
-                    <a href="{{ url('/empresa') }}">
+                    <a href="{{ url('/videos') }}">
                         VIDEOS
                     </a>
                 </li>
@@ -157,13 +181,13 @@
                 @endif
                 @if($activo=='novedades')
                 <li>
-                    <a class="activo" href="{{ url('/empresa') }}">
+                    <a class="activo" href="{{ route('pagenovedades') }}">
                         NOVEDADES
                     </a>
                 </li>
                 @else
                 <li>
-                    <a href="{{ url('/empresa') }}">
+                    <a href="{{ route('pagenovedades') }}">
                         NOVEDADES
                     </a>
                 </li>

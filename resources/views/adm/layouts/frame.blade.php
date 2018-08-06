@@ -372,6 +372,16 @@
                                         Ver/Editar Novedades
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="{{route('categorianovedades.create')}}">
+                                        Crear Categoria
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('categorianovedades.index')}}">
+                                        Editar Categoria
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </li>

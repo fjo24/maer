@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Adm;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\NovedadesRequest;
 use App\Imgnovedad;
+use App\Categoria_novedad;
 use App\Novedad;
 use App\Producto;
 use Illuminate\Http\Request;
@@ -15,27 +16,46 @@ class NovedadesController extends Controller
     //'nombre', 'fecha', 'descripcion', 'contenido', 'seccion', 'orden', 'imagen1', 'imagen2', 'producto_id',
     public function index()
     {
-        $novedades = Novedad::orderBy('seccion', 'ASC')->get();
+        $novedades = Novedad::orderBy('categoria_novedad_id', 'ASC')->get();
         return view('adm.novedades.index', compact('novedades'));
     }
 
     public function create()
     {
+        $categorias = Categoria_novedad::OrderBy('nombre', 'ASC')->pluck('nombre', 'id')->all();
         $productos = Producto::orderBy('nombre', 'ASC')->pluck('nombre', 'id')->all();
-        return view('adm.novedades.create', compact('productos'));
+        return view('adm.novedades.create', compact('productos', 'categorias'));
     }
 
     public function store(Request $request)
     {
-        $novedad                    = new novedad();
+        $novedad                    = new Novedad();
         $novedad->nombre            = $request->nombre;
         $novedad->fecha             = $request->fecha;
         $novedad->descripcion       = $request->descripcion;
         $novedad->contenido         = $request->contenido;
-        $novedad->seccion           = $request->seccion;
+        $novedad->categoria_novedad_id= $request->categoria_novedad_id;
         $novedad->orden             = $request->orden;
-        $novedad->imagen1           = $request->imagen1;
-        $novedad->imagen2           = $request->imagen2;
+        $id              = Novedad::all()->max('id');
+        $id++;
+        if ($request->hasFile('imagen1')) {
+            if ($request->file('imagen1')->isValid()) {
+                $file = $request->file('imagen1');
+                $path = public_path('img/novedades/');
+                $request->file('imagen1')->move($path, $id . '_' . $file->getClientOriginalName());
+                $novedad->imagen1 = 'img/novedades/' . $id . '_' . $file->getClientOriginalName();
+            }
+        }
+
+        if ($request->hasFile('imagen2')) {
+            if ($request->file('imagen2')->isValid()) {
+                $file = $request->file('imagen2');
+                $path = public_path('img/novedades/');
+                $request->file('imagen2')->move($path, $id . '_' . $file->getClientOriginalName());
+                $novedad->imagen2 = 'img/novedades/' . $id . '_' . $file->getClientOriginalName();
+            }
+        }
+
         $novedad->producto_id       = $request->producto_id;
         $novedad->save();
 
@@ -45,8 +65,9 @@ class NovedadesController extends Controller
     public function edit($id)
     {
         $novedad = Novedad::find($id);
+        $categorias = Categoria_novedad::OrderBy('nombre', 'ASC')->pluck('nombre', 'id')->all();
         $productos = Producto::orderBy('nombre', 'ASC')->pluck('nombre', 'id')->all();
-        return view('adm.novedades.edit', compact('novedad', 'productos'));
+        return view('adm.novedades.edit', compact('novedad', 'categorias', 'productos'));
     }
 
     public function update(Request $request, $id)
@@ -56,10 +77,26 @@ class NovedadesController extends Controller
         $novedad->fecha             = $request->fecha;
         $novedad->descripcion       = $request->descripcion;
         $novedad->contenido         = $request->contenido;
-        $novedad->seccion           = $request->seccion;
+        $novedad->categoria_novedad_id= $request->categoria_novedad_id;
         $novedad->orden             = $request->orden;
-        $novedad->imagen1           = $request->imagen1;
-        $novedad->imagen2           = $request->imagen2;
+        if ($request->hasFile('imagen1')) {
+            if ($request->file('imagen1')->isValid()) {
+                $file = $request->file('imagen1');
+                $path = public_path('img/novedades/');
+                $request->file('imagen1')->move($path, $id . '_' . $file->getClientOriginalName());
+                $novedad->imagen1 = 'img/novedades/' . $id . '_' . $file->getClientOriginalName();
+            }
+        }
+
+        if ($request->hasFile('imagen2')) {
+            if ($request->file('imagen2')->isValid()) {
+                $file = $request->file('imagen2');
+                $path = public_path('img/novedades/');
+                $request->file('imagen2')->move($path, $id . '_' . $file->getClientOriginalName());
+                $novedad->imagen2 = 'img/novedades/' . $id . '_' . $file->getClientOriginalName();
+            }
+        }
+
         $novedad->producto_id       = $request->producto_id;
         $novedad->save();
 

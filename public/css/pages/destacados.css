@@ -1,0 +1,244 @@
+.categorias {
+    margin-top: 50px;
+    margin-bottom: 83px;
+}
+.titulo-cat {
+    font-size: 27px;
+    color: #FF0000;
+    font-family: 'Montserrat';
+    margin-bottom: 30px;
+}
+.cat-line {
+    width: 100px;
+    height: 2px!important;
+    background-color: red!important;
+    border: 0px red;
+}
+.items-cat {
+    margin-top: 38px;
+}
+.img-cat {
+    width: 374px;
+    height: 406px;
+}
+.div-nombre {
+    display: table;
+    background-color: rgba(179, 0, 74, 0.86);
+    height: 104px;
+    font-weight: 900;
+    font-family: 'Montserrat';
+    justify-content: center;
+    align-items: center;
+    font-size: 29px;
+    position: relative;
+    width: 100%;
+    bottom: 104px;
+    color: white;
+}
+
+.div-nombrehight {
+    display: table;
+    background-color: rgba(179, 0, 74, 0.86);
+    height: 104px;
+    font-weight: 900;
+    font-family: 'Montserrat';
+    justify-content: center;
+    align-items: center;
+    font-size: 29px;
+    position: relative;
+    width: 100%;
+    bottom: 104px;
+    color: white;
+}
+
+.div-nombrelarge {
+    display: table;
+    background-color: rgba(179, 0, 74, 0.86);
+    height: 104px;
+    font-weight: 900;
+    font-family: 'Montserrat';
+    justify-content: center;
+    align-items: center;
+    font-size: 29px;
+    position: relative;
+    width: 756px;
+    bottom: 103px;
+    color: white;
+}
+
+.texto {
+    display: table-cell;
+    vertical-align: middle;
+}
+.div-categoria {
+    display: table;
+    height: 429px;
+}
+/* DESTACADOS */
+
+.efecto {
+    position: absolute;
+    opacity: 0;
+    background-color: rgba(255, 0, 0, 0.75);
+    width: 92%;
+    height: 92%;
+    z-index: 999;
+    margin: 16px;
+    display: table-cell;
+    vertical-align: middle;
+}
+.efecto:hover {
+    opacity: 1;
+    transition: 1s;
+}
+.central {
+    padding: inherit;
+    border: 1px solid white;
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    color: white;
+    width: 59px;
+    height: 59px;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+}
+.efecto i {
+    padding-top: 20%;
+    /*font-weight: bold;*/
+    font-size: 30px;
+}
+.bloquecard {
+    padding-right: 5px!important;
+    padding-left: 5px!important;
+    height: 442px!important;
+}
+
+.imgrupo2 img{
+    height: 370px!important;
+    width: 370px!important;
+}
+
+.imgl img{
+    height: 750px!important;
+}
+
+.imglarge img{
+        margin-top: -11px;
+    height: 359px!important;
+    width: 756px!important;
+}
+
+.bloque{
+        width: 100%;
+}
+
+.bloquelarge{
+        width: 100%;
+}
+
+.tododestacado{
+    margin-top: 30px!important;
+}
+
+.tit-dest{
+    font-family: 'Montserrat';
+    font-size: 38px;
+    color: #F07D00;
+    font-weight: bold;
+}
+
+.subtit-dest{
+    margin-top: 2%;
+    font-family: 'Montserrat';
+    font-size: 22px;
+    color: #F07D00;
+    margin-bottom: -7%;
+}
+
+.cont-dest{
+    font-family: 'Montserrat';
+    color: #5F5F5F;
+    font-size: 18px;
+    width: 110%;
+    margin-top: -4%;
+}
+
+.destacado-home2{
+    background-color: #FAFAFA;
+    height: 460px;
+}
+
+.btn:hover, .btn-large:hover, .btn-small:hover {
+    background-color: #FF5F8A;
+}
+
+.btn, .btn-large, .btn-small {
+    text-decoration: none;
+    color: #fff;
+    background-color: #7D0045!important;
+    text-align: center;
+    letter-spacing: .5px;
+    -webkit-transition: background-color .2s ease-out;
+    transition: background-color .2s ease-out;
+    cursor: pointer;
+}
+
+.boton{
+    width: 181px;
+    height: 42px!important;
+    margin-top: 16px;
+    font-family: 'Montserrat';
+    font-size: 15px!important;
+    font-weight: bold;
+}
+
+.boton_empresa{
+    background-color: #FAFAFA!important;
+    border: 2px solid #3F3F3F!important;
+    font-family: 'Montserrat'!important;
+    margin-left: -2%;
+    margin-top: 2%;
+    color: #3F3F3F!important;
+    font-weight: 500;
+    font-size: 13px!important;
+    border-radius: 6px!important;
+    width: 181px!important;
+    height: 38px!important;
+}
+
+.destacado-empresa{
+        margin-top: -17px;
+        margin-bottom: 148px;
+}
+
+@media only screen and (max-width: 503px){
+
+    .cuadradas img {
+        height: 302px!important;
+        right: 302px!important;
+    }
+
+    .larga img {
+        height: 302px!important;
+        right: 302px!important;
+    }
+
+    .alta img{
+        height: 470px!important;
+        right: 302px!important;
+    }
+    
+    .tbanner {
+    text-shadow: 3px 3px 5px #fff, 6px 6px 5px #fff!important;
+}
+
+.tbanner2 p {
+    text-shadow: 3px 3px 5px #fff, 6px 6px 5px #fff, 3px 3px 5px #fff, 6px 6px 5px #fff!important;
+}
+
+    
+}

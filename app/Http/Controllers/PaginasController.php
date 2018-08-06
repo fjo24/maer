@@ -4,15 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Categoria;
 use App\Contenido_home;
+use App\Pregunta;
 use App\User;
 use App\Dato;
 use App\Destacado_home;
 use App\Destacado_mantenimiento;
 use App\Empresa;
-use App\Local;
+use App\Rubro;
 use App\Tiempo;
 use App\Novedad;
-use App\Contactotext;
+use App\Video;
 use App\Metadato;
 use App\Producto;
 use App\Servicio;   
@@ -26,6 +27,11 @@ class PaginasController extends Controller
     {
         $activo    = 'home';
         $sliders   = Slider::orderBy('orden', 'ASC')->Where('seccion', 'home')->get();
+        $bloque1   = Destacado_home::find(1);
+        $bloque2   = Destacado_home::find(2);
+        $bloque3   = Destacado_home::find(3);
+        $bloque4   = Destacado_home::find(4);
+        $contenido = Contenido_home::all()->first();
         return view('pages.home', compact('sliders', 'servicios', 'banner', 'contenido', 'activo', 'bloque1', 'bloque2', 'bloque3', 'bloque4'));
     }
     public function empresa()
@@ -37,25 +43,52 @@ class PaginasController extends Controller
         return view('pages.empresa', compact('sliders', 'empresa', 'activo', 'tiempos'));
     }
 
-    public function categorias(){
-        $activo    = 'productos';
-        $metadato= metadato::where('seccion','productos')->first();
-        $categorias = Categoria::OrderBy('orden', 'asc')->get();
-        return view('pages.categorias', compact('categorias', 'metadato', 'activo'));
-    }
-
-    public function productos()
+    public function videos()
     {
-        $activo        = 'productos';
-        $categorias    = Categoria::where('id_superior', null)->orderBy('orden', 'asc')->get();
-        $subcategorias = Categoria::whereNotNull('id_superior')->orderBy('orden', 'asc')->get();
-        $productos     = Producto::orderBy('categoria_id')->get();
-        $todos         = Producto::OrderBy('orden', 'ASC')->get();
-        $ready         = 0;
-
-        return view('pages.productos', compact('categorias', 'subcategorias', 'productos', 'productos_directos', 'activo', 'todos', 'ready'));
+        $activo    = 'videos';
+        $videos = Video::orderBy('nombre', 'ASC')->get();
+        return view('pages.videos', compact('videos', 'activo'));
     }
 
+    public function rubros()
+    {
+        $activo    = 'productos';
+        $ready = 0;
+        $categoria = 99;
+        $productos = Producto::OrderBy('orden', 'asc')->get();
+        $categorias = Rubro::OrderBy('orden', 'asc')->get();
+        return view('pages.rubros', compact('productos', 'categoria', 'ready', 'categorias', 'id', 'activo'));
+    }
+
+    public function rubroproductos($id)
+    {
+        $activo    = 'productos';
+        $categoria = Rubro::find($id);
+        $ready = 0;
+        $productos = Producto::OrderBy('orden', 'asc')->where('rubro_id', $id)->get();
+        $categorias = Rubro::OrderBy('orden', 'asc')->get();
+        return view('pages.rubroproductos', compact('productos', 'categoria', 'ready', 'categorias', 'id', 'activo'));
+    }
+
+    public function sistemas()
+    {
+        $activo    = 'productos';
+        $ready = 0;
+        $categoria = 99;
+        $productos = Producto::OrderBy('orden', 'asc')->get();
+        $categorias = Categoria::OrderBy('orden', 'asc')->get();
+        return view('pages.sistemas', compact('productos', 'categoria', 'ready', 'categorias', 'id', 'activo'));
+    }
+
+    public function sistemaproductos($id)
+    {
+        $activo    = 'productos';
+        $categoria = Categoria::find($id);
+        $ready = 0;
+        $productos = Producto::OrderBy('orden', 'asc')->where('categoria_id', $id)->get();
+        $categorias = Categoria::OrderBy('orden', 'asc')->get();
+        return view('pages.rubroproductos', compact('productos', 'categoria', 'ready', 'categorias', 'id', 'activo'));
+    }
 
     public function subcategorias($id)
     {
@@ -85,41 +118,68 @@ class PaginasController extends Controller
     public function productoinfo($id)
     {
         $p     = Producto::find($id);
+        $categoria = Categoria::find($p->categoria_id);
+        $ready         = 0;
+        $relacionados  = Producto::OrderBy('orden', 'ASC')->Where('categoria_id', $p->categoria_id)->get();
+        $activo        = 'productos';
+        $categorias    = Categoria::OrderBy('orden', 'asc')->get();
+        $productos     = Producto::OrderBy('categoria_id', 'ASC')->get();
+
+        return view('pages.productoinfo', compact('categorias', 'categoria', 'productos', 'productos_directos', 'ready', 'activo', 'ref', 'subref', 'sub', 'cat', 'p', 'relacionados'));
+    }
+
+    public function productoinfo2($id)
+    {
+        $p     = Producto::find($id);
         $idsub = $p->categoria_id;
-        $sub   = Categoria::find($idsub);
-        if ($sub->id_superior != null) {
-            $cat = Categoria::find($sub->id_superior);
-        } else {
-            $cat = Categoria::find($idsub);
-        }
+        $cat = Rubro::find($idsub);
         $ready         = 0;
         $relacionados  = Producto::OrderBy('orden', 'ASC')->Where('categoria_id', $p->categoria_id)->get();
         $subref        = $sub->id;
         $ref           = $sub->id_superior;
         $activo        = 'productos';
-        $categorias    = Categoria::where('id_superior', null)->orderBy('orden', 'asc')->get();
-        $subcategorias = Categoria::whereNotNull('id_superior')->orderBy('orden', 'asc')->get();
+        $categorias    = Rubro::where('id_superior', null)->orderBy('orden', 'asc')->get();
+        $subcategorias = Rubro::whereNotNull('id_superior')->orderBy('orden', 'asc')->get();
         $productos     = Producto::orderBy('categoria_id')->get();
 
         return view('pages.producto', compact('categorias', 'subcategorias', 'productos', 'productos_directos', 'ready', 'activo', 'ref', 'subref', 'sub', 'cat', 'p', 'relacionados'));
     }
 
-    public function novedades($tipo)
+    public function preguntas($id)
     {
-        $activo    = 'novedades';
-        $tipon     = $tipo;
-        $ready     = 0;
-        $novedades = Novedad::OrderBy('orden', 'ASC')->get();
-        return view('pages.novedades', compact('tipon', 'novedades', 'activo', 'ready'));
+        $p     = Producto::find($id);
+        $categoria = Categoria::find($p->categoria_id);
+        $preguntas = Pregunta::OrderBy('pregunta', 'ASC')->Where('categoria_pregunta_id', $p->categoria_pregunta_id)->get();
+        $ready         = 0;
+        $relacionados  = Producto::OrderBy('orden', 'ASC')->Where('categoria_id', $p->categoria_id)->get();
+        $activo        = 'productos';
+        $categorias    = Categoria::OrderBy('orden', 'asc')->get();
+        $productos     = Producto::OrderBy('categoria_id', 'ASC')->get();
+
+        return view('pages.preguntas', compact('categorias', 'categoria', 'productos', 'preguntas', 'ready', 'activo', 'ref', 'subref', 'sub', 'cat', 'p', 'relacionados'));
     }
 
-    public function novedadesinfo($id)
+    public function despiece($id)
     {
-        $novedad = Novedad::find($id);
-        $tipon   = $novedad->seccion;
-        $activo  = 'novedades';
-        return view('pages.novedadinfo', compact('novedad', 'activo', 'tipon'));
+        $producto = Producto::find($id);
+        $path     = public_path();
+        $url      = $path . '/' . $producto->despiece;
+        return response()->download($url);
+        return redirect()->route('productoinfo', $id);
     }
+
+
+public function manual($id)
+    {
+        $producto = Producto::find($id);
+        $path     = public_path();
+        $url      = $path . '/' . $producto->manual;
+        return response()->download($url);
+        return redirect()->route('productoinfo', $id);
+    }
+
+
+
 
     public function dondeComprar()
     {
@@ -138,45 +198,40 @@ class PaginasController extends Controller
     }
 
 
-    public function contacto($producto)
+    public function contacto()
     {
         //return ($producto);
         $activo = 'contacto';
-        $contacto   = Contactotext::all()->first();
-        $contenido = $contacto->contenido;
-        $dato = $producto;
-        return view('pages.contacto', compact('activo', 'producto', 'contenido'));
+        return view('pages.contacto', compact('activo'));
     }
 
-    public function enviarmail(Request $request)
+    public function enviarmailcontacto(Request $request)
     {
         $activo   = 'contacto';
         $dato     = Dato::where('tipo', 'mail')->first();
-        $producto = $request->producto;
         $nombre   = $request->nombre;
         $apellido = $request->apellido;
         $empresa  = $request->empresa;
         $email    = $request->email;
         $mensaje  = $request->mensaje;
        //     dd($producto);
-        Mail::send('pages.emails.contactomail', ['nombre' => $nombre, 'apellido' => $apellido, 'empresa' => $empresa, 'email' => $email, 'mensaje' => $mensaje, 'producto' => $producto], function ($message) use ($producto){
+        Mail::send('pages.emails.contactomail', ['nombre' => $nombre, 'apellido' => $apellido, 'empresa' => $empresa, 'email' => $email, 'mensaje' => $mensaje], function ($message){
 
 
 
             $dato = Dato::where('tipo', 'email')->first();
-            $message->from('info@aberturastolosa.com.ar', 'Parpen');
+            $message->from('info@aberturastolosa.com.ar', 'Maer');
 
             $message->to($dato->descripcion);
 
             //Add a subject
-            $message->subject('Consulta de web de producto: ' .$producto);
+            $message->subject('Consulta desde web');
 
         });
         if (Mail::failures()) {
-            return view('pages.contacto', compact('activo', 'General'));
+            return view('pages.contacto', compact('activo'));
         }
-        $producto = 'General';
-        return view('pages.contacto', compact('activo', 'producto'));
+        return view('pages.contacto', compact('activo'));
     }
 
     public function buscar(Request $request)

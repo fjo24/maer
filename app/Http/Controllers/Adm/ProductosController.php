@@ -19,8 +19,9 @@ class ProductosController extends Controller
 
     public function index()
     {
+        $ready = 0;
         $productos = producto::orderBy('nombre', 'ASC')->get();
-        return view('adm.productos.index', compact('productos'));
+        return view('adm.productos.index', compact('productos', 'ready'));
     }
 
     public function create()
@@ -43,10 +44,9 @@ class ProductosController extends Controller
         $producto->contenido         = $request->contenido;
         $producto->categoria_id      = $request->categoria_id;
         $producto->rubro_id          = $request->rubro_id;
-        $producto->modelo_id         = $request->modelo_id;
         $producto->caracteristicas   = $request->caracteristicas;
         $producto->visible           = $request->visible;
-        $producto->categoria_pregunta= $request->categoria_pregunta;
+        $producto->categoria_pregunta_id= $request->categoria_pregunta_id;
         $producto->orden             = $request->orden;
         $producto->presentacion      = $request->presentacion;
         $producto->precio            = $request->precio;
@@ -82,7 +82,7 @@ class ProductosController extends Controller
         $producto->save();
 
         $producto->aplicaciones()->sync($request->get('aplicaciones'));
-
+        $producto->modelos()->sync($request->get('modelos'));
         return redirect()->route('productos.index');
     }
 
@@ -111,7 +111,6 @@ class ProductosController extends Controller
         $producto->contenido         = $request->contenido;
         $producto->categoria_id      = $request->categoria_id;
         $producto->rubro_id          = $request->rubro_id;
-        $producto->modelo_id         = $request->modelo_id;
         $producto->caracteristicas   = $request->caracteristicas;
         $producto->visible           = $request->visible;
         $producto->categoria_pregunta_id= $request->categoria_pregunta_id;
@@ -147,9 +146,8 @@ class ProductosController extends Controller
             }
         }
         $producto->update();
-
-
-
+        $producto->aplicaciones()->sync($request->get('aplicaciones'));
+        $producto->modelos()->sync($request->get('modelos'));
         return redirect()->route('productos.index');
     }
 

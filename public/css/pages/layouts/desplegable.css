@@ -10,10 +10,11 @@
 
 #menu_productos ul li{
     position: relative;
-    background-color: white;
-    border: 1px solid white;
+    width: 180px;
+    background-color: #F07D00;
+    color: white!important;
     text-align: left;
-    width: 427px;
+    width: 180px;
     height: 40px;
     line-height: 35px;
     float: none;
@@ -22,22 +23,9 @@
 
 #menu_productos ul li:hover{
     position: relative;
-    background-color: #FAFAFA;
-    border: 1px solid white;
+    background-color: #F07D00;
     text-align: left;
-    width: 427px;
-    height: 40px;
-    line-height: 35px;
-    float: none;
-    z-index: 7;
-}
-
-#menu_productos ul li:hover{
-    position: relative;
-    background-color: #FAFAFA;
-    border: 1px solid white;
-    text-align: left;
-    width: 427px;
+    width: 180px;
     height: 40px;
     line-height: 35px;
     float: none;
@@ -45,14 +33,14 @@
 }
 
 #menu_productos ul li a{
-    color: #595959!important;
+    color: white!important;
     display: block;
     font-size: 18px;
     font-family: 'montserrat';
 }
 
 #menu_productos ul li a:hover{
-    color: #595959!important;
+    color: white!important;
     display: block;
     font-size: 18px;
     font-family: 'montserrat';
@@ -69,7 +57,6 @@
 }
 
 #menu_productos:hover .prod_menu{
-    border-bottom: 3px solid #7D0045 !important;
 }
 
 #menu_productos .menu_subcate li{   

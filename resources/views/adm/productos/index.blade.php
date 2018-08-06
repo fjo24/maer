@@ -49,7 +49,12 @@
                         {!!$producto->nombre!!}
                     </td>
                     <td>
-                        {!!$producto->modelo->codigo!!}
+                        @foreach($producto->modelos as $modelo)
+                            {!!$modelo->codigo!!}
+                            @if($ready == 0)    
+                                @break;
+                            @endif
+                        @endforeach
                     </td>
                     <td>
                     	{!!$producto->rubro->nombre!!}

@@ -8,8 +8,13 @@ class Novedad extends Model
 {
     protected $table    = "novedades";
     protected $fillable = [
-        'nombre', 'fecha', 'descripcion', 'contenido', 'seccion', 'orden', 'imagen1', 'imagen2', 'producto_id',
+        'nombre', 'fecha', 'descripcion', 'contenido', 'categoria_novedad_id', 'orden', 'imagen1', 'imagen2', 'producto_id',
     ];
+
+    public function categoria_novedad()
+    {
+        return $this->belongsTo('App\Categoria_novedad');
+    }
 
     public function getfechaAttribute($date)
     {

@@ -17,35 +17,33 @@
 .box-cap {
 	position: absolute!important;
     top: 27%!important;
-    left: 28%!important;
+    left: 9.3%!important;
     background-color: transparent;
-    width: 596px!important;
+    width: 450px!important;
     height: 231px;
     line-height: 250%; 
-    color: #FF5F8A!important;
+    color: #FFFFFF!important;
     text-align: left;
     font-family:  'Montserrat', sans-serif;
+    font-weight: 500;
+
 }
 
 .slidertext1{
     position: relative;
-    top: 18px;
+    top: 24px;
     left: -1%;
-    line-height: 64px;
+    line-height: 45px;
     font-family:  'Montserrat', sans-serif;
-    font-size: 74px;
-    font-weight: bold;
-    padding: 1%;
+    font-size: 49px;
 }
 .slidertext2{
 	position: relative;
     top: 22px;
-    padding: 10px!important;
     font-family:  'Montserrat', sans-serif;
-    font-size: 30px;
+    font-size: 22px;
     font-weight: 400;
-    padding: 3%;
-    color: #909090;
+    color: #FFFFFF;
 }
 
 @media only screen and (max-width: 1025px){

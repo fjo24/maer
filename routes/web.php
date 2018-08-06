@@ -29,14 +29,52 @@ Route::post('productos/buscar', [
     'as'   => 'buscar',
 ]);
 
+//VIDEOS
+Route::get('/videos', 'PaginasController@videos')->name('videos');
+
 //EMPRESAS
 Route::get('/empresa', 'PaginasController@empresa')->name('empresa');
 
 //INFO DE PRODUCTO
 Route::get('productoinfo/{id}', 'PaginasController@productoinfo')->name('productoinfo');
 
-//PRODUCTOS
-Route::get('/productos/{categoria_id}',  'PaginasController@productos')->name('productos');
+//INFO DE PRODUCTO
+Route::get('productoinfo2/{id}', 'PaginasController@productoinfo2')->name('productoinfo2');
+
+//CONTACTO
+Route::get('/contacto', 'PaginasController@contacto')->name('contacto');
+Route::post('enviar-mailcontacto', [
+    'uses' => 'PaginasController@enviarmailcontacto',
+    'as'   => 'enviarmailcontacto',
+]);
+
+//PREGUNTAS
+Route::get('/preguntas/{id}',  'PaginasController@preguntas')->name('preguntas');
+
+//NOVEDADES
+Route::get('novedad/{id}', ['uses' => 'page\NovedadController@index', 'as' => 'novedad']);
+    Route::get('pagenovedades', ['uses' => 'page\NovedadesController@index', 'as' => 'pagenovedades']);
+    Route::get('filter/{id_categoria}', ['uses' => 'page\NovedadesController@filter', 'as' => 'filter']);
+    Route::get('filter_novedades/{id}', ['uses' => 'page\NovedadesController@show', 'as' => 'filter_novedades']);
+    Route::post('search', ['uses' => 'page\NovedadesController@buscar', 'as' => 'buscar_novedad']);
+
+//FILTRO PRODUCTOS POR RUBROS
+Route::get('/rubroproductos/{id}',  'PaginasController@rubroproductos')->name('rubroproductos');
+
+// DESPIECE
+Route::get('despiece/{id}', ['uses' => 'PaginasController@despiece', 'as' => 'despiece']);
+
+// MANUAL
+Route::get('manual/{id}', ['uses' => 'PaginasController@manual', 'as' => 'manual']);
+
+//PRODUCTOS POR RUBROS
+Route::get('/rubros', 'PaginasController@rubros')->name('rubros');
+
+//FILTRO PRODUCTOS POR SISTEMAS
+Route::get('/sistemaproductos/{id}',  'PaginasController@sistemaproductos')->name('sistemaproductos');
+
+//PRODUCTOS POR RUBROS
+Route::get('/sistemas', 'PaginasController@sistemas')->name('sistemas');
 
 //CATEGORIAS
 Route::get('/categorias', 'PaginasController@categorias');
@@ -53,6 +91,9 @@ Route::prefix('adm')->group(function () {
 
     //DASHBOARD
     Route::get('/dashboard', 'Adm\AdminController@admin');
+
+    /*------------CATEGORIA NOVEDADES----------------*/
+    Route::resource('categorianovedades', 'Adm\CategorianovedadesController');
 
     /*------------SISTEMAS----------------*/
     Route::resource('categorias', 'Adm\CategoriasController');

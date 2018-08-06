@@ -34,7 +34,6 @@ class CreateProductosTable extends Migration
 
             $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade');
             $table->foreign('rubro_id')->references('id')->on('rubros')->onDelete('cascade');
-            $table->foreign('modelo_id')->references('id')->on('modelos')->onDelete('cascade');
             $table->timestamps();
         });
 
@@ -47,6 +46,16 @@ class CreateProductosTable extends Migration
             $table->timestamps();
 
             $table->foreign('pedido_id')->references('id')->on('pedidos')->onDelete('cascade');
+            $table->foreign('producto_id')->references('id')->on('productos')->onDelete('cascade');
+        });
+
+        Schema::create('modelo_producto', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('modelo_id')->unsigned();
+            $table->integer('producto_id')->unsigned();
+            $table->timestamps();
+
+            $table->foreign('modelo_id')->references('id')->on('modelos')->onDelete('cascade');
             $table->foreign('producto_id')->references('id')->on('productos')->onDelete('cascade');
         });
     }

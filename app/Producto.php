@@ -21,9 +21,14 @@ class Producto extends Model
         return $this->belongsTo('App\Rubro');
     }
 
-    public function modelo()
+    public function preguntas()
     {
-        return $this->belongsTo('App\Modelo');
+        return $this->belongsTo('App\Categoria_pregunta');
+    }
+
+    public function modelos()
+    {
+        return $this->belongsToMany('App\Modelo', 'modelo_producto', 'producto_id', 'modelo_id');
     }
 
     public function imagenes()

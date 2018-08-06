@@ -15,4 +15,10 @@ class Categoria_pregunta extends Model
     {
         return $this->hasMany('App\Pregunta'); 
     }
+
+    public function producto()
+    {
+        return $this->hasMany('App\Producto');
+    }
+
 }

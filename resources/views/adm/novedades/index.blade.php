@@ -43,7 +43,7 @@
                         {!!$novedad->nombre!!}
                     </td>
                     <td>
-                        {!!$novedad->seccion!!}
+                        {!!$novedad->categoria_novedad->nombre!!}
                     </td>
                     <td>
                     	{!!$novedad->orden!!}
