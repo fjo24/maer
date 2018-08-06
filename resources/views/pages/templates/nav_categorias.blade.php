@@ -5,7 +5,7 @@
         @else
         <li>
             @endif
-            <a href="{{ route('rubroproductos', $cat->id)}}">
+            <a href="{{ route('sistemaproductos', $cat->id)}}">
                                             @if($categoria->id==$cat->id)
                 <div class="activo categorias_header collapsible-header">
                     {{$cat->nombre}}
@@ -26,7 +26,7 @@
                 <ul>
                     @foreach($cat->productos as $producto)
                     <li style="margin: 4px 0;">
-                        <a href="{{ route('productoinfo', $producto->id)}}">
+                        <a href="{{ route('productoinfo2', $producto->id)}}">
                             <span>
                                 {{$producto->nombre}}
                             </span>

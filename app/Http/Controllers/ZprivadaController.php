@@ -26,7 +26,7 @@ class ZprivadaController extends Controller
         $aux       = Producto::orderBy('orden', 'ASC')->get();
         $prod      = $aux->toJson();
         // dd($carrito->all());
-        return view('privada.productos', compact('shop', 'carrito', 'activo', 'productos', 'ready', 'prod', 'config', 'items'));
+        return view('privada.productos', compact('modelos', 'shop', 'carrito', 'activo', 'productos', 'ready', 'prod', 'config', 'items'));
     }
 
     public function add(Request $request)
@@ -48,11 +48,17 @@ class ZprivadaController extends Controller
                 break;
             }
         }
+        foreach($producto->modelos as $modelo){
+            $codigo = $modelo->codigo;
+            if ($im == 0) {
+                break;
+            }
+        }            
 
         $categoria = $producto->categoria->nombre;
 
         if ($request->cantidad > 0) {
-            Cart::add(['id' => $producto->id, 'name' => $producto->nombre, 'price' => $producto->precio, 'qty' => $request->cantidad, 'options' => ['codigo' => $producto->codigo, 'orden' => $producto->orden, 'imagen' => $imagen, 'categoria' => $categoria]]);
+            Cart::add(['id' => $producto->id, 'name' => $producto->nombre, 'price' => $producto->precio, 'qty' => $request->cantidad, 'options' => ['orden' => $producto->orden, 'imagen' => $imagen, 'categoria' => $categoria]]);
             //dd($categoria);
             return redirect()->route('zproductos', compact('shop', 'carrito', 'activo', 'productos', 'ready', 'prod', 'config', 'items', 'codigo', 'desc'));
         } else {
@@ -91,8 +97,17 @@ class ZprivadaController extends Controller
             }
         }
 //ubicar la diferencia para proximo descuento
+        $max               = Descuento::all()->max('minimo');
+        $maximo = Descuento::Where('minimo', $max)->first();
+        //dd($maximo);
+        $diferencia=null;
+        if ($maximo->id==$id_desc) {
+            $diferencia==null;
+        }else{
         $proximo = Descuento::find($id_desc+1);
         $diferencia = $proximo->minimo-$total_items;
+        }
+
 //dd($desc);
         $activo = 'carrito';
 //descuento en pesos
@@ -215,7 +230,7 @@ class ZprivadaController extends Controller
     {
         $activo = 'carrito';
         Cart::remove($id);
-        return view('privada.carrito', compact('activo'));
+        return redirect()->route('carrito');
     }
 
     public function listadeprecios()

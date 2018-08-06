@@ -11,7 +11,7 @@
                     <div class="row">
                         <div class="col l3 s12 m3">
                             <h7>
-                                <a ;="" href="/categorias" style="color: gray">
+                                <a ;="" href="" style="color: gray">
                                     Productos |
                                 </a>
                                 <a href="" style="color: gray;text-transform: lowercase">
@@ -24,7 +24,7 @@
                             @foreach($productos as $producto)
                             <div class="col l4 s12 m4">
                                 <div class="div-product">
-                                    <a href="{{ route('productoinfo', $producto->id)}}">
+                                    <a href="{{ route('productoinfo2', $producto->id)}}">
                                         @foreach($producto->imagenes as $imagen)
                                         <div class="efecto hide-on-med-and-down">
                                                     <span class="central">

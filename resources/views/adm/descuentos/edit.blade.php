@@ -25,11 +25,11 @@
         <div class="row">
             <div class="input-field col l6 s12">
                 {!!Form::label('Minimo:')!!}
-                        {!!Form::text('minimo', null , ['class'=>'', 'required'])!!}
+                        {!!Form::text('minimo', null , ['class'=>'', ''])!!}
             </div>
             <div class="input-field col l6 s12">
                 {!!Form::label('Maximo:')!!}
-                        {!!Form::text('maximo', null , ['class'=>'', 'required'])!!}
+                        {!!Form::text('maximo', null , ['class'=>'', ''])!!}
             </div>  
             <div class="input-field col l6 s12">
                 {!!Form::label('Porcentaje:')!!}

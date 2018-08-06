@@ -94,8 +94,18 @@
     </div>
   </div>
                             </td>
-                            <td class="" value="medida" name="medida">{!! $producto->modelo->codigo !!}</td>
-                            <td class="">{!! $producto->modelo->medida !!}</td>
+                            <td class="" value="medida" name="medida">
+                                @foreach($producto->modelos as $modelo)
+                                    {!! $modelo->codigo !!}
+                                    @break              
+                                @endforeach
+                            </td>
+                            <td class="">
+                                @foreach($producto->modelos as $modelo)
+                                    {!! $modelo->medida !!}
+                                    @break              
+                                @endforeach
+                            </td>
                             <td class="">
                                 {!! $producto->precio !!}
                             </td>

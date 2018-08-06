@@ -166,15 +166,15 @@
                     </a>
                 </li>
                 @endif
-                @if($activo=='home')
+                @if($activo=='calidad')
                 <li>
-                    <a class="calidad" href="{{ url('/') }}">
+                    <a class="activo" href="{{ url('/calidad') }}">
                         CALIDAD
                     </a>
                 </li>
                 @else
                 <li>
-                    <a href="{{ url('/') }}">
+                    <a href="{{ url('/calidad') }}">
                         CALIDAD
                     </a>
                 </li>

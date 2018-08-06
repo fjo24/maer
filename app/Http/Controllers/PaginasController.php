@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Categoria;
 use App\Contenido_home;
+use App\Contenido_calidad;
 use App\Pregunta;
 use App\User;
 use App\Dato;
+use App\Banner;
+use App\Calidad;
 use App\Destacado_home;
 use App\Destacado_mantenimiento;
 use App\Empresa;
@@ -79,6 +82,31 @@ class PaginasController extends Controller
         $categorias = Categoria::OrderBy('orden', 'asc')->get();
         return view('pages.sistemas', compact('productos', 'categoria', 'ready', 'categorias', 'id', 'activo'));
     }
+    public function productoinfo($id)
+    {
+        $p     = Producto::find($id);
+        $categoria = Rubro::find($p->rubro_id);
+        $ready         = 0;
+        $relacionados  = Producto::OrderBy('orden', 'ASC')->Where('categoria_id', $p->categoria_id)->get();
+        $activo        = 'productos';
+        $categorias    = Rubro::OrderBy('orden', 'asc')->get();
+        $productos     = Producto::OrderBy('categoria_id', 'ASC')->get();
+
+        return view('pages.productoinfo', compact('categorias', 'categoria', 'productos', 'productos_directos', 'ready', 'activo', 'ref', 'subref', 'sub', 'cat', 'p', 'relacionados'));
+    }
+
+    public function productoinfo2($id)
+    {
+        $p     = Producto::find($id);
+        $categoria = Categoria::find($p->categoria_id);
+        $ready         = 0;
+        $relacionados  = Producto::OrderBy('orden', 'ASC')->Where('categoria_id', $p->categoria_id)->get();
+        $activo        = 'productos';
+        $categorias    = Categoria::OrderBy('orden', 'asc')->get();
+        $productos     = Producto::OrderBy('categoria_id', 'ASC')->get();
+
+        return view('pages.productoinfo2', compact('categorias', 'categoria', 'productos', 'productos_directos', 'ready', 'activo', 'ref', 'subref', 'sub', 'cat', 'p', 'relacionados'));
+    }
 
     public function sistemaproductos($id)
     {
@@ -87,7 +115,7 @@ class PaginasController extends Controller
         $ready = 0;
         $productos = Producto::OrderBy('orden', 'asc')->where('categoria_id', $id)->get();
         $categorias = Categoria::OrderBy('orden', 'asc')->get();
-        return view('pages.rubroproductos', compact('productos', 'categoria', 'ready', 'categorias', 'id', 'activo'));
+        return view('pages.sistemaproductos', compact('productos', 'categoria', 'ready', 'categorias', 'id', 'activo'));
     }
 
     public function subcategorias($id)
@@ -106,43 +134,13 @@ class PaginasController extends Controller
         return view('pages.subcategorias', compact('categorias', 'subcategorias', 'productos', 'productos_directos', 'activo', 'todos', 'ref', 'subref', 'sub', 'cat', 'ready'));
     }
 
-    public function mantenimiento()
+    public function calidad()
     {
-        $activo    = 'mantenimiento';
-        $servicios = Servicio::OrderBy('orden', 'ASC')->get();
-        $sliders   = Slider::orderBy('orden', 'ASC')->Where('seccion', 'mantenimiento')->get();
-        $contenido = Destacado_mantenimiento::all()->first();
-        return view('pages.mantenimiento', compact('sliders', 'servicios', 'contenido', 'activo'));
-    }
-
-    public function productoinfo($id)
-    {
-        $p     = Producto::find($id);
-        $categoria = Categoria::find($p->categoria_id);
-        $ready         = 0;
-        $relacionados  = Producto::OrderBy('orden', 'ASC')->Where('categoria_id', $p->categoria_id)->get();
-        $activo        = 'productos';
-        $categorias    = Categoria::OrderBy('orden', 'asc')->get();
-        $productos     = Producto::OrderBy('categoria_id', 'ASC')->get();
-
-        return view('pages.productoinfo', compact('categorias', 'categoria', 'productos', 'productos_directos', 'ready', 'activo', 'ref', 'subref', 'sub', 'cat', 'p', 'relacionados'));
-    }
-
-    public function productoinfo2($id)
-    {
-        $p     = Producto::find($id);
-        $idsub = $p->categoria_id;
-        $cat = Rubro::find($idsub);
-        $ready         = 0;
-        $relacionados  = Producto::OrderBy('orden', 'ASC')->Where('categoria_id', $p->categoria_id)->get();
-        $subref        = $sub->id;
-        $ref           = $sub->id_superior;
-        $activo        = 'productos';
-        $categorias    = Rubro::where('id_superior', null)->orderBy('orden', 'asc')->get();
-        $subcategorias = Rubro::whereNotNull('id_superior')->orderBy('orden', 'asc')->get();
-        $productos     = Producto::orderBy('categoria_id')->get();
-
-        return view('pages.producto', compact('categorias', 'subcategorias', 'productos', 'productos_directos', 'ready', 'activo', 'ref', 'subref', 'sub', 'cat', 'p', 'relacionados'));
+        $activo    = 'calidad';
+        $banner = Banner::all()->first();
+        $contenido = Contenido_calidad::all()->first();
+        $inferior = Calidad::all()->first();
+        return view('pages.calidad', compact('contenido', 'activo', 'banner', 'inferior'));
     }
 
     public function preguntas($id)
@@ -168,8 +166,7 @@ class PaginasController extends Controller
         return redirect()->route('productoinfo', $id);
     }
 
-
-public function manual($id)
+    public function manual($id)
     {
         $producto = Producto::find($id);
         $path     = public_path();
@@ -177,9 +174,6 @@ public function manual($id)
         return response()->download($url);
         return redirect()->route('productoinfo', $id);
     }
-
-
-
 
     public function dondeComprar()
     {

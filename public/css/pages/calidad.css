@@ -1,0 +1,89 @@
+.nombrecalidad{
+	color: #F07D00;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 22px;
+}
+.descripcioncalidad{
+	color: #F07D00;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 38px;
+	font-weight: bold;
+}
+
+.descripcioncalidad p{
+	margin-top: 0;
+}
+
+.contenidocalidad{
+	color: #6B6B6B;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 20px;
+}
+
+.contenidocalidad p{
+    margin-top: 7%;
+}
+
+.descripcion2calidad{
+	color: #F07D00;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.lineacalidad{
+	width: 94%;
+    color: #3F3F3F;
+    height: 3px;
+    background: #3F3F3F;
+    border: transparent;
+}
+
+.dercalidad{
+	margin-top: 11.4%;
+}
+
+.seccion-banner {
+    background: url(/img/home/banner/bannercalidad.jpg);
+    height: 376px;
+    width: 100%;
+}
+
+.tbanner p{
+	color: #FFFFFF;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 55px;
+	font-weight: 500;
+	line-height: 56px;
+    width: 64%;
+	margin-left: 18%;
+	padding-top: 8.6%;
+}
+
+.lineabanner{
+	width: 19%;
+    height: 5px;
+    border-radius: 10px;
+    background: white;
+    margin-top: -2%;
+    border: transparent;
+}
+
+.inferior{
+	margin-top: 2%;
+}
+
+.tituloinferior{
+	color: #F07D00;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 25px;
+	font-weight: 400;
+	width: 100%;
+}
+
+.descripcioninferior{
+	color: #595959;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 25px;
+	font-weight: 400;
+}

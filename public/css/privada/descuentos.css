@@ -1,0 +1,71 @@
+.descuento{
+	color: #F07D00;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 24px;
+	width: 97%!important;
+    margin-left: 1.5%!important;
+    margin-top: 2%;
+    margin-bottom: 1%;
+}
+
+.itemsdescuento{
+	color: #595959;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 17px;
+	height: 38px;
+	width: 97%!important;
+    margin-left: 1.5%!important;
+}
+
+.box_descuento1{
+	width: 561px!important;
+    height: 265px;
+    background: #F9F9F9;
+    border: 1px solid #D3D3D3;
+    border-radius: 6px;
+}
+
+.descuentoline{
+	width: 98%;
+    height: 1px;
+    background: #A7A7A7;
+    border: transparent;
+}
+
+/*box 2*/
+
+.descuento_box2{
+	color: white;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 22px;
+
+}
+
+.box_descuento2{
+	width: 561px!important;
+	height: 265px;
+	background: #F07D00;
+	border: 1px solid #D3D3D3;
+    border-radius: 6px;
+}
+
+.etiqueta{
+	position: relative;
+    left: 42%;
+    bottom: 5px;
+}
+
+.lineadescuento2{
+	width: 58%;
+    height: 1px;
+    background: #FFFFFF;
+    margin-top: 4%;
+    border: transparent;
+}
+
+.diferencia_box2{
+	color: white;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 22px;
+	margin-top: 4%;
+}

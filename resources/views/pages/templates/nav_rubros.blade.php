@@ -1,12 +1,25 @@
 <ul class="listado_categorias collapsible" style="    border: none;">
     @foreach($categorias as $cat)  
+                            @if($categoria->id==$cat->id)
+    <li class="active">
+        @else
         <li>
-            <a href="{{ route('sistemaproductos', $cat->id)}}">
-                <div class="categorias_header collapsible-header" style="text-transform: uppercase;">
+            @endif
+            <a href="{{ route('rubroproductos', $cat->id)}}">
+                                            @if($categoria->id==$cat->id)
+                <div class="activo categorias_header collapsible-header">
+                    {{$cat->nombre}}
+                                        
+                    <i class="flechita material-icons" style="color:black!important; position: absolute;left: 23%;">
+                        keyboard_arrow_down
+                    </i>
+                    @else
+                    <div class="categorias_header collapsible-header">
                     {{$cat->nombre}}
                     <i class="flechita material-icons" style="position: absolute;left: 23%;">
                         keyboard_arrow_right
                     </i>
+                    @endif
                 </div>
             </a>
             <div class="collapsible-body">

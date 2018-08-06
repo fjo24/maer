@@ -18,13 +18,13 @@
                                     
                                 </a>
                             </h7>
-                            @include('pages.templates.nav_todosistemas')
+                            @include('pages.templates.nav_todos')
                         </div>
                         <div class="col l9 s12 m9" style="">
                             @foreach($productos as $producto)
                             <div class="col l4 s12 m4">
                                 <div class="div-product">
-                                    <a href="{{ route('productoinfo', $producto->id)}}">
+                                    <a href="{{ route('productoinfo2', $producto->id)}}">
                                         @foreach($producto->imagenes as $imagen)
                                         <img alt="" class="responsive-img" src="{{asset($imagen->imagen)}}" style="width: 373px;height: 284px;">
                                             @if($ready == 0)	

@@ -18,7 +18,7 @@
                                     
                                 </a>
                             </h7>
-                            @include('pages.templates.nav_todos')
+                            @include('pages.templates.nav_todosrubros')
                         </div>
                         <div class="col l9 s12 m9" style="">
                             @foreach($productos as $producto)

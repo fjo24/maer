@@ -5,6 +5,7 @@
 @section('contenido')
 <link href="{{ asset('css/privada/zproductos.css') }}" rel="stylesheet" type="text/css"/>
 <link href="{{ asset('css/privada/zproductos2.css') }}" rel="stylesheet" type="text/css"/>
+<link href="{{ asset('css/privada/descuentos.css') }}" rel="stylesheet" type="text/css"/>
 <body>
 <main class="zonaprivada">
 
@@ -32,7 +33,7 @@
 				Descuento
 			</span>
 			@foreach($descuentos as $d)
-				<div class="col l10 m10 s10">
+				<div class="itemsdescuento col l12 m12 s12">
 					<div class="col l10 m10 s10">
 						@if(($d->minimo==1)&&($d->maximo==null))
 							{!! $d->minimo !!} unidad
@@ -48,25 +49,39 @@
 								unidades
 						@endif
 					</div>
-					<div class="col l2 m2 s2">
+					<div class="col l2 m2 s2" style="color:#F07D00; font-weight: bold;">
 						{!! $d->porcentaje !!}%
 					</div>
 					<br>
-					<hr>
+					<hr class="descuentoline">
 				</div>
 			@endforeach
 		</div>
 		<div class="box_descuento2 right col l6 m6 s12">
-			<div class="col l12 m12 s12">
-				Descuento del 5% por pago de contado
-				<hr/>
-				Sumando {!! $diferencia !!} productos accedés al descuento de {!! $proximo->porcentaje !!}% en el total de tu compra
+			<div class="col l12 m12 s12 center">
+					<img class="campana" alt="" src="{{asset('img/campana.png')}}">
+                                        </img>
+					<img class="etiqueta" alt="" src="{{asset('img/etiqueta.png')}}">
+                                        </img>
+			</div>
+			<div class="col l12 m12 s12 center" style="margin-top: 3%;">
+				<div class="descuento_box2">
+					¡Descuento de 5% por pago al contado!
+				</div>
+				<hr class="lineadescuento2"/>
+				<div class="diferencia_box2">
+					@if($diferencia!=null)	
+					Sumando {!! $diferencia !!} productos accedés al descuento de {!! $proximo->porcentaje !!}% en el total de tu compra
+					@else
+						Tiene un descuento del {!! $desc !!}%
+					@endif
+				</div>
 			</div>
 		</div>
 	</div>	
 </div>
 
-	  	<div class="row mb50">
+	  	<div class="row mb50" style="margin-top: 4.5%;">
 				<div class="col s12">
 	  			@if(Cart::count() > 0)
 

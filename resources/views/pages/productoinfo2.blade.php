@@ -10,7 +10,7 @@
                 <div style="">
                     <div class="row">
                             <h7 style="padding-left: 0px;    left: -24%!important;">
-                                <a ;="" href="" style="color: gray">
+                                <a href="" style="color: gray">
                                     Productos |
                                 </a>
                                 <a href="" style="color: gray;text-transform: capitalize;">
@@ -21,7 +21,7 @@
                                 </a>
                             </h7>
                         <div class="col l3 s12 m3">
-                            @include('pages.templates.nav_rubros')
+                            @include('pages.templates.nav_categorias')
                         </div>
                         {{-- Menu final --}}
                         <div class="galeria2 col l9 m9 s12">

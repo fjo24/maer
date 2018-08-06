@@ -35,6 +35,9 @@ Route::get('/videos', 'PaginasController@videos')->name('videos');
 //EMPRESAS
 Route::get('/empresa', 'PaginasController@empresa')->name('empresa');
 
+//CALIDAD
+Route::get('/calidad', 'PaginasController@calidad')->name('calidad');
+
 //INFO DE PRODUCTO
 Route::get('productoinfo/{id}', 'PaginasController@productoinfo')->name('productoinfo');
 

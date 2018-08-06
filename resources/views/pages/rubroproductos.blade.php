@@ -11,14 +11,14 @@
                     <div class="row">
                         <div class="col l3 s12 m3">
                             <h7>
-                                <a ;="" href="/categorias" style="color: gray">
+                                <a ;="" href="" style="color: gray">
                                     Productos |
                                 </a>
                                 <a href="" style="color: gray;text-transform: lowercase">
                                     {!! $categoria->nombre !!}
                                 </a>
                             </h7>
-                            @include('pages.templates.nav_categorias')
+                            @include('pages.templates.nav_rubros')
                         </div>
                         <div class="col l9 s12 m9" style="margin-top: -1.5%;">
                             @foreach($productos as $producto)
