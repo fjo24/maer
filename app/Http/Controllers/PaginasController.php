@@ -17,6 +17,7 @@ use App\Rubro;
 use App\Tiempo;
 use App\Novedad;
 use App\Video;
+use App\Producto_relacionado;
 use App\Metadato;
 use App\Producto;
 use App\Servicio;   
@@ -100,11 +101,21 @@ class PaginasController extends Controller
         $p     = Producto::find($id);
         $categoria = Categoria::find($p->categoria_id);
         $ready         = 0;
-        $relacionados  = Producto::OrderBy('orden', 'ASC')->Where('categoria_id', $p->categoria_id)->get();
+        //$relacionados  = Producto::OrderBy('orden', 'ASC')->Where('categoria_id', $p->categoria_id)->get();
         $activo        = 'productos';
         $categorias    = Categoria::OrderBy('orden', 'asc')->get();
         $productos     = Producto::OrderBy('categoria_id', 'ASC')->get();
+        /*$productos_relacionados = Producto_relacionado::where('producto_a',$id)->get();
+        $relacionados = [];
 
+        $i = 0;
+
+        foreach ($productos_relacionados as $producto) {
+            $relacionados[$i] = Producto::find($producto->producto_b);
+            $i++;
+        }*/
+
+        $relacionados = Producto::where('categoria_id', $p->categoria_id)->OrderBy('id', 'ASC')->get();
         return view('pages.productoinfo2', compact('categorias', 'categoria', 'productos', 'productos_directos', 'ready', 'activo', 'ref', 'subref', 'sub', 'cat', 'p', 'relacionados'));
     }
 

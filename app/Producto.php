@@ -51,4 +51,9 @@ class Producto extends Model
         return $this->belongsToMany('App\Pedido', 'pedido_producto')->withPivot('cantidad', 'costo');
     }
 
+    public function relacionados()
+    {
+        return $this->hasMany('App\Producto_relacionado'); 
+    }
+
 }

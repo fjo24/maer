@@ -150,6 +150,43 @@
                 {!! $p->caracteristicas !!}
             </div>
 </div>
+<div class="col l12 m12 s12" style="">
+    <div class="col l4 m12 s12 ">
+    <img alt="" class="responsive-img" src="{{asset($p->imagen_presentacion)}}" style="">
+    </div>
+    <div class="col l8 m12 s12 " style="font-family: 'Montserrat';padding-left: 35px;padding-right: 73px;font-size: 17px;color: #5F5F5F;">
+    <div class="tituloinfo" style="margin-bottom: 2%">
+                PRESENTACIÓN
+            </div>
+            <div class="">
+                {!! $p->presentacion !!}
+            </div>
+    </div>
+</div>
+<div class="col l12 m12 s12" style="margin-top: 4%;">
+    <div class="tituloinfo" style="margin-bottom: 2%; font-size: 23px;">
+        Productos Relacionados
+    </div>
+    <hr class="linearelacionados">
+    @foreach($relacionados as $rela)
+                            <div class="col l4 s12 m4" style="    margin-top: -3%;">
+                                <div class="div-product">
+                                    <a href="{{ route('productoinfo', $rela->id)}}">
+                                        @foreach($rela->imagenes as $imagen)
+                                        <img alt="" class="responsive-img" src="{{asset($imagen->imagen)}}" style="width: 373px;height: 284px;">
+                                            @if($ready == 0)    
+                                        @break;
+                                    @endif
+                                    @endforeach
+                                                <div class="div-nombre">
+                                                    {!!$rela->nombre !!}
+                                                </div>
+                                        </img>
+                                    </a>
+                                </div>
+                            </div>
+                            @endforeach
+</div>
 
                             </div>
 

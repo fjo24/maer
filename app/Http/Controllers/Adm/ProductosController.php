@@ -12,6 +12,7 @@ use App\Http\Requests\ProductosRequest;
 use App\Imgproducto;
 use App\Categoria_pregunta;
 use App\Producto;
+use App\Producto_relacionado;
 
 class ProductosController extends Controller
 {
@@ -26,12 +27,13 @@ class ProductosController extends Controller
 
     public function create()
     {
+        $relacionados = Producto::orderBy('nombre', 'ASC')->pluck('nombre', 'id')->all();
         $categoria_preguntas = Categoria_pregunta::orderBy('nombre', 'ASC')->pluck('nombre', 'id')->all();
         $aplicaciones = Aplicacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id')->all();
         $categorias = Categoria::orderBy('nombre', 'ASC')->pluck('nombre', 'id')->all();
         $modelos = Modelo::orderBy('codigo', 'ASC')->pluck('codigo', 'id')->all();
         $rubros = Rubro::orderBy('nombre', 'ASC')->pluck('nombre', 'id')->all();
-        return view('adm.productos.create', compact('categorias', 'rubros', 'modelos', 'aplicaciones', 'categoria_preguntas'));
+        return view('adm.productos.create', compact('categorias', 'rubros', 'modelos', 'aplicaciones', 'categoria_preguntas', 'relacionados'));
     }
 
     public function store(Request $request)
@@ -53,6 +55,13 @@ class ProductosController extends Controller
         $producto->tipo           = $request->tipo;
         $id              = Producto::all()->max('id');
         $id++;
+        /*foreach ($request->relacionados as $rela) {
+            $relacionado = new Producto_relacionado();
+            $relacionado->producto_a = $id;
+            $relacionado->producto_b = 0;
+            $relacionado->producto_id = $request->producto->id;
+            $relacionado->save();
+        }*/
         if ($request->hasFile('manual')) {
             if ($request->file('manual')->isValid()) {
                 $file = $request->file('manual');
@@ -93,18 +102,29 @@ class ProductosController extends Controller
 
     public function edit($id)
     {
+        $relacionados = Producto::orderBy('nombre', 'ASC')->pluck('nombre', 'id')->all();
         $categoria_preguntas = Categoria_pregunta::orderBy('nombre', 'ASC')->pluck('nombre', 'id')->all();
         $aplicaciones = Aplicacion::orderBy('nombre', 'ASC')->pluck('nombre', 'id')->all();
         $producto                    = Producto::find($id);
         $categorias = Categoria::orderBy('nombre', 'ASC')->pluck('nombre', 'id')->all();
         $modelos = Modelo::orderBy('codigo', 'ASC')->pluck('codigo', 'id')->all();
         $rubros = Rubro::orderBy('nombre', 'ASC')->pluck('nombre', 'id')->all();
-        return view('adm.productos.edit', compact('categorias', 'rubros', 'modelos', 'producto', 'aplicaciones', 'categoria_preguntas'));
+        return view('adm.productos.edit', compact('categorias', 'rubros', 'modelos', 'producto', 'aplicaciones', 'categoria_preguntas', 'relacionados'));
     }
 
     public function update(Request $request, $id)
     {
         $producto                    = Producto::find($id);
+
+        //dd($request->relacionados);
+    /*    foreach ($request->relacionados as $rela) {
+            $relacionado = new Producto_relacionado();
+            $relacionado->producto_a = $id;
+            $relacionado->producto_b = 0;
+            $relacionado->producto_id = $request->producto->id;
+            $relacionado->save();
+        }*/
+
         $producto->nombre            = $request->nombre;
         $producto->ventajas          = $request->ventajas;
         $producto->descripcion       = $request->descripcion;
