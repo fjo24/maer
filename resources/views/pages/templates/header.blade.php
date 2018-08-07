@@ -2,6 +2,7 @@
     {{-- BARRA PRINCIPAL --}}
     <nav class="principal">
         <div class="container" style="width: 93%">
+            <a href="#" data-target="slide-out" class="sidenav-trigger" style=" "><i class="material-icons" style="color: white;">menu</i></a>
             <div class="row">
                 <div class="col l12 m12 s12">
                     <div class="redeshead col l4 m4 s4 center">
@@ -194,13 +195,13 @@
                 @endif
                 @if($activo=='contacto')
                 <li>
-                    <a class="activo" href="{{ url('/empresa') }}">
+                    <a class="activo" href="{{ url('/contacto') }}">
                         CONTACTO
                     </a>
                 </li>
                 @else
                 <li>
-                    <a href="{{ url('/empresa') }}">
+                    <a href="{{ url('/contacto') }}">
                         CONTACTO
                     </a>
                 </li>
@@ -209,4 +210,84 @@
         </div>
     </div>
     </nav>
+
+{{-- Para moviles --}}
+<ul class="sidenav" id="slide-out" style="position: absolute;color: #7D0045;">
+        <ul class="collapsible collapsible-accordion">
+            <li class="bold">
+                <a class="principalmovil collapsible-header waves-effect waves-admin" href="{{ url('/') }}">
+                    <span class="side">
+                        INICIO
+                    </span>
+                    <i class="material-icons">
+                        home
+                    </i>
+                </a>
+            </li>
+            <li class="bold">
+                <a class="principalmovil collapsible-header waves-effect waves-admin" href="{{ url('/empresa') }}">
+                    <i class="material-icons">
+                        group
+                    </i>
+                    QUIÉNES SOMOS
+                </a>
+            </li>
+            <li class="bold">
+                <a class="collapsible-header waves-effect waves-admin">
+                    <i class="material-icons">
+                        map
+                    </i>
+                    PRODUCTOS
+                </a>
+                <div class="collapsible-body">
+                            <ul>
+                                <li>
+                                    <a href="{{ route('sistemas')}}">
+                                        SISTEMA
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('rubros')}}">
+                                        RUBRO
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+            </li>
+            <li class="bold">
+                <a class="principalmovil collapsible-header waves-effect waves-admin" href="{{ url('/videos') }}contacto">
+                    <i class="material-icons">
+                        new_releases
+                    </i>
+                    VIDEOS
+                </a>
+            </li>
+            <li class="bold">
+                <a class="principalmovil collapsible-header waves-effect waves-admin" href="{{ url('/calidad') }}">
+                    <i class="material-icons">
+                        build
+                    </i>
+                    CALIDAD
+                </a>
+            </li>
+            <li class="bold">
+                <a class="principalmovil collapsible-header waves-effect waves-admin" href="{{ url('pagenovedades') }}">
+                    <i class="material-icons">
+                        format_list_numbered
+                    </i>
+                    NOVEDADES
+                </a>
+            </li>
+            <li class="bold">
+                <a class="principalmovil collapsible-header waves-effect waves-admin" href="{{ url('/contacto') }}">
+                    <i class="material-icons">
+                        contact_mail
+                    </i>
+                    CONTACTO
+                </a>
+            </li>
+        </ul>
+    </ul>
+ {{-- Para moviles fin--}} 
+         
 </header>
