@@ -16,7 +16,7 @@ class ZprivadaController extends Controller
 {
     public function productos()
     {
-        $activo    = 'productos';
+        $activo    = 'pedidos';
         $carrito   = Cart::content();
         $items     = $carrito->all();
         $ready     = 0;
@@ -56,9 +56,10 @@ class ZprivadaController extends Controller
         }            
 
         $categoria = $producto->categoria->nombre;
+        $rubro = $producto->rubro->nombre;
 
         if ($request->cantidad > 0) {
-            Cart::add(['id' => $producto->id, 'name' => $producto->nombre, 'price' => $producto->precio, 'qty' => $request->cantidad, 'options' => ['orden' => $producto->orden, 'imagen' => $imagen, 'categoria' => $categoria]]);
+            Cart::add(['id' => $producto->id, 'name' => $producto->nombre, 'price' => $producto->precio, 'qty' => $request->cantidad, 'options' => ['orden' => $producto->orden, 'imagen' => $imagen, 'categoria' => $categoria, 'rubro' => $rubro]]);
             //dd($categoria);
             return redirect()->route('zproductos', compact('shop', 'carrito', 'activo', 'productos', 'ready', 'prod', 'config', 'items', 'codigo', 'desc'));
         } else {
@@ -69,6 +70,8 @@ class ZprivadaController extends Controller
     public function carrito(Request $request)
     {
 
+
+        $activo = 'carrito';
         $descuentos  = Descuento::OrderBy('porcentaje', 'ASC')->get();
         $total_items = 0;
         $subtotal    = Cart::Subtotal();
@@ -76,7 +79,11 @@ class ZprivadaController extends Controller
         $carrito     = Cart::content();
         $total      = str_replace(',', '', $total);
         $subtotal   = str_replace(',', '', $subtotal);
+        $diferencia = null;
+        $desc = 0;
 
+        if (count($carrito)>0) {
+            # code...
         foreach (Cart::content() as $row) {
             $total_items = $total_items + $row->qty;
         }
@@ -109,7 +116,6 @@ class ZprivadaController extends Controller
         }
 
 //dd($desc);
-        $activo = 'carrito';
 //descuento en pesos
         $constante = $desc/100;
         $descuento = $subtotal*$constante;
@@ -119,6 +125,7 @@ class ZprivadaController extends Controller
 //total
         $totales = ($subtotal-$descuento)+$iva;
       //  $descuento = $total;
+        }
         return view('privada.carrito', compact('activo', 'desc', 'descuento', 'iva', 'totales', 'descuentos', 'diferencia', 'proximo'));
     }
 
@@ -161,6 +168,7 @@ class ZprivadaController extends Controller
         $iva = $subtotal_desc*0.21;
 //total
         $totales = ($subtotal-$descuento)+$iva;
+        $totales      = str_replace(',', '', $totales);
         $pedido               = new Pedido;
         $pedido->fecha        = $fecha;
         $pedido->total        = $totales;
@@ -202,7 +210,7 @@ class ZprivadaController extends Controller
         Mail::send('privada.mailpedido', ['total' => $total, 'username' => $username, 'nombre' => $nombre, 'apellido' => $apellido, 'social' => $social, 'cuit' => $cuit, 'telefono' => $telefono, 'direccion' => $direccion, 'emailcliente' => $emailcliente, 'items' => $items, 'row' => $row, 'subtotal' => $subtotal, 'mensaje' => $mensaje], function ($message) use ($nombre, $apellido) {
 
             $dato = Dato::where('tipo', 'email')->first();
-            $message->from('info@aberturastolosa.com.ar', 'Parpen | Pedidos');
+            $message->from('info@aberturastolosa.com.ar', 'MAER | Pedidos');
 
             $message->to($dato->descripcion);
 
@@ -239,6 +247,25 @@ class ZprivadaController extends Controller
         $catalogo = Catalogo::orderBy('created_at', 'ASC')->first();
 
         return view('privada.listadeprecios', compact('activo', 'catalogo'));
+    }
+
+    public function historico()
+    {
+        $activo   = 'historico';
+        $pedidos = Pedido::orderBy('id', 'ASC')->Where('user_id', Auth()->user()->id)->get();
+
+        return view('privada.historico', compact('activo', 'pedidos'));
+    }
+
+    public function detalle($id)
+    {
+        $activo   = 'historico';
+        $cien = 100;
+        $pedido = Pedido::find($id);
+        $r = $pedido->subtotal*$pedido->descuento->porcentaje;
+        $descuento = $r/100;
+        $iva= ($pedido->subtotal - $descuento)*0.21;
+        return view('privada.detalle', compact('activo', 'iva','pedido', 'descuento'));
     }
 
     public function downloadPdf2($id)

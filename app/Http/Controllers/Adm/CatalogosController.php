@@ -49,8 +49,7 @@ class CatalogosController extends Controller
         $catalogo         = catalogo::find($id);
         $id               = catalogo::all()->max('id');
         $catalogo->nombre = $request->nombre;
-        $id++;
-        if ($request->hasFile('file')) {
+        if ($request->hasFile('pdf')) {
             if ($request->file('pdf')->isValid()) {
                 $file = $request->file('pdf');
                 $path = public_path('file/catalogos/');

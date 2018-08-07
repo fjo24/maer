@@ -43,7 +43,7 @@
                     <!-- Dropdown LOGIN -->
                 <div class="areaprivada">
                     <ul class="dropdown-content" id="dropdown1" style="background: none, width:400px!important; height: 282px!important;">
-                        <div class="container" style="background: #FAFAFA; margin-top: 19px !important; outline: none; width: 282px;">
+                        <div class="container" style="background: #FAFAFA; margin-top: 19px !important; outline: none; width: 282px;height: 62px;">
                             {!!Form::open(['route'=>'logindistribuidor', 'method'=>'POST'])!!}
                             <div class="input-field col s12" style="padding-left: 10px;    border-bottom: 1px solid #595959; margin: 2px; margin-top: 1px; margin-bottom: 9px;">
                                 {!!Form::text('username',null,['class'=>'', 'required'])!!}

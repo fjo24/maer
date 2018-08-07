@@ -88,15 +88,16 @@ Route::post('/registro', ['uses' => 'DistribuidorController@store', 'as' => 'cli
 Route::post('/nuevousuario', ['uses' => 'DistribuidorController@registroStore', 'as' => 'registro.store']);
 
 /*******************ADMIN************************/
-Route::prefix('adm')->group(function () {
+    Route::prefix('adm')->middleware('admin')->middleware('auth')->group(function () {
 
-    Route::get('/', 'Adm\AdminController@dashboard')->name('dashboard');
+
+    Route::get('/', 'Adm\AdminController@dashboard')->name('dashboard')->middleware('admin');
 
     //DASHBOARD
-    Route::get('/dashboard', 'Adm\AdminController@admin');
+    Route::get('/dashboard', 'Adm\AdminController@admin')->middleware('admin');
 
     /*------------CATEGORIA NOVEDADES----------------*/
-    Route::resource('categorianovedades', 'Adm\CategorianovedadesController');
+    Route::resource('categorianovedades', 'Adm\CategorianovedadesController')->middleware('admin');
 
     /*------------SISTEMAS----------------*/
     Route::resource('categorias', 'Adm\CategoriasController');
@@ -189,6 +190,21 @@ Route::prefix('adm')->group(function () {
 Route::get('/zonaprivada/productos', 'ZprivadaController@productos')->name('zproductos')->middleware('auth');
 //BUSCADOR
 Route::post('/buscador', ['uses' => 'BuscadorController@getProducts', 'as' => 'buscador']);
+
+//novedades y ofertas
+Route::get('/zonaprivada/ofertasynovedades', 'ZprivadaController@ofertasynovedades')->name('ofertasynovedades')->middleware('auth');
+
+//HISTORICO
+Route::get('/zonaprivada/historico', 'ZprivadaController@historico')->name('historico')->middleware('auth');
+
+//VER DETALLE
+Route::get('/zonaprivada/detalle/{id}', 'ZprivadaController@detalle')->name('detalle')->middleware('auth');
+
+//LISTADO DE PRECIOS
+Route::get('/zonaprivada/listadeprecios', 'ZprivadaController@listadeprecios')->name('listadeprecios')->middleware('auth');
+// Rutas de reportes pdf desde la web
+    Route::get('pdf2/{id}', ['uses' => 'ZprivadaController@downloadPdf2', 'as' => 'file-pdf2']);
+
 
 //CARRITO
 Route::group(['prefix' => 'carrito'], function () {

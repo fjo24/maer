@@ -54,23 +54,23 @@
             </div>
         </div>
         {{-- BARRA SUPERIOR --}}
-    <div class="top">
+    <div class="top center">
         <div class="container hide-on-med-and-down">
             <ul class="item-left center hide-on-med-and-down">
-                @if($activo=='home')
+                @if($activo=='pedidos')
                 <li>
-                    <a class="activo" href="{{ url('/') }}">
+                    <a class="activo" href="{{ route('zproductos') }}">
                         PEDIDOS
                     </a>
                 </li>
                 @else
                 <li>
-                    <a href="{{ url('/') }}">
+                    <a href="{{ route('zproductos') }}">
                         PEDIDOS
                     </a>
                 </li>
                 @endif
-                @if($activo=='empresa')
+                @if($activo=='carrito')
                 <li>
                     <a class="activo" href="{{ route('carrito') }}">
                         CARRITO
@@ -83,68 +83,42 @@
                     </a>
                 </li>
                 @endif
-                @if($activo=='productos')
+                @if($activo=='ofertasynovedades')
                 <li>
-                    <a class="activo" href="{{ url('/') }}">
+                    <a class="activo" href="{{ route('ofertasynovedades') }}">
                         OFERTAS O NOVEDADES
                     </a>
                 </li>
                 @else
                 <li>
-                    <a href="{{ url('/') }}">
+                    <a href="{{ route('ofertasynovedades') }}">
                         OFERTAS O NOVEDADES
                     </a>
                 </li>
                 @endif
-                @if($activo=='videos')
+                @if($activo=='historico')
                 <li>
-                    <a class="activo" href="{{ url('/empresa') }}">
-                        VIDEOS
+                    <a class="activo" href="{{ route('historico') }}">
+                        HISTORICO
                     </a>
                 </li>
                 @else
                 <li>
-                    <a href="{{ url('/empresa') }}">
-                        VIDEOS
+                    <a href="{{ route('historico') }}">
+                        HISTORICO
                     </a>
                 </li>
                 @endif
-                @if($activo=='home')
+                @if($activo=='listadeprecios')
                 <li>
-                    <a class="calidad" href="{{ url('/') }}">
-                        CALIDAD
+                    <a class="activo" href="{{ route('listadeprecios') }}">
+                        LISTA DE PRECIOS
                     </a>
                 </li>
                 @else
                 <li>
-                    <a href="{{ url('/') }}">
-                        CALIDAD
-                    </a>
-                </li>
-                @endif
-                @if($activo=='novedades')
-                <li>
-                    <a class="activo" href="{{ url('/empresa') }}">
-                        NOVEDADES
-                    </a>
-                </li>
-                @else
-                <li>
-                    <a href="{{ url('/empresa') }}">
-                        NOVEDADES
-                    </a>
-                </li>
-                @endif
-                @if($activo=='contacto')
-                <li>
-                    <a class="activo" href="{{ url('/empresa') }}">
-                        CONTACTO
-                    </a>
-                </li>
-                @else
-                <li>
-                    <a href="{{ url('/empresa') }}">
-                        CONTACTO
+                    <a href="{{ route('listadeprecios') }}">
+                        LISTA DE PRECIOS
                     </a>
                 </li>
                 @endif

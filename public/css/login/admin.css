@@ -1,0 +1,184 @@
+.side-nav .collapsible-header, .side-nav.fixed .collapsible-header {
+    padding-left: 30px;
+}
+
+.cke_dialog select{
+  display: block;
+}
+
+main, header, footer{
+	padding-left: 0%;
+}
+
+@media only screen and (min-width: 1003px){
+main, header, footer{
+      padding-left: 20%;
+      padding-left: 15%;
+  }
+}
+
+.text-left{
+  text-align: left;
+}
+
+.text-right{
+  text-align: right;
+}
+
+.logo{
+  height: 80px;
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider-foto{
+  height: 90px;
+}
+
+.logo img{
+  height: 50px;
+}
+
+main{
+	margin-top: 50px;
+}
+
+nav.top-nav{
+	box-shadow: none;
+}
+
+.side-nav .collapsible-body li a, .side-nav.fixed .collapsible-body li a {
+    padding: 0 23.5px 0 50px;
+}
+
+.waves-effect.waves-admin .waves-ripple {
+      background-color: rgba(77, 182, 172, 0.80);
+}
+
+.btn, .btn:hover, .top-nav{
+	background-color: #FF5E88;
+}
+
+.icono{
+  height: 30px;
+}
+
+form .btn{
+  padding: 0;
+}
+
+.file-field .btn{
+  padding: 0 2rem!important;
+}
+
+form .btn input{
+  padding: 0 2rem;
+  height: 100%;
+}
+
+.en-linea{
+  display: inline;
+}
+
+.card-panel{
+  padding: 15px;
+  box-shadow: none;
+}
+
+.submit-button{
+  background: none;
+  padding: 0px;
+  border: none;
+}
+
+td{
+  padding: 5px;
+}
+
+button:focus {
+    outline: none;
+    background-color: transparent;
+}
+
+.card-panel ul{
+  margin: 0;
+}
+
+.pagination li span {
+    color: #444;
+    display: inline-block;
+    font-size: 1.2rem;
+    padding: 0 10px;
+    line-height: 30px;
+}
+
+.pagination li.active span {
+    color: #fff;
+}
+
+.pagination li.active {
+    background-color: #FF5E88;
+}
+
+.pagination{
+  float: right;
+}
+
+side-nav li>a>i, .side-nav li>a>[class^="mdi-"], .side-nav li>a li>a>[class*="mdi-"], .side-nav li>a>i.material-icons {
+    margin: 0 5px 0 0;
+    color: #FF5E88;
+    transform: translateY(-2px);
+}
+
+.side-nav .collapsible-body>ul:not(.collapsible)>li.active, .side-nav.fixed .collapsible-body>ul:not(.collapsible)>li.active {
+    background-color: #FF5E88;
+}
+
+/* label focus color */
+ .input-field input:focus + label {
+   color: #FF5E88 !important;
+ }
+ /* label underline focus color */
+ .row .input-field input:focus {
+   border-bottom: 1px solid #FF5E88 !important;
+   box-shadow: 0 1px 0 0 #FF5E88 !important
+ }
+
+select option{
+	color: #FF5E88 !important;
+}
+
+.img-admin{
+  height: 50px;
+  width: auto;
+}
+
+@media only screen and (min-width: 993px){
+	.container {
+	    width: 70%;
+	}
+}
+/*
+@media only screen and (min-width: 570px){
+.responsive-body {
+    font-size: 74px!important;
+    color: red!important;
+  }
+}
+*/
+#btn-menu{
+  display: none!important;
+  background-color: red;
+
+}
+
+@media only screen and (min-width: 1003px){
+#xx{
+    position: relative;
+  display: none!important;
+  background-color: #FF5E88;
+  }
+
+}

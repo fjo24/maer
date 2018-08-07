@@ -96,7 +96,7 @@
 
 							<th>CATEGORIA</th>
 
-							<th>CODIGO</th>
+							<th>RUBRO</th>
 
 							<th>CANTIDAD</th>
 
@@ -119,7 +119,7 @@
 									<td class="timagen " style="width: 95px; height: 85px;"><img class="responsive-img" src="{{ asset($row->options->imagen) }}"/></td>
 									<td>{{ $row->name }}</td>
 									<td>{{ $row->options->categoria }}</td>
-									<td>{{ $row->options->codigo }}</td>
+									<td>{{ $row->options->rubro }}</td>
 									<td>{{ $row->qty }}</td>
 									<td>{{ '$'.$row->price }}</td>
 									<td>{{ '$'.$row->price*$row->qty }}</td>

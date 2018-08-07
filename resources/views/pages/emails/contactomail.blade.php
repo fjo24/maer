@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Aberturas General Paz</title>
+	<title>Maer</title>
 </head>
 <body>
 	<p>{{ $mensaje }}</p>

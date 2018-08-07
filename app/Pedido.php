@@ -21,7 +21,12 @@ class Pedido extends Model
         return $this->belongsToMany('App\Producto', 'pedido_producto')->withPivot('cantidad', 'costo');
     }
 
-    public function getdateAttribute($date)
+    public function descuento()
+    {
+        return $this->belongsTo('App\Descuento');
+    }
+
+    public function getfechaAttribute($date)
     {
         return $date = \Carbon\Carbon::parse($date)->format('d-m-Y');
     }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-	<h2>Parpen</h2>
+	<h2>Maer</h2>
 	<h3>Solicitud de Pedido</h3>
 	<p>Enviado desde la web por: </p>
 

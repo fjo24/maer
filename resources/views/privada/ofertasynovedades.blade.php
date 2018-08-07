@@ -4,13 +4,14 @@
 
 @section('contenido')
 <link href="{{ asset('css/privada/zproductos.css') }}" rel="stylesheet" type="text/css"/>
-<div class="container" style="width: 89%; margin-bottom: 7%; margin-top: 5%;">
+<div class="container" style="width: 70%;">
+    <div class="ofertaynovedad">OFERTAS Y NOVEDADES</div>
     <div class="row">
         <div class="galeria col l12 m12 s12">
             @foreach($productos as $prod)
             @if($prod->visible!='privado')
-            <a href="{{ url('/producto/'.$prod->id) }}">
-                <div class="col l3 m12 s12 oyn">
+            <a href="{{ route('productoinfo', $prod->id)}}">
+                <div class="col l4 m12 s12 oyn">
                     @foreach($prod->imagenes as $img)
                     <div class="efecto">
                         <span class="central">

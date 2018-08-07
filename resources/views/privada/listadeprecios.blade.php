@@ -8,19 +8,21 @@
     <div class="lista_precios">
         Lista de precios
     </div>
-    <div class="imagen_catalogo">
-            <a href="{{ route('file-pdf2', ['post' => $catalogo->id])}}">
-                <img alt="" src="{{asset('img/catalogo.jpg')}}">
-                </img>
-            </a>
-        </input>
-    </div>
-    <div class="descargar_catalogo">
-    <a href="{{ route('file-pdf2', ['post' => $catalogo->id])}}">
-                <img alt="" src="{{asset('img/descarga.png')}}">
-                </img>
-            </a>
-        Descargar Catalogo
+    <div class="center">
+        <div class="imagen_catalogo">
+                <a href="{{ route('file-pdf2', ['post' => $catalogo->id])}}">
+                    <img alt="" src="{{asset('img/catalogo.jpg')}}">
+                    </img>
+                </a>
+            </input>
+        </div>
+        <div class="descargar_catalogo">
+        <a style="color:#595959;" href="{{ route('file-pdf2', ['post' => $catalogo->id])}}">
+                    <img alt="" src="{{asset('img/descarga.png')}}">
+                    </img>
+            Descargar Catalogo
+                </a>
+        </div>
     </div>
 </div>
 @endsection
