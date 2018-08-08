@@ -82,7 +82,9 @@ header('Access-Control-Allow-Origin: *');
         $('.dropdown-button').dropdown({
           hover: true
         });
-
+$(document).ready(function(){
+    $('.modal').modal();
+  });
     </script>
     </body>
 </html>

@@ -110,7 +110,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{route('homes.create')}}">
+                                    <a href="{{route('homes.index')}}">
                                         Editar Contenido
                                     </a>
                                 </li>

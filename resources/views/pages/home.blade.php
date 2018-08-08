@@ -126,6 +126,32 @@
         </div>
     </div>
 </div>
+<div class="destacado-home2">
+    <div class="container" style="width: 84%;">
+        <div class="row" style="position: relative;top: 66px;">
+            <div class="dest-text col l6 s12">
+                <div class="subtit-dest">
+                    {!! $contenido2->nombre !!}
+                </div>
+                <div class="tit-dest">
+                    {!! $contenido2->descripcion !!}
+                </div>
+                <div class="cont-dest">
+                    {!! $contenido2->contenido !!}
+                </div>
+                <div class="col l12 m12 s12">
+                    <a href="{!! $contenido2->link !!}">
+                    <button type="button" class="boton_empresa btn btn-default pull-right">VER MAS</button>
+                </a>
+                </div> 
+            </div>
+            <div class="col l6 s12 hide-on-med-and-down">
+                <img class="img-destacado responsive-img" src="{!! $contenido2->imagen !!}" style="">
+                </img>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 
 @section('js')

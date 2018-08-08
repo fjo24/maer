@@ -30,7 +30,7 @@
                 </div>
                 <div class="footer-b col l4 s12 m6" style="    padding-left: 2%;">
                     <h5 class="titulo-footer" style="    margin-top: 13%;">
-                        SITEMAP
+                        MAER
                     </h5>
                     <div class="linksb">
                         <div class="col l6 s6 m6">
