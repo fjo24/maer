@@ -248,19 +248,18 @@ class PaginasController extends Controller
         $busca = 1;
         $ready = 0;
         //$metadatos = Metadato::where('section','buscar')->get();
-        $activo    = 'productos';
-        $productos = Producto::where('nombre', 'like', '%' . $busqueda . '%')->
-            orwhere('codigo', 'like', '%' . $busqueda . '%')->get();
-
+        $activo    = 'buscar';
+        $productos = Producto::where('nombre', 'like', '%' . $busqueda . '%')->get();
+        $categoria = null;
         $activo        = 'productos';
-        $categorias    = Categoria::where('id_superior', null)->orderBy('orden', 'asc')->get();
-        $subcategorias = Categoria::whereNotNull('id_superior')->orderBy('orden', 'asc')->get();
-        $productos     = Producto::orderBy('categoria_id')->get();
-        $todos         = Producto::where('nombre', 'like', '%' . $busqueda . '%')->
-            orwhere('codigo', 'like', '%' . $busqueda . '%')->get();
+        $categorias    = Categoria::orderBy('orden', 'asc')->get();
+
+        $todos         = Producto::where('nombre', 'like', '%' . $busqueda . '%')->get();
+        $ready = 0;
+        $activo    = 'productos';
         $ready = 0;
 
-        return view('pages.productos', compact('categorias', 'subcategorias', 'productos', 'productos_directos', 'activo', 'todos', 'ready'));
+        return view('pages.sistemas', compact('categorias', 'subcategorias', 'productos', 'productos_directos', 'activo', 'todos', 'ready'));
 
     }
 }
