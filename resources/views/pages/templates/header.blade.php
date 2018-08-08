@@ -170,13 +170,13 @@
                 @if($activo=='calidad')
                 <li>
                     <a class="activo" href="{{ url('/calidad') }}">
-                        CALIDAD
+                        ESCUELA MAER
                     </a>
                 </li>
                 @else
                 <li>
                     <a href="{{ url('/calidad') }}">
-                        CALIDAD
+                        ESCUELA MAER
                     </a>
                 </li>
                 @endif

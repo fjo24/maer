@@ -139,6 +139,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="right"><a href="{{ route('carrito') }}">
+<button class="enviar" class="bg-azul" href="" style="position: relative;bottom:95px;border-radius: 12px;padding: initial!important;color:white; padding: 20px; background-color: #3F3F3F; border: none; width: 181px;height: 42px!important;"><span style="font-family: 'Monserrat';font-size: 13px;font-weight: bold;">FINALIZAR COMPRA</span></button></a>
+</div>
               <!-- Modal Trigger -->
           
 

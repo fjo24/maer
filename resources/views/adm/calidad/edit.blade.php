@@ -24,14 +24,15 @@
     <div class="col s12">
         {!!Form::model($homes, ['route'=>['calidad.update',$homes->id], 'method'=>'PUT', 'files' => true])!!}
         <div class="row">
-            <div class="input-field col l6 s12">
-                {!!Form::label('Nombre:')!!}
+            <div class="input-field col l12 s12">
+                {!!Form::label('Titulo:')!!}
 						{!!Form::text('nombre', null , ['class'=>''])!!}
             </div>
-            <div class="input-field col l6 s12">
-                {!!Form::label('Descripcion:')!!}
-                        {!!Form::text('descripcion', null , ['class'=>''])!!}
-            </div>
+            <div class="input-field col l12 s12">
+                    <textarea class="materialize-textarea" id="descripcion" name="descripcion" required="">
+                        {{$homes->descripcion}}
+                    </textarea>
+                </div>
         </div>
         <div class="col l12 s12 no-padding">
             <button class="boton btn-large right" name="action" type="submit">
@@ -43,11 +44,15 @@
 </div>
 @endsection
 @section('js')
-<script src="//cdn.ckeditor.com/4.9.2/standard/ckeditor.js">
+<script src="//cdn.ckeditor.com/4.9.2/full/ckeditor.js">
 </script>
 <script type="text/javascript">
     $(document).ready(function(){
     $('select').formSelect();
   });
+
+    CKEDITOR.replace('descripcion');
+    CKEDITOR.config.height = '150px';
+    CKEDITOR.config.width = '100%';
 </script>
 @endsection
