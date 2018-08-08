@@ -109,7 +109,7 @@ Route::post('/nuevousuario', ['uses' => 'DistribuidorController@registroStore', 
     Route::resource('modelos', 'Adm\ModelosController')->middleware('admin');
 
     /*------------APLICACIONES----------------*/
-    Route::resource('aplicaciones', 'adm\AplicacionesController')->middleware('admin');
+    Route::resource('aplicaciones', 'Adm\AplicacionesController')->middleware('admin');
 
     /*------------PRODUCTOS----------------*/
     Route::resource('productos', 'Adm\ProductosController')->middleware('admin');

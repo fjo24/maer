@@ -206,12 +206,7 @@
                     </a>
                 </li>
                 @endif
-                <li>
-                        <a class="brand-logo center" href="{{ url('/') }}">
-                            <img alt="" src="{{asset('img/lupa.png')}}">
-                            </img>
-                        </a>
-                    </li>
+
             </ul>
         </div>
     </div>

@@ -1,9 +1,10 @@
 @extends('adm.layouts.frame')
 
-@section('titulo', 'Sistemas de productos')
+@section('titulo', 'Crear descuento')
 
 @section('contenido')
-		@if(count($errors) > 0)
+
+@if(count($errors) > 0)
 <div class="col s12 card-panel red lighten-4 red-text text-darken-4">
     <ul>
         @foreach($errors->all() as $error)

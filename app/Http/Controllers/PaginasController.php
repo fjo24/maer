@@ -35,8 +35,9 @@ class PaginasController extends Controller
         $bloque2   = Destacado_home::find(2);
         $bloque3   = Destacado_home::find(3);
         $bloque4   = Destacado_home::find(4);
-        $contenido = Contenido_home::all()->first();
-        return view('pages.home', compact('sliders', 'servicios', 'banner', 'contenido', 'activo', 'bloque1', 'bloque2', 'bloque3', 'bloque4'));
+        $contenido = Contenido_home::find(1);
+        $contenido2 = Contenido_home::find(2);
+        return view('pages.home', compact('sliders', 'servicios', 'banner', 'contenido', 'activo', 'bloque1', 'bloque2', 'bloque3', 'bloque4', 'contenido2'));
     }
     public function empresa()
     {
