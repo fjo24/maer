@@ -29,7 +29,7 @@ class UsersController extends Controller
         $usuario->password = \Hash::make($request->password);
         $usuario->save();
 
-        $users = User::orderBy('id', 'ASC')->paginate(10);
+        $users = User::orderBy('id', 'ASC')->Where('nivel', '<>', 'distribuidor')->get();
         return view('adm.user.index')
             ->with('users', $users);
     }
@@ -59,7 +59,7 @@ class UsersController extends Controller
 
         $usuario->save();
 
-        $users = User::orderBy('id', 'ASC')->paginate(10);
+        $users = User::orderBy('id', 'ASC')->Where('nivel', '<>', 'distribuidor')->get();
         return view('adm.user.index')
             ->with('users', $users);
     }

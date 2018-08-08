@@ -6,6 +6,8 @@
 <link href="{{ asset('css/pages/home.css') }}" rel="stylesheet"/>
         <link href="{{ asset('css/page/slider.css') }}" rel="stylesheet">
             <link href="{{ asset('css/estilos.css') }}" rel="stylesheet">
+            <link href="{{ asset('css/novedad.css') }}" rel="stylesheet">
+
 @endsection
 @section('contenido')
 <div class="container" style="width: 82%; margin-top: 50px;">   
@@ -21,7 +23,7 @@
     <ul class="flex-container-nov">
     @foreach($categories as $categoria)
     @foreach($novedades as $novedad)
-    @if($novedad->id == $categoria->id)
+    @if($novedad->categoria_novedad_id == $categoria->id)
     <li class="flex-item-nov" style="border: none; padding-bottom: 20px;">
       <div>
       <img src="{{asset($novedad->imagen1)}}" class="clientes-box-img" style="height:220px; width: 100%;">
@@ -70,8 +72,8 @@
       </nav>
     </div>
     <div style="padding-top: 40px; padding-bottom: 40px;">
-      <div style="border-bottom: 2px solid #009FE1;">
-        <h5 style="padding-left: 5px; color: #393185; font-weight: 400; font-size: 22px;">CATEGORIAS</h5>
+      <div style="border-bottom: 2px solid #595959;">
+        <h5 style="padding-left: 5px; color: #F07D00; font-weight: 400; font-size: 22px;">CATEGORIAS</h5>
       </div>
       <div style="padding-top: 15px;">
         @foreach($categorias as $categoria)

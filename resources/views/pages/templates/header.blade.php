@@ -8,13 +8,13 @@
                     <div class="redeshead col l4 m4 s4 center">
                             <ul class="center" style="margin-left: 38%;margin-top: 13%;">
                                 <li class="redes_head">
-                                    <a class="" href="{{ url('/') }}">
+                                    <a class="" href="{{$facebook->link}}">
                                         <img alt="" src="{{asset('img/layouts/facebook.png')}}">
                                         </img>
                                     </a>
                                 </li>
                                 <li class="redes_head">
-                                    <a class="" href="{{ url('/') }}">
+                                    <a class="" href="{{$youtube->link}}">
                                         <img alt="" src="{{asset('img/layouts/youtube.png')}}">
                                         </img>
                                     </a>
@@ -29,7 +29,7 @@
                     </div>
                     <div class="privadohead col l4 m4 s4 center">
                             <ul class="center" style="margin-left: 22%;margin-top: 13%;">
-                                <li class="privado_head">
+                                <li class="privado_head" style="margin-top: 15px;">
                                     <a class="" href="{{ url('/') }}">
                                         <img alt="" src="{{asset('img/layouts/privado.png')}}">
                                         </img>
@@ -206,6 +206,12 @@
                     </a>
                 </li>
                 @endif
+                <li>
+                        <a class="brand-logo center" href="{{ url('/') }}">
+                            <img alt="" src="{{asset('img/lupa.png')}}">
+                            </img>
+                        </a>
+                    </li>
             </ul>
         </div>
     </div>

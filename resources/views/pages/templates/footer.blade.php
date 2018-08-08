@@ -46,7 +46,7 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="itemsb" href="{{ url('/categ') }}">
+                                    <a class="itemsb" href="{{ route('sistemas')}}">
                                         Productos
                                     </a>
                                 </li>
@@ -55,17 +55,17 @@
                         <div class="col l6 s6 m6">
                             <ul>
                                 <li>
-                                    <a class="itemsb" href="{{ url('/donde') }}">
+                                    <a class="itemsb" href="{{ url('/videos') }}">
                                         Videos
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="itemsb" href="{{ url('/donde') }}">
+                                    <a class="itemsb" href="{{ url('/calidad') }}">
                                         Calidad
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="itemsb" href="">
+                                    <a class="itemsb" href="{{ route('pagenovedades') }}">
                                         Novedades
                                     </a>
                                 </li>

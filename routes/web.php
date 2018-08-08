@@ -19,7 +19,7 @@ Auth::routes();
 Route::post('logindistribuidor', 'Auth\LoginDistribuidorController@login')->name('logindistribuidor');
 
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'Adm\AdminController@admin')->name('home');
 /*******************PAGINAS************************/
 //HOME
 Route::get('/', 'PaginasController@home')->name('inicio');
@@ -100,19 +100,19 @@ Route::post('/nuevousuario', ['uses' => 'DistribuidorController@registroStore', 
     Route::resource('categorianovedades', 'Adm\CategorianovedadesController')->middleware('admin');
 
     /*------------SISTEMAS----------------*/
-    Route::resource('categorias', 'Adm\CategoriasController');
+    Route::resource('categorias', 'Adm\CategoriasController')->middleware('admin');
 
     /*------------RUBROS----------------*/
-    Route::resource('rubros', 'Adm\RubrosController');
+    Route::resource('rubros', 'Adm\RubrosController')->middleware('admin');
 
     /*------------MODELOS----------------*/
-    Route::resource('modelos', 'Adm\ModelosController');
+    Route::resource('modelos', 'Adm\ModelosController')->middleware('admin');
 
     /*------------APLICACIONES----------------*/
-    Route::resource('aplicaciones', 'adm\AplicacionesController');
+    Route::resource('aplicaciones', 'adm\AplicacionesController')->middleware('admin');
 
     /*------------PRODUCTOS----------------*/
-    Route::resource('productos', 'Adm\ProductosController');
+    Route::resource('productos', 'Adm\ProductosController')->middleware('admin');
     /*------------Imagen----------------*/
     Route::get('producto/{producto_id}/imagenes/', 'Adm\ProductosController@imagenes')->name('imgproducto.lista'); //index del modulo imagenes
     //agregar nuevas imagenes de productos
@@ -120,67 +120,67 @@ Route::post('/nuevousuario', ['uses' => 'DistribuidorController@registroStore', 
     Route::delete('imgproducto/{id}/destroy', [
         'uses' => 'Adm\ProductosController@destroyimg',
         'as'   => 'imgproducto.destroy',
-    ]);
+    ])->middleware('admin');
 
 
     /*------------LINEA DE TIEMPO----------------*/
-    Route::resource('tiempos', 'Adm\TiempoController');
+    Route::resource('tiempos', 'Adm\TiempoController')->middleware('admin');
 
     /*------------CONTENIDO HOMES----------------*/
-    Route::resource('homes', 'Adm\ContenidohomesController');
+    Route::resource('homes', 'Adm\ContenidohomesController')->middleware('admin');
 
     /*------------CONTENIDO CALIDADES----------------*/
-    Route::resource('calidades', 'Adm\ContenidocalidadesController');
+    Route::resource('calidades', 'Adm\ContenidocalidadesController')->middleware('admin');
 
     /*------------CALIDAD----------------*/
-    Route::resource('calidad', 'Adm\CalidadesController');
+    Route::resource('calidad', 'Adm\CalidadesController')->middleware('admin');
 
     /*---------------BANNER CALIDAD------------------*/
-    Route::get('/banner', 'adm\ContenidocalidadesController@banner')->name('banner');
-    Route::get('/banner/{banner_id}', 'adm\ContenidocalidadesController@banneredit')->name('banneredit');
-    Route::put('/banner/{banner_id}/update', 'adm\ContenidocalidadesController@bannerupdate')->name('bannerupdate');
+    Route::get('/banner', 'adm\ContenidocalidadesController@banner')->name('banner')->middleware('admin');
+    Route::get('/banner/{banner_id}', 'adm\ContenidocalidadesController@banneredit')->name('banneredit')->middleware('admin');
+    Route::put('/banner/{banner_id}/update', 'adm\ContenidocalidadesController@bannerupdate')->name('bannerupdate')->middleware('admin');
 
     /*------------NOVEDADES----------------*/
-    Route::resource('novedades', 'Adm\NovedadesController');
+    Route::resource('novedades', 'Adm\NovedadesController')->middleware('admin');
 
     /*------------DATOS----------------*/
-    Route::resource('datos', 'Adm\DatosController');
+    Route::resource('datos', 'Adm\DatosController')->middleware('admin');
 
     /*------------DESTACADO HOMES----------------*/
-    Route::resource('destacadoshomes', 'Adm\DestacadohomesController');
+    Route::resource('destacadoshomes', 'Adm\DestacadohomesController')->middleware('admin');
 
     /*------------EMPRESAS----------------*/
-    Route::resource('empresas', 'Adm\EmpresasController');
+    Route::resource('empresas', 'Adm\EmpresasController')->middleware('admin');
 
     /*------------REDES----------------*/
-    Route::resource('redes', 'Adm\RedesController');
+    Route::resource('redes', 'Adm\RedesController')->middleware('admin');
 
     /*------------SLIDERS----------------*/
-    Route::resource('sliders', 'Adm\SlidersController');
+    Route::resource('sliders', 'Adm\SlidersController')->middleware('admin');
 
     /*------------USERS----------------*/
-    Route::resource('users', 'Adm\UsersController');
+    Route::resource('users', 'Adm\UsersController')->middleware('admin');
 
     /*------------DISTRIBUIDORES----------------*/
-    Route::resource('distribuidores', 'Adm\DistribuidoresController');
+    Route::resource('distribuidores', 'Adm\DistribuidoresController')->middleware('admin');
 
     /*------------METADATOS----------------*/
-    Route::resource('metadatos', 'Adm\MetadatosController');
+    Route::resource('metadatos', 'Adm\MetadatosController')->middleware('admin');
 
     /*------------CATEGORIA DE PREGUNTAS----------------*/
-    Route::resource('categoria_preguntas', 'Adm\CategoriapreguntasController');
+    Route::resource('categoria_preguntas', 'Adm\CategoriapreguntasController')->middleware('admin');
 
     /*------------PREGUNTAS----------------*/
-    Route::resource('preguntas', 'Adm\PreguntasController');
+    Route::resource('preguntas', 'Adm\PreguntasController')->middleware('admin');
 
     /*------------VIDEOS----------------*/
-    Route::resource('videos', 'Adm\VideosController');
+    Route::resource('videos', 'Adm\VideosController')->middleware('admin');
 
     /*------------DESCUENTOS----------------*/
-    Route::resource('descuentos', 'Adm\DescuentosController');
+    Route::resource('descuentos', 'Adm\DescuentosController')->middleware('admin');
 
     /*------------CATALOGOS----------------*/
-    Route::resource('catalogos', 'Adm\CatalogosController');
+    Route::resource('catalogos', 'Adm\CatalogosController')->middleware('admin');
     // Rutas de reportes pdf
     Route::get('pdf/{id}', ['uses' => 'Adm\CatalogosController@downloadPdf', 'as' => 'file-pdf']);
     
