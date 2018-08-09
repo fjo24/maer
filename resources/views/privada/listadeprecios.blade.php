@@ -1,6 +1,6 @@
 @extends('privada.templates.body')
 
-@section('titulo', 'Línea Parpen')
+@section('titulo', 'Línea Maer')
 
 @section('contenido')
 <link href="{{ asset('css/privada/zproductos.css') }}" rel="stylesheet" type="text/css"/>

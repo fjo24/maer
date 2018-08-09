@@ -1,6 +1,6 @@
 @extends('pages.templates.body')
 
-@section('title', 'Parpen - Home')
+@section('title', 'Maer - Home')
 @section('css')
 <link href="{{ asset('css/pages/distribuidor.css') }}" rel="stylesheet"/>
 @endsection
