@@ -36,7 +36,7 @@
                                     </a>
                                 </li>
                                 <li class="privado_head">
-                                                    <div class="dropdown-trigger" data-target="dropdown1">
+                                                    <div class="dropdown-trigger hide-on-med-and-down" data-target="dropdown1">
                                         <a href="zonaprivada/productos" style="color: #F07D00;margin-top: -4%;">
                                             Zona privada
                                         </a>
@@ -46,18 +46,20 @@
                     <ul class="dropdown-content" id="dropdown1" style="background: none, width:400px!important; height: 282px!important;">
                         <div class="container" style="background: #FAFAFA; margin-top: 19px !important; outline: none; width: 282px;height: 62px;">
                             {!!Form::open(['route'=>'logindistribuidor', 'method'=>'POST'])!!}
-                            <div class="input-field col s12" style="padding-left: 10px;    border-bottom: 1px solid #595959; margin: 2px; margin-top: 1px; margin-bottom: 9px;">
-                                {!!Form::text('username',null,['class'=>'', 'required'])!!}
-                                <label for="username" style="color:gray; font-weight: 500; font-family: 'Lato'; font-size: 15px;">
-                                    Username
-                                </label>
-                            </div>
-                            <div class="input-field col s12" placeholder="password" style="padding-left: 10px;    border-bottom: 1px solid #595959; margin: 2px;">
-                                {!!Form::password('password',null,['class'=>'', 'required'])!!}
-                                <label for="password" style="color:gray; font-weight: 500; font-family: 'Lato'; font-size: 15px;">
-                                    Contraseña
-                                </label>
-                            </div>
+                            <div class="row">
+                        <div class="input-field col s12">
+                            {!!Form::text('username',null,['class'=>''])!!}
+                            {!!Form::label('Usuario')!!}
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            {!!Form::password('password')!!}
+                            {!!Form::label('Contraseña')!!}
+                            <hr>
+                        </div>
+                    </div>
                             <style type="text/css">
                                 .color-del-boton{
                  background-color: #01A0E2;
@@ -68,7 +70,7 @@
                             </style>
                             <div class="col s12" style="position: relative;right: 24%;margin-top: 9%;
     margin-bottom: 2%;">
-                                <input class="waves-effect waves-light btn right colorboton" style="color: white;font-family: 'Lato';font-weight: bold;" type="submit" value="INGRESAR">
+                                <input class="waves-effect waves-light btn right colorboton" style="color: white;font-family: 'Lato';font-weight: bold;padding-top: 4%;" type="submit" value="INGRESAR">
                                 </input>
                             </div>
                             <li class="center" style="font-size: 12px;color: pink; text-decoration: none;">
@@ -88,7 +90,7 @@
             </div>
         </div>
         {{-- BARRA SUPERIOR --}}
-    <div class="top">
+    <div class="top hide-on-med-and-down">
         <div class="container hide-on-med-and-down" style="width: 76%;">
             <ul class="item-left center hide-on-med-and-down">
                 @if($activo=='home')
@@ -216,7 +218,7 @@
                         <div class="row">
                             <h4 style="font-family: 'Source Sans Pro', sans-serif; color: #F07D00">Buscar por nombre de producto</h4>
                             <div class="col l12 m12 s12" style="">   
-                                {!!  Form::open(['route' => 'buscar', 'method' => 'POST','class' => 'left']) !!}
+                                {!!  Form::open(['route' => 'buscar', 'method' => 'POST','class' => '']) !!}
                                 <div class="lupa">
                                      <div class="col l6 m6 s6" style=""> 
                                     {!!Form::text('buscar', null , ['class'=>''])!!}

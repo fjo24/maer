@@ -43,9 +43,9 @@ input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):
     position: absolute;
     right: 0%!important;
     left: 73%!important;
-    height: 280px!important;
+    height: 314px!important;
     top: 15%!important;
-    width: 300px!important;
+    width: 305px!important;
     z-index: 9999;
     -webkit-transform-origin: 0 0;
     transform-origin: 0 0;
@@ -282,9 +282,15 @@ nav .sidenav-trigger {
 /*.areaprivada input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea {
     border-bottom: none!important;
 }
+*/
 /*
 input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):focus:not([readonly]), input[type=password]:not(.browser-default):focus:not([readonly]), input[type=email]:not(.browser-default):focus:not([readonly]), input[type=url]:not(.browser-default):focus:not([readonly]), input[type=time]:not(.browser-default):focus:not([readonly]), input[type=date]:not(.browser-default):focus:not([readonly]), input[type=datetime]:not(.browser-default):focus:not([readonly]), input[type=datetime-local]:not(.browser-default):focus:not([readonly]), input[type=tel]:not(.browser-default):focus:not([readonly]), input[type=number]:not(.browser-default):focus:not([readonly]), input[type=search]:not(.browser-default):focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
     border-bottom:none!important;
     -webkit-box-shadow:none!important;
     box-shadow: none!important;
+}*/
+
+.redes_head{
+    margin-top: 6%;
 }
+

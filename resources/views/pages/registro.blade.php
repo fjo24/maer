@@ -67,7 +67,7 @@
 
 	                    </div>
 
-	                    <button class="btn waves-effect waves-light pink right" name="action" type="submit">
+	                    <button class="btn waves-effect waves-light orange right" name="action" type="submit">
                         Entrar
                         <i class="material-icons right">
                             send
@@ -207,7 +207,7 @@
 							    </div>
 
 							</div>
-							<button class="btn waves-effect waves-light pink right" name="action" type="submit">
+							<button class="btn waves-effect waves-light orange right" name="action" type="submit">
                         REGÍSTRATE
                         <i class="material-icons right">
                             send

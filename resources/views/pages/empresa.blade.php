@@ -112,8 +112,8 @@
 							</span>
 						</div>
 						<div class="col s12 m6">
-						<div align="center" style="">            
-			          		<img src="{{asset($empresa->imagen)}}" class="img-responsive" width="276px" style="color: #5F5F5F;font-size: 17px;font-family: 'Montserrat';width: 543px;height: 145px;margin-top: 13%;">
+						<div align="center hide-on-med-and-down" style="">            
+			          		<img src="{{asset($empresa->imagen)}}" class="hide-on-med-and-down img-responsive" width="276px" style="color: #5F5F5F;font-size: 17px;font-family: 'Montserrat';width: 543px;height: 145px;margin-top: 13%;">
 			          	</div>
 				          	<div class="estadisticas" style="margin-left: 18%;">	
 								<p style="margin-top: 0px; margin-bottom: 0px;">

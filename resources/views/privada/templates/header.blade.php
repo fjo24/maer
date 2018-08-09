@@ -122,6 +122,31 @@
                     </a>
                 </li>
                 @endif
+                <a href="" data-target="modalbuscador" class="iconos-redes modal-trigger" style="">
+                  <img style="margin-top: 20px;" src="{{asset('img/lupa.png')}}"/></a>
+                  <!-- Modal Structure -->
+                  <div id="modalbuscador" class="modal">
+                    <div class="modal-content">
+                        <h4><a href="#!" class="right modal-close waves-effect waves-green btn-flat" style="font-family: 'Lato';color: #F07D00;font-weight: bold;">Cerrar</a></h4>
+                        <div class="row">
+                            <h4 style="font-family: 'Source Sans Pro', sans-serif; color: #F07D00">Buscar por nombre de producto</h4>
+                            <div class="col l12 m12 s12" style="">   
+                                {!!  Form::open(['route' => 'buscar', 'method' => 'POST','class' => '']) !!}
+                                <div class="lupa">
+                                     <div class="col l6 m6 s6" style=""> 
+                                    {!!Form::text('buscar', null , ['class'=>''])!!}
+                                    </input>
+                                    </div>
+                                    <div class="col l6 m6 s6" style=""> 
+                                    <button class="btn waves-effect waves-light z-depth-0" type="submit" name="action" style="background-color: white!important;height: 39px;width: 153px;color: #F07D00;    border: 1px solid;font-family: 'Source Sans Pro', sans-serif;">Buscar
+                                    </button>
+                                    </div>
+                                </div>
+                                {!! Form::close() !!}
+                            </div>
+                        </div>
+                    </div>
+                  </div>
             </ul>
         </div>
     </div>
