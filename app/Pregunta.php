@@ -13,6 +13,6 @@ class pregunta extends Model
 
     public function categoria_pregunta()
     {
-        return $this->belongsTo('App\categoria_pregunta');
+        return $this->belongsTo('App\Categoria_pregunta');
     }
 }

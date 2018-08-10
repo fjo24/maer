@@ -150,13 +150,16 @@
 								<tr style="border-bottom: none;">
 									<td colspan="7"></td>
 									<td class="total fs24 azul bold">IVA 21%</td>
+									@php
+										$total =str_replace(',', '', $total);
+									@endphp
 									<td>{{ '$'.$iva}}</td>
 								</tr>
 								<tr style="border-bottom: none;">
 									<td colspan="7"></td>
 									<td class="total fs24 azul bold">Total (IVA incluido)</td>
 									
-									<td name>{{ '$'.$totales }}</td>
+									<td name>{{ '$'.number_format($totales, 2, ',','.') }}</td>
 								</tr>
 								@endif
 							</tbody>

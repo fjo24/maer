@@ -103,7 +103,7 @@ class ZprivadaController extends Controller
                 }
             }
         }
-//ubicar la diferencia para proximo descuento
+//ubicar la diferencia para proximo descuento str_replace(array(',','.','*','/')
         $max               = Descuento::all()->max('minimo');
         $maximo = Descuento::Where('minimo', $max)->first();
         //dd($maximo);
