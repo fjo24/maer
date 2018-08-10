@@ -28,7 +28,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="footer-b col l4 s12 m6" style="    padding-left: 2%;">
+                <div class="footer-b col l4 s12 m6 hide-on-med-and-down" style="    padding-left: 2%;">
                     <h5 class="titulo-footer" style="    margin-top: 13%;">
                         MAER
                     </h5>
@@ -78,7 +78,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="footer_c col l4 s12 m6 left">
+                <div class="footer_c col l4 s12 m6 left hide-on-med-and-down">
                     <h5 class="titulo-footer3" style="margin-top: 13%;">
                         Maer Sistemas de Pintar
                     </h5>

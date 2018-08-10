@@ -1,5 +1,5 @@
 @extends('pages.templates.body')
-@section('title', 'Aberturas General Paz - Categorias')
+@section('title', 'Maer - Categorias')
 @section('css')
 <link href="{{ asset('css/pages/slider.css') }}" rel="stylesheet">
     <link href="{{ asset('css/pages/productos.css') }}" rel="stylesheet">

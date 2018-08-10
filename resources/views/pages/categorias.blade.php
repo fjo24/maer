@@ -1,5 +1,5 @@
 @extends('pages.templates.body')
-@section('title', 'Aberturas General Paz - Categorias')
+@section('title', 'Maer - Categorias')
 @section('css')
 <meta content="{{ $metadato->keywords }}" name="keywords">
     <meta content="{{ $metadato->description }}" name="description">

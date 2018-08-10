@@ -25,7 +25,7 @@
         </div>
     </div>
 </div>
-<div class="seccion-banner" style="background-image: {!! $banner->imagen !!}">
+<div class="seccion-banner hide-on-med-and-down" style="background-image: {!! $banner->imagen !!}">
     <div class="btexto">
         <div class="tbanner center">
             <p>
