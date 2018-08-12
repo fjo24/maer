@@ -140,26 +140,25 @@
 							        <textarea id="mensaje" name="mensaje" class="materialize-textarea" placeholder="Mensaje"></textarea>
 									</td>
 									<td class="total fs24 azul bold">Subtotal</td>
-									<td>{{ '$'.$total }}</td>
+									<td>{{ '$'.number_format($total, 2, ',','.') }}</td>
+
 								</tr>
 								<tr style="border-bottom: none;">
 									<td colspan="7"></td>
 									<td class="total fs24 azul bold">Descuento ({{ $desc .'%'}})</td>
-									<td>{{ '$'.$descuento }}</td>
+									<td>{{ '$'.number_format($descuento, 2, ',','.') }}</td>
 								</tr>
 								<tr style="border-bottom: none;">
 									<td colspan="7"></td>
 									<td class="total fs24 azul bold">IVA 21%</td>
-									@php
-										$total =str_replace(',', '', $total);
-									@endphp
-									<td>{{ '$'.$iva}}</td>
+									
+									<td>{{ '$'.number_format($totales, 2, ',','.') }}</td>
 								</tr>
 								<tr style="border-bottom: none;">
 									<td colspan="7"></td>
 									<td class="total fs24 azul bold">Total (IVA incluido)</td>
 									
-									<td name>{{ '$'.number_format($totales, 2, ',','.') }}</td>
+									<td><strong>{{ '$'.number_format($totales, 2, ',','.') }}</strong></td>
 								</tr>
 								@endif
 							</tbody>

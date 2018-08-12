@@ -124,6 +124,7 @@
                     <a class="activo prod_menu" href="">
                         PRODUCTO
                     </a>
+                    <!-- 
                     <ul style="margin-top: -2%!important;">
                         <li class="menu_cate">
                             <a href="{{ route('sistemas')}}" style="text-transform: uppercase;">
@@ -135,14 +136,14 @@
                                 POR RUBRO
                             </a>
                         </li>
-                    </ul>
+                    </ul>-->
                 </li>
                 @else
                 <li id="menu_productos">
-                    <a class="prod_menu" href="">
+                    <a class="prod_menu" href="{{ route('rubros')}}">
                         PRODUCTO
                     </a>
-                    <ul style="margin-top: -2%!important;">
+                 <!--   <ul style="margin-top: -2%!important;">
                         <li class="menu_cate">
                             <a href="{{ route('sistemas')}}" style="text-transform: uppercase;">
                                 POR SISTEMA
@@ -153,7 +154,7 @@
                                 POR RUBRO
                             </a>
                         </li>
-                    </ul>
+                    </ul>-->
                 </li>
                 @endif
                 @if($activo=='videos')
@@ -263,14 +264,14 @@
                 </a>
             </li>
             <li class="bold">
-                <a class="collapsible-header waves-effect waves-admin">
+                <a href="{{ route('rubros')}}" class="collapsible-header waves-effect waves-admin">
                     <i class="material-icons">
                         map
                     </i>
                     PRODUCTOS
                 </a>
                 <div class="collapsible-body">
-                            <ul>
+                  <!--          <ul>
                                 <li>
                                     <a href="{{ route('sistemas')}}">
                                         SISTEMA
@@ -282,7 +283,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </div>
+                        </div>-->
             </li>
             <li class="bold">
                 <a class="principalmovil collapsible-header waves-effect waves-admin" href="{{ url('/videos') }}contacto">

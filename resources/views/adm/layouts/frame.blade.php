@@ -223,18 +223,20 @@
                             <i class="material-icons">
                                 library_books
                             </i>
-                            Catalogos
+                            Lista de precios
                         </a>
                         <div class="collapsible-body">
                             <ul>
+                                <!--
                                 <li>
                                     <a href="{{route('catalogos.create')}}">
                                         Agregar Catalogo
                                     </a>
                                 </li>
+                            -->
                                 <li>
                                     <a href="{{route('catalogos.index')}}">
-                                        Editar Catalogo
+                                        Editar Lista de precios
                                     </a>
                                 </li>
                             </ul>
