@@ -96,6 +96,26 @@
                 {!! Form::label('modelos') !!}<br />
                 {!! Form::select('modelos[]', $modelos, null, ['class' => 'form-control', 'multiple' => 'multiple']) !!}
             </div>
+            <div class="input-field col l6 s12">
+                {!! Form::select('iva', ['21' => '21%', '10.5' => '10,5%'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione iva para producto']) !!}
+            </div>
+            <div class="input-field col l6 s12">
+                <label>Aplica para descuento?</label>
+                <br>
+            <p>
+      <label>
+        <input class="with-gap" name="aplica_desc" type="radio" value="1"  />
+        <span>Si</span>
+      </label>
+    </p>
+    <p>
+      <label>
+        <input class="with-gap" name="aplica_desc" type="radio" value="0" />
+        <span>No</span>
+      </label>
+    </p>
+            </div>
+            
         </div>
         <label class="col l12 s12" for="descripcion">
             Descripcion

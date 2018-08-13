@@ -50,6 +50,8 @@ class ProductosController extends Controller
         $producto->visible           = $request->visible;
         $producto->categoria_pregunta_id= $request->categoria_pregunta_id;
         $producto->orden             = $request->orden;
+        $producto->aplica_desc             = $request->aplica_desc;
+        $producto->iva             = $request->iva;
         $producto->presentacion      = $request->presentacion;
         $producto->precio            = $request->precio;
         $producto->tipo           = $request->tipo;
@@ -135,6 +137,8 @@ class ProductosController extends Controller
         $producto->visible           = $request->visible;
         $producto->categoria_pregunta_id= $request->categoria_pregunta_id;
         $producto->orden             = $request->orden;
+        $producto->aplica_desc             = $request->aplica_desc;
+        $producto->iva             = $request->iva;
         $producto->presentacion      = $request->presentacion;
         $producto->precio            = $request->precio;
         $producto->tipo           = $request->tipo;
