@@ -98,11 +98,15 @@
 
 							<th>RUBRO</th>
 
+							<th>SUMA A DESCUENTO</th>
+
 							<th>CANTIDAD</th>
 
 							<th>PRECIO UNITARIO</th>
 
 							<th>SUBTOTAL</th>
+
+							<th>IVA</th>
 
 							<th>ELIMINAR</th>
 
@@ -111,6 +115,7 @@
 						<tbody>
 								@php
 									$total = 0;
+									$total_iva = 0;
 								@endphp
 								@foreach(Cart::content()  as $row)
 								<tr>
@@ -120,9 +125,23 @@
 									<td>{{ $row->name }}</td>
 									<td>{{ $row->options->categoria }}</td>
 									<td>{{ $row->options->rubro }}</td>
+									<td>
+										@if($row->options->aplica_desc==1)
+											<center>Si</center>
+										@else
+											<center>No</center>
+										@endif
+									</td>
 									<td>{{ $row->qty }}</td>
 									<td>{{ '$'.$row->price }}</td>
 									<td>{{ '$'.$row->price*$row->qty }}</td>
+									@php
+										$r_iva=($row->price*$row->qty)*$row->options->iva;
+										$iva_p = $r_iva/100;
+										$total_iva = $total_iva + $iva_p;
+									@endphp
+									<td>{{ '$'.$iva_p.'('.$row->options->iva.'%)' }}
+									</td>
 									<td>
 										<a href="{{ url('carrito/delete/'.$row->rowId) }}">
 											<i class="material-icons" style="color:lightgray;">cancel</i>
@@ -136,7 +155,7 @@
 								@if(Cart::count() > 0)
 							{!! Form::open(['route'=>'carrito.enviar', 'method'=>'POST']) !!}
 								<tr style="border-top: 3px solid black;border-bottom: none;height:150%;color: #595959">
-									<td colspan="7">
+									<td colspan="9">
 							        <textarea id="mensaje" name="mensaje" class="materialize-textarea" placeholder="Mensaje"></textarea>
 									</td>
 									<td class="total fs24 azul bold">Subtotal</td>
@@ -144,18 +163,18 @@
 
 								</tr>
 								<tr style="border-bottom: none;">
-									<td colspan="7"></td>
+									<td colspan="9"></td>
 									<td class="total fs24 azul bold">Descuento ({{ $desc .'%'}})</td>
 									<td>{{ '$'.number_format($descuento, 2, ',','.') }}</td>
 								</tr>
 								<tr style="border-bottom: none;">
-									<td colspan="7"></td>
-									<td class="total fs24 azul bold">IVA 21%</td>
+									<td colspan="9"></td>
+									<td class="total fs24 azul bold">IVA</td>
 									
-									<td>{{ '$'.number_format($totales, 2, ',','.') }}</td>
+									<td>{{ '$'.number_format($total_iva, 2, ',','.') }}</td>
 								</tr>
 								<tr style="border-bottom: none;">
-									<td colspan="7"></td>
+									<td colspan="9"></td>
 									<td class="total fs24 azul bold">Total (IVA incluido)</td>
 									
 									<td><strong>{{ '$'.number_format($totales, 2, ',','.') }}</strong></td>
@@ -164,8 +183,8 @@
 							</tbody>
 						
 					</table>
-						<div class="row" style="margin-top: 4%;">
-							    <div class="col s7">
+						<div class="row" style="">
+							    <div class="col s9">
 							      <div class="row">
 							        <div class="input-field col s12">
 
@@ -193,7 +212,7 @@
 									{!! Form::close() !!}
 								</div>
 
-									<a href="{{ url('/zonaprivada/productos') }}" style="position: relative;right: 22%;bottom: 41px;cursor: pointer;" class="right"><button class="boton seguircomprando" style="height: 42px;border: 1px solid #3F3F3F; color:#3F3F3F; background-color: white; padding: 20px; width: 181px;position: relative;border-radius: 6px;"><span style="font-family: 'lato';font-size: 13px;position: relative;bottom: 8px;font-weight: bold;">SEGUIR COMPRANDO</span></button></a>
+									<a href="{{ url('/zonaprivada/productos') }}" style="position: relative;right: -20%;cursor: pointer;" class="right"><button class="boton seguircomprando" style="height: 42px;border: 1px solid #3F3F3F; color:#3F3F3F; background-color: white; padding: 20px; width: 181px;position: relative;border-radius: 6px;"><span style="font-family: 'lato';font-size: 13px;position: relative;bottom: 8px;font-weight: bold;">SEGUIR COMPRANDO</span></button></a>
 						</div>
 					@endif
 				</div>

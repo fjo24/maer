@@ -43,6 +43,8 @@ class CreateProductosTable extends Migration
             $table->integer('producto_id')->unsigned();
             $table->string('cantidad');
             $table->string('costo');
+            $table->string('iva');
+            $table->string('total');
             $table->timestamps();
 
             $table->foreign('pedido_id')->references('id')->on('pedidos')->onDelete('cascade');

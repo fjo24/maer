@@ -8,7 +8,7 @@ class Producto extends Model
 {
     protected $table    = "productos";
     protected $fillable = [
-        'nombre', 'ventajas', 'descripcion', 'contenido', 'categoria_id', 'caracteristicas', 'manual', 'despiece', 'visible', 'orden', 'presentacion', 'imagen_presentacion', 'precio', 'rubro_id', 'modelo_id', 'tipo',
+        'nombre', 'ventajas', 'descripcion', 'contenido', 'categoria_id', 'caracteristicas', 'manual', 'despiece', 'visible', 'orden', 'presentacion', 'imagen_presentacion', 'precio', 'rubro_id', 'modelo_id', 'tipo', 'iva', 'aplica_desc'
     ];
 
     public function categoria()
@@ -48,7 +48,7 @@ class Producto extends Model
 
     public function pedidos()
     {
-        return $this->belongsToMany('App\Pedido', 'pedido_producto')->withPivot('cantidad', 'costo');
+        return $this->belongsToMany('App\Pedido', 'pedido_producto')->withPivot('cantidad', 'costo', 'iva', 'total');
     }
 
     public function relacionados()

@@ -42,6 +42,9 @@
                             PRECIO UNITARIO
                         </th>
                         <th style="width: 128px" class="">
+                            IVA
+                        </th>
+                        <th style="width: 128px" class="">
                             CANTIDAD
                         </th>
                         <th>
@@ -107,7 +110,10 @@
                                 @endforeach
                             </td>
                             <td class="">
-                                {!! $producto->precio !!}
+                                {!! '$'.$producto->precio !!}
+                            </td>
+                            <td class="">
+                                {!! $producto->iva .'%' !!}
                             </td>
                             <td class="">
                                 <label for="cantidad">Cantidad</label>

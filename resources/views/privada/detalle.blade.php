@@ -24,6 +24,9 @@
                     PRECIO UNITARIO
                 </th>
                 <th>
+                    IVA
+                </th>
+                <th>
                     TOTAL
                 </th>
             </thead>
@@ -39,30 +42,39 @@
                     <td>
                         {!!$producto->pivot->costo/$producto->pivot->cantidad!!}
                     </td>
+                    <td class="">
+                        {!! $producto->iva .'%' !!}
+                    </td>
                     <td>
                         {!!$producto->pivot->costo!!}
                     </td>
                 </tr>
                 @endforeach
                 <tr style="border-top: 3px solid black;border-bottom: none;height:150%;color: #595959">
-                                    <td colspan="2">
+                                    <td colspan="3">
                                     <textarea id="mensaje" name="mensaje" class="materialize-textarea" placeholder="Mensaje"></textarea>
                                     </td>
                                     <td class="total fs24 azul bold">Subtotal</td>
                                     <td>{{ '$'.$pedido->subtotal }}</td>
                                 </tr>
                                 <tr style="border-bottom: none;">
-                                    <td colspan="2"></td>
-                                    <td class="total fs24 azul bold">Descuento({{ $pedido->descuento->porcentaje.'%' }})</td>
+                                    <td colspan="3"></td>
+                                    <td class="total fs24 azul bold">
+                                    @if(isset($pedido->descuento->porcentaje))
+                                    Descuento({{ $pedido->descuento->porcentaje.'%' }})
+                                    @else
+                                    Descuento(0%)
+                                    @endif
+                                    </td>
                                     <td>{{ '$'.$descuento }}</td>
                                 </tr>
                                 <tr style="border-bottom: none;">
-                                    <td colspan="2"></td>
-                                    <td class="total fs24 azul bold">IVA 21%</td>
+                                    <td colspan="3"></td>
+                                    <td class="total fs24 azul bold">IVA</td>
                                     <td>{{ '$'.$iva}}</td>
                                 </tr>
                                 <tr style="border-bottom: none;">
-                                    <td colspan="2"></td>
+                                    <td colspan="3"></td>
                                     <td class="total fs24 azul bold">Total (IVA incluido)</td>
                                     
                                     <td name>{{ '$'.$pedido->total }}</td>
