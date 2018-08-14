@@ -184,7 +184,6 @@ class ZprivadaController extends Controller
         $descuento = $subtotal*$constante;
 //iva
         $subtotal_desc = $subtotal-$descuento;
-        $iva = $subtotal_desc*0.21;
 //total
         $totales = ($subtotal-$descuento)+$total_iva;
         $totales      = str_replace(',', '', $totales);
@@ -209,11 +208,11 @@ class ZprivadaController extends Controller
             $precio   = $row->price;
             $costo = $row->price * $row->qty;
             $r_iva = $row->options->iva/100;
-            $total_iva = $costo*$r_iva;
-            $total_costo = $total_iva + $costo;
+            $total_ivap = $costo*$r_iva;
+            $total_costo = $total_ivap + $costo;
             //$idproducto = $row->rowId
             $total_items = $total_items + $row->qty;
-            $pedido->productos()->attach($producto, ['cantidad' => $row->qty, 'pedido_id' => $pedidoid, 'producto_id' => $row->id, 'costo' => $row->price * $row->qty, 'iva' => $total_iva, 'total' => $total_costo]);
+            $pedido->productos()->attach($producto, ['cantidad' => $row->qty, 'pedido_id' => $pedidoid, 'producto_id' => $row->id, 'costo' => $row->price * $row->qty, 'iva' => $total_ivap, 'total' => $total_costo]);
         }
 
         $carrito = Cart::content();
@@ -230,7 +229,9 @@ class ZprivadaController extends Controller
         $telefono     = Auth()->user()->telefono;
         $direccion    = Auth()->user()->direccion;
 
-        Mail::send('privada.mailpedido', ['total' => $total, 'username' => $username, 'nombre' => $nombre, 'apellido' => $apellido, 'social' => $social, 'cuit' => $cuit, 'telefono' => $telefono, 'direccion' => $direccion, 'emailcliente' => $emailcliente, 'items' => $items, 'row' => $row, 'subtotal' => $subtotal, 'mensaje' => $mensaje], function ($message) use ($nombre, $apellido) {
+        //dd($descuento);
+
+        Mail::send('privada.mailpedido', ['total' => $totales, 'username' => $username, 'nombre' => $nombre, 'apellido' => $apellido, 'social' => $social, 'cuit' => $cuit, 'telefono' => $telefono, 'direccion' => $direccion, 'emailcliente' => $emailcliente, 'items' => $items, 'row' => $row, 'subtotal' => $subtotal, 'mensaje' => $mensaje, 'iva' => $total_iva, 'descuento' => $descuento], function ($message) use ($nombre, $apellido) {
 
             $dato = Dato::where('tipo', 'email')->first();
             $message->from('info@aberturastolosa.com.ar', 'MAER | Pedidos');

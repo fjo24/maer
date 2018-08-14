@@ -36,7 +36,9 @@
 		<h4>SubTotal:</h4>
 		<p>${{ $subtotal }}</p>
 		<h4>Iva:</h4>
-		<p>${{ $subtotal*0.21 }}</p>
+		<p>${{ $iva }}</p>
+		<h4>Descuento:</h4>
+		<p>${{ $descuento }}</p>
 
 	<h4>Total:</h4>
 		<p>${{ $total }}</p>
