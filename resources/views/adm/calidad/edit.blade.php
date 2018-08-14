@@ -24,13 +24,34 @@
     <div class="col s12">
         {!!Form::model($homes, ['route'=>['calidad.update',$homes->id], 'method'=>'PUT', 'files' => true])!!}
         <div class="row">
-            <div class="input-field col l12 s12">
-                {!!Form::label('Titulo:')!!}
-						{!!Form::text('nombre', null , ['class'=>''])!!}
+            <div class="input-field col l6 s12">
+                {!!Form::label('nombre:')!!}
+                        {!!Form::text('nombre', null , ['class'=>''])!!}
             </div>
-            <div class="input-field col l12 s12">
+        </div>
+        <div class="row">
+            <label class="col l12 s12" for="parrafo">
+                    Descripción
+                </label>
+                <div class="input-field col s12">
                     <textarea class="materialize-textarea" id="descripcion" name="descripcion" required="">
                         {{$homes->descripcion}}
+                    </textarea>
+                </div>
+                <label class="col l12 s12" for="parrafo">
+                    Contenido
+                </label>
+                <div class="input-field col s12">
+                    <textarea class="materialize-textarea" id="contenido" name="contenido" required="">
+                        {{$homes->contenido}}
+                    </textarea>
+                </div>
+                <label class="col l12 s12" for="parrafo">
+                    Enunciado derecho
+                </label>
+                <div class="input-field col s12">
+                    <textarea class="materialize-textarea" id="descripcion2" name="descripcion2" required="">
+                        {{$homes->descripcion2}}
                     </textarea>
                 </div>
         </div>
@@ -52,6 +73,8 @@
   });
 
     CKEDITOR.replace('descripcion');
+    CKEDITOR.replace('descripcion2');
+    CKEDITOR.replace('contenido');
     CKEDITOR.config.height = '150px';
     CKEDITOR.config.width = '100%';
 </script>

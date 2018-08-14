@@ -26,7 +26,19 @@ class CalidadesController extends Controller
         $homes              = Calidad::find($id);
         $homes->nombre      = $request->nombre;
         $homes->descripcion = $request->descripcion;
+        $homes->descripcion2 = $request->descripcion2;
+        $homes->contenido   = $request->contenido;
+
+        if ($request->hasFile('imagen')) {
+            if ($request->file('imagen')->isValid()) {
+                $file = $request->file('imagen');
+                $path = public_path('img/calidad/');
+                $request->file('imagen')->move($path, $id . '_' . $file->getClientOriginalName());
+                $homes->imagen = 'img/calidad/' . $id . '_' . $file->getClientOriginalName();
+            }
+        }
         $homes->update();
+
 
         return view('adm.dashboard');
     }

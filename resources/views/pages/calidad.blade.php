@@ -6,14 +6,25 @@
 @section('contenido')
 
 <div class="container" style="width: 84%;">
-    <div class="row center" style="position: relative;top: 50px;height: 315px;">
-        <div class="inferior col l12 m12 s12 center"  style="">
-            <div class="tituloinferior">
-                {!! $inferior->nombre !!}
-            </div><br>
-            <div class="descripcioninferior center-align" style="margin-top: -1%;width: 90%;margin-left: 5%;">
-                {!! $inferior->descripcion !!}
-            </div>
+    <div class="row" style="position: relative;top: 0px;height: 500px;">
+    <div class="col l12 m12 s12">
+        <div class="izqcalidad col l7 m7 s12">
+            <span class="nombrecalidad">
+                {!! $contenidosup->nombre !!}
+            </span>
+            <span class="descripcioncalidad">
+                {!! $contenidosup->descripcion !!}
+            </span>
+            <span class="contenidocalidad">
+                {!! $contenidosup->contenido !!}
+            </span>
+        </div>
+        <div class="dercalidad col l5 m5 s12">
+            <hr class="lineacalidad left" />
+             <span class="descripcion2calidad">
+                {!! $contenidosup->descripcion2!!}
+            </span>
+        </div>
         </div>
     </div>
 </div>

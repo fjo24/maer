@@ -92,11 +92,7 @@
 							<th></th>
 							<th>IMAGEN</th>
 
-							<th>DESCRIPCIÓN</th>
-
-							<th>CATEGORIA</th>
-
-							<th>RUBRO</th>
+							<th>MODELO</th>
 
 							<th>SUMA A DESCUENTO</th>
 
@@ -123,8 +119,6 @@
 									<td></td>
 									<td class="timagen " style="width: 95px; height: 85px;"><img class="responsive-img" src="{{ asset($row->options->imagen) }}"/></td>
 									<td>{{ $row->name }}</td>
-									<td>{{ $row->options->categoria }}</td>
-									<td>{{ $row->options->rubro }}</td>
 									<td>
 										@if($row->options->aplica_desc==1)
 											<center>Si</center>

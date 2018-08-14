@@ -122,7 +122,7 @@
                 @if($activo=='productos')
                 <li id="menu_productos">
                     <a class="activo prod_menu" href="">
-                        PRODUCTO
+                        PRODUCTOS
                     </a>
                     <!-- 
                     <ul style="margin-top: -2%!important;">
@@ -141,7 +141,7 @@
                 @else
                 <li id="menu_productos">
                     <a class="prod_menu" href="{{ route('rubros')}}">
-                        PRODUCTO
+                        PRODUCTOS
                     </a>
                  <!--   <ul style="margin-top: -2%!important;">
                         <li class="menu_cate">

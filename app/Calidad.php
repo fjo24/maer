@@ -8,6 +8,6 @@ class calidad extends Model
 {
     protected $table    = "calidad";
     protected $fillable = [
-        'nombre', 'descripcion',
+        'nombre', 'descripcion', 'descripcion2', 'contenido', 'imagen',
     ];
 }

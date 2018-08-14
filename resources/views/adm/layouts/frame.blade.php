@@ -328,12 +328,12 @@
                         <div class="collapsible-body">
                             <ul>
                                 <li>
-                                    <a href="{{route('calidades.create')}}">
+                                    <a href="{{route('calidad.create')}}">
                                         Editar Contenido superior
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{route('calidad.create')}}">
+                                    <a href="{{route('calidades.create')}}">
                                         Editar Contenido inferior
                                     </a>
                                 </li>

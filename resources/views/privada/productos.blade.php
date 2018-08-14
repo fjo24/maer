@@ -27,13 +27,10 @@
                             
                         </th>
                         <th class="">
-                            FAMILIA
-                        </th>
-                        <th class="">
                             PRODUCTO
                         </th>
                         <th class="">
-                            MODELO
+                            CODIGO
                         </th>
                         <th class="">
                             MEDIDA
@@ -59,13 +56,14 @@
                             <div><input type="hidden" value="{{$producto->id}}" name="id"></div>
                             <td class="timagen " style="width: 95px; height: 85px;">
                             @foreach($producto->imagenes as $img)
+                            <a href="" data-target="modal{!! $producto->id !!}" class="modal-trigger" style="color: #7D0045">
                             <img class="responsive-img" src="{{ asset($img->imagen) }}"/>
+                            </a>
                             @if($ready == 0)    
                                         @break;
                                     @endif
                             @endforeach
                             </td>
-                            <td class="tcodigo ">{!! $producto->categoria->nombre !!}</td>
                             <td class="tdescripcion ">
                             <a href="" data-target="modal{!! $producto->id !!}" class="modal-trigger" style="color: #7D0045"> 
                                 {!! $producto->nombre !!}

@@ -216,7 +216,7 @@ nav .item-left a:activo {
 }
 nav .item-left {
     position: relative;
-    padding-left: 0%!important;
+    padding-left: 8%!important;
     /* top: 77px; */
     /* left: 19px; */
     /* width: 468px; */
@@ -236,7 +236,7 @@ nav .item-right {
     line-height: 46px;
 }
 nav ul li {
-    margin: 0px 0px;
+    margin: 0px 3px;
 }
 .colorboton {
     background-color: #F07D00!important;

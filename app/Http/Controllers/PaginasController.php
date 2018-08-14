@@ -151,8 +151,8 @@ class PaginasController extends Controller
         $activo    = 'calidad';
         $banner = Banner::all()->first();
         $contenido = Contenido_calidad::all()->first();
-        $inferior = Calidad::all()->first();
-        return view('pages.calidad', compact('contenido', 'activo', 'banner', 'inferior'));
+        $contenidosup = Calidad::all()->first();
+        return view('pages.calidad', compact('contenido', 'activo', 'banner', 'contenidosup'));
     }
 
     public function preguntas($id)
