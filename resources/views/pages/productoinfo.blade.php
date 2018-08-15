@@ -68,7 +68,7 @@
         {!! $p->contenido !!}
     </div>
 @foreach($p->modelos as $modelo)
-    <table class="highlight bordered" style="margin-top: 1.8%;color: #595959;;height: 40px;">
+    <table class="highlight bordered" style="margin-top: 1.8%;color: #595959;height: 40px;">
             <tbody>
                 <tr>    
                     <td style="width: 22%;border: 1px solid #A2A2A2;color: #595959;">

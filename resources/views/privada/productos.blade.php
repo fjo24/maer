@@ -51,6 +51,7 @@
                 </thead>
                 <tbody>
                     @foreach($productos as $producto)
+                    @foreach($producto->modelos as $modelo)
                      {!! Form::open(['route'=>'carrito.add','id'=>'formpedido','METHOD'=>'POST'])!!}
                         <tr>
                             <div><input type="hidden" value="{{$producto->id}}" name="id"></div>
@@ -95,17 +96,13 @@
     </div>
   </div>
                             </td>
-                            <td class="" value="medida" name="medida">
-                                @foreach($producto->modelos as $modelo)
-                                    {!! $modelo->codigo !!}
-                                    @break              
-                                @endforeach
+                            <td class="">
+                                {!! $modelo->codigo !!}
+                                {{ Form::hidden('codigo', $modelo->codigo) }}
                             </td>
                             <td class="">
-                                @foreach($producto->modelos as $modelo)
-                                    {!! $modelo->medida !!}
-                                    @break              
-                                @endforeach
+                                {!! $modelo->medida !!}
+                                {{ Form::hidden('medida', $modelo->medida) }}
                             </td>
                             <td class="">
                                 {!! '$'.$producto->precio !!}
@@ -124,9 +121,11 @@
                                 @isset($items)
 
                                 @foreach($items as $item)
+                            @if($item->options->codigo==$modelo->codigo)
                             @if($item->id==$producto->id)
                                 <?php $shop = 1; ?>
                                 <button type="submit" name="submit" style="padding-bottom: 0px;padding-right: 0px;border-top-width: 0px;padding-left: 0px;background-color: white;border-left-width: 0px;margin-right: 0px;border-right-width: 0px;    border-bottom-width: 0px;"><i class="material-icons" style="color: green; background-color: transparent!important;">check_circle</i></button>
+                            @endif
                             @endif
                             @endforeach
                             @endisset
@@ -140,6 +139,7 @@
                         </tr>
                     {!!Form::close()!!}
 
+                    @endforeach
                     @endforeach
                 </tbody>
             </table>
@@ -169,6 +169,10 @@ $(document).ready(function(){
 
   $(document).ready(function(){
     $('.modal').modal();
+  });
+
+  $(document).ready(function(){
+    $('select').formSelect();
   });
           
 

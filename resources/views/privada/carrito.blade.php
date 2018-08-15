@@ -94,6 +94,10 @@
 
 							<th>MODELO</th>
 
+							<th>CODIGO</th>
+
+							<th>MEDIDA</th>
+
 							<th>SUMA A DESCUENTO</th>
 
 							<th>CANTIDAD</th>
@@ -119,6 +123,8 @@
 									<td></td>
 									<td class="timagen " style="width: 95px; height: 85px;"><img class="responsive-img" src="{{ asset($row->options->imagen) }}"/></td>
 									<td>{{ $row->name }}</td>
+									<td>{{ $row->options->codigo }}</td>
+									<td>{{ $row->options->medida }}</td>
 									<td>
 										@if($row->options->aplica_desc==1)
 											<center>Si</center>

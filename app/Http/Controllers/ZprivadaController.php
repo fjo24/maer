@@ -7,6 +7,7 @@ use App\Dato;
 use App\Descuento;
 use App\Pedido;
 use App\Producto;
+use App\Modelo;
 use Carbon\Carbon;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
@@ -25,8 +26,10 @@ class ZprivadaController extends Controller
         $productos = Producto::OrderBy('orden', 'ASC')->where('visible', '<>', 'privado')->get();
         $aux       = Producto::orderBy('orden', 'ASC')->get();
         $prod      = $aux->toJson();
+        $modelos = Modelo::orderBy('codigo', 'ASC')->get();
+       // dd($modelo);
         // dd($carrito->all());
-        return view('privada.productos', compact('modelos', 'shop', 'carrito', 'activo', 'productos', 'ready', 'prod', 'config', 'items'));
+        return view('privada.productos', compact('modelos', 'categorias', 'shop', 'carrito', 'activo', 'productos', 'ready', 'prod', 'config', 'items'));
     }
 
     public function add(Request $request)
@@ -40,28 +43,29 @@ class ZprivadaController extends Controller
         $im        = 0;
         $shop      = 0;
         $total_items = 0;
-        $productos = Producto::OrderBy('orden', 'ASC')->get();
+        $productos = Producto::OrderBy('orden', 'DESC')->get();
         $producto  = Producto::find($request->id);
+        //dd($request->medida);
+        $model = Modelo::find($request->modelo_id);
         foreach ($producto->imagenes as $img) {
             $imagen = $img->imagen;
             if ($im == 0) {
                 break;
             }
         }
-        foreach($producto->modelos as $modelo){
-            $codigo = $modelo->codigo;
-            if ($im == 0) {
-                break;
-            }
-        }            
+        
+        $codigo = $request->codigo;
 
+
+        $medida = $request->medida;
         $categoria = $producto->categoria->nombre;
         $rubro = $producto->rubro->nombre;
 
         if ($request->cantidad > 0) {
-            Cart::add(['id' => $producto->id, 'name' => $producto->nombre, 'price' => $producto->precio, 'qty' => $request->cantidad, 'options' => ['orden' => $producto->orden, 'imagen' => $imagen, 'categoria' => $categoria, 'rubro' => $rubro, 'iva' => $producto->iva, 'aplica_desc' => $producto->aplica_desc]]);
+            Cart::add(['id' => $producto->id, 'name' => $producto->nombre, 'price' => $producto->precio, 'qty' => $request->cantidad, 'options' => ['orden' => $producto->orden, 'imagen' => $imagen, 'categoria' => $categoria, 'rubro' => $rubro, 'codigo' => $codigo, 'medida' => $medida, 'iva' => $producto->iva, 'aplica_desc' => $producto->aplica_desc]]);
             //dd($categoria);
-            return redirect()->route('zproductos', compact('shop', 'carrito', 'activo', 'productos', 'ready', 'prod', 'config', 'items', 'codigo', 'desc', 'iva'));
+//            dd($items);
+            return redirect()->route('zproductos', compact('shop', 'medida', 'carrito', 'activo', 'productos', 'ready', 'prod', 'config', 'items', 'codigo', 'desc', 'iva'));
         } else {
             return back();
         }

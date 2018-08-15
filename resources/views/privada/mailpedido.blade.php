@@ -21,6 +21,8 @@
 				<th style="text-align: left;">Producto</th>
 				<th>Cantidad</th>
 				<th style="text-align: right;">Precio unitario</th>
+				<th>Codigo</th>
+				<th>Medida</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -29,6 +31,8 @@
 					<td style="text-align: left;">{{ $producto->name }}</td>
 					<td>{{ $producto->qty }}</td>
 					<td>${{ $producto->price }}</td>
+					<td>${{ $producto->options->codigo }}</td>
+					<td>${{ $producto->options->medida }}</td>
 				</tr>
 			@endforeach
 		</tbody>
