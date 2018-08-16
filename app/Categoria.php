@@ -13,6 +13,7 @@ class Categoria extends Model
 
     public function productos()
     {
-        return $this->hasMany('App\Producto'); 
+        return $this->belongsToMany('App\Producto', 'rubro_producto', 'rubro_id', 'producto_id');
     }
+
 }

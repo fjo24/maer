@@ -24,14 +24,18 @@
             </a>
             <div class="collapsible-body">
                 <ul>
-                    @foreach($productos as $producto)
+                            @foreach($productos as $producto)
+                    @foreach($categoria->productos as $pro)
+                            @if($pro->id==$producto->id)
                     <li style="margin: 4px 0;">
-                        <a href="{{ route('productoinfo', $producto->id)}}">
+                        <a href="{{ route('productoinfo', $pro->id)}}">
                             <span>
-                                {{$producto->nombre}}
+                                {{$pro->nombre}}
                             </span>
                         </a>
                     </li>
+                    @endif
+                    @endforeach
                     @endforeach
                 </ul>
             </div>

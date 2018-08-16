@@ -72,7 +72,8 @@
                 {!! Form::select('categoria_id', $categorias, null, ['class' => 'form-control', 'placeholder' => 'Sistema', 'required']) !!}
             </div>
             <div class="input-field col l6 s12">
-                {!! Form::select('rubro_id', $rubros, null, ['class' => 'form-control', 'placeholder' => 'Rubros', 'required']) !!}
+                {!! Form::label('rubros') !!}<br />
+                {!! Form::select('rubros[]', $rubros, null, ['class' => 'form-control', 'multiple' => 'multiple']) !!}
             </div>
             <div class="input-field col l6 s12">
                 {!! Form::select('categoria_pregunta_id', $categoria_preguntas, null, ['class' => 'form-control', 'placeholder' => 'Categoria de preguntas']) !!}

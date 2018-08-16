@@ -57,7 +57,9 @@
                         @endforeach
                     </td>
                     <td>
-                    	{!!$producto->rubro->nombre!!}
+                        @foreach($producto->rubros as $rubro)
+                    	{!!$rubro->nombre!!} /
+                        @endforeach
                      </td>
                      <td>
                         {!!$producto->categoria->nombre!!}

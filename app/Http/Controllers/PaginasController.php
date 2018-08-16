@@ -70,7 +70,7 @@ class PaginasController extends Controller
         $activo    = 'productos';
         $categoria = Rubro::find($id);
         $ready = 0;
-        $productos = Producto::OrderBy('orden', 'asc')->where('rubro_id', $id)->get();
+        $productos = Producto::OrderBy('orden', 'asc')->get();
         $categorias = Rubro::OrderBy('orden', 'asc')->get();
         return view('pages.rubroproductos', compact('productos', 'categoria', 'ready', 'categorias', 'id', 'activo'));
     }
@@ -163,7 +163,7 @@ class PaginasController extends Controller
         $ready         = 0;
         $relacionados  = Producto::OrderBy('orden', 'ASC')->Where('categoria_id', $p->categoria_id)->get();
         $activo        = 'productos';
-        $categorias    = Categoria::OrderBy('orden', 'asc')->get();
+        $categorias    = Rubro::OrderBy('orden', 'asc')->get();
         $productos     = Producto::OrderBy('categoria_id', 'ASC')->get();
 
         return view('pages.preguntas', compact('categorias', 'categoria', 'productos', 'preguntas', 'ready', 'activo', 'ref', 'subref', 'sub', 'cat', 'p', 'relacionados'));

@@ -29,7 +29,7 @@ class CreateProductosTable extends Migration
             $table->enum('visible', ['publico', 'privado', 'ambos']);
             $table->enum('tipo', ['novedad', 'oferta', 'ninguna'])->nullable();
             $table->integer('categoria_id')->unsigned();
-            $table->integer('rubro_id')->unsigned();
+            $table->integer('rubro_id')->nullable()->unsigned();
             $table->integer('modelo_id')->unsigned()->nullable();
 
             $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade');
@@ -58,6 +58,16 @@ class CreateProductosTable extends Migration
             $table->timestamps();
 
             $table->foreign('modelo_id')->references('id')->on('modelos')->onDelete('cascade');
+            $table->foreign('producto_id')->references('id')->on('productos')->onDelete('cascade');
+        });
+
+        Schema::create('rubro_producto', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('rubro_id')->unsigned();
+            $table->integer('producto_id')->unsigned();
+            $table->timestamps();
+
+            $table->foreign('rubro_id')->references('id')->on('rubros')->onDelete('cascade');
             $table->foreign('producto_id')->references('id')->on('productos')->onDelete('cascade');
         });
     }

@@ -45,7 +45,6 @@ class ProductosController extends Controller
         $producto->descripcion       = $request->descripcion;
         $producto->contenido         = $request->contenido;
         $producto->categoria_id      = $request->categoria_id;
-        $producto->rubro_id          = $request->rubro_id;
         $producto->caracteristicas   = $request->caracteristicas;
         $producto->visible           = $request->visible;
         $producto->categoria_pregunta_id= $request->categoria_pregunta_id;
@@ -91,7 +90,7 @@ class ProductosController extends Controller
         }
 
         $producto->save();
-
+        $producto->rubros()->sync($request->get('rubros'));
         $producto->aplicaciones()->sync($request->get('aplicaciones'));
         $producto->modelos()->sync($request->get('modelos'));
         return redirect()->route('productos.index');
@@ -132,7 +131,6 @@ class ProductosController extends Controller
         $producto->descripcion       = $request->descripcion;
         $producto->contenido         = $request->contenido;
         $producto->categoria_id      = $request->categoria_id;
-        $producto->rubro_id          = $request->rubro_id;
         $producto->caracteristicas   = $request->caracteristicas;
         $producto->visible           = $request->visible;
         $producto->categoria_pregunta_id= $request->categoria_pregunta_id;
@@ -172,6 +170,7 @@ class ProductosController extends Controller
         $producto->update();
         $producto->aplicaciones()->sync($request->get('aplicaciones'));
         $producto->modelos()->sync($request->get('modelos'));
+        $producto->rubros()->sync($request->get('rubros'));
         return redirect()->route('productos.index');
     }
 

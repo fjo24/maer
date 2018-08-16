@@ -36,11 +36,20 @@
                                     </a>
                                 </li>
                                 <li class="privado_head">
-                                                    <div class="dropdown-trigger hide-on-med-and-down" data-target="dropdown1">
+                                @if(Auth::user())
+
+                                                    <div class="dropdown-trigger hide-on-med-and-down">
+                                        <a href="{{ route('zproductos')}}" style="color: #F07D00;margin-top: -4%;">
+                                            Zona privada
+                                        </a>
+                                    </div>
+                                    @else
+                                    <div class="dropdown-trigger hide-on-med-and-down" data-target="dropdown1">
                                         <a href="zonaprivada/productos" style="color: #F07D00;margin-top: -4%;">
                                             Zona privada
                                         </a>
                                     </div>
+                                @endif
                     <!-- Dropdown LOGIN -->
                 <div class="areaprivada">
                     <ul class="dropdown-content" id="dropdown1" style="background: none, width:400px!important; height: 282px!important;">

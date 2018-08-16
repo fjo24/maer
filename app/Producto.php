@@ -16,9 +16,9 @@ class Producto extends Model
         return $this->belongsTo('App\Categoria');
     }
 
-    public function rubro()
+    public function rubros()
     {
-        return $this->belongsTo('App\Rubro');
+        return $this->belongsToMany('App\Rubro', 'rubro_producto', 'producto_id', 'rubro_id');
     }
 
     public function preguntas()

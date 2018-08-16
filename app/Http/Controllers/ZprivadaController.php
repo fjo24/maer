@@ -59,7 +59,13 @@ class ZprivadaController extends Controller
         $codigo = $model->codigo;
         $medida = $model->medida;
         $categoria = $producto->categoria->nombre;
-        $rubro = $producto->rubro->nombre;
+        foreach ($producto->rubros as $rub) {
+            $rubro = $rub->nombre;
+            if ($im == 0) {
+                break;
+            }
+        }
+        
 
         if ($request->cantidad > 0) {
             Cart::add(['id' => $producto->id, 'name' => $producto->nombre, 'price' => $producto->precio, 'qty' => $request->cantidad, 'options' => ['orden' => $producto->orden, 'imagen' => $imagen, 'categoria' => $categoria, 'rubro' => $rubro, 'codigo' => $codigo, 'medida' => $medida, 'iva' => $producto->iva, 'aplica_desc' => $producto->aplica_desc]]);

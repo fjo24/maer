@@ -21,7 +21,7 @@
                                 </a>
                             </h7>
                         <div class="col l3 s12 m3">
-                            @include('pages.templates.nav_categorias')
+                            @include('pages.templates.nav_rubros')
                         </div>
                         {{-- Menu final --}}
                         <div class="galeria2 col l9 m9 s12">

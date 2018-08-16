@@ -72,7 +72,8 @@
                 {!! Form::select('categoria_id', $categorias, null, ['class' => 'form-control', 'placeholder' => 'Sistema', 'required']) !!}
             </div>
             <div class="input-field col l6 s12">
-                {!! Form::select('rubro_id', $rubros, null, ['class' => 'form-control', 'placeholder' => 'Rubros', 'required']) !!}
+                {!! Form::label('rubros') !!}<br />
+                {!! Form::select('rubros[]', $rubros, null, ['class' => 'form-control', 'multiple' => 'multiple']) !!}
             </div>
             <div class="input-field col l6 s12">
                 {!! Form::select('categoria_pregunta_id', $categoria_preguntas, null, ['class' => 'form-control', 'placeholder' => 'Categoria de preguntas']) !!}
@@ -104,13 +105,13 @@
                 <br>
             <p>
       <label>
-        <input class="with-gap" name="aplica_desc" type="radio" value="1"  />
+        <input class="with-gap" name="aplica_desc" type="radio" value="1" @if($producto->aplica_desc == '1') checked @endif />
         <span>Si</span>
       </label>
     </p>
     <p>
       <label>
-        <input class="with-gap" name="aplica_desc" type="radio" value="0" />
+        <input class="with-gap" name="aplica_desc" type="radio" value="0" @if($producto->aplica_desc == '0') checked @endif />
         <span>No</span>
       </label>
     </p>

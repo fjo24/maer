@@ -22,10 +22,12 @@
                         </div>
                         <div class="col l9 s12 m9" style="margin-top: -1.5%;">
                             @foreach($productos as $producto)
+                            @foreach($categoria->productos as $pro)
+                            @if($pro->id==$producto->id)
                             <div class="col l4 s12 m4">
                                 <div class="div-product">
-                                    <a href="{{ route('productoinfo', $producto->id)}}">
-                                        @foreach($producto->imagenes as $imagen)
+                                    <a href="{{ route('productoinfo', $pro->id)}}">
+                                        @foreach($pro->imagenes as $imagen)
                                         <div class="efecto hide-on-med-and-down">
                                                     <span class="central">
                                                         <i class="center material-icons">
@@ -39,12 +41,14 @@
 	                             	@endif
 	                             	@endforeach
                                                 <div class="div-nombre" style="text-transform: uppercase;">
-                                                    {!!$producto->nombre !!}
+                                                    {!!$pro->nombre !!}
                                                 </div>
                                         </img>
                                     </a>
                                 </div>
                             </div>
+                            @endif
+                            @endforeach
                             @endforeach
 
                         </div>
