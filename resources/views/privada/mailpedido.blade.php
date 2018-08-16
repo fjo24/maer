@@ -31,8 +31,8 @@
 					<td style="text-align: left;">{{ $producto->name }}</td>
 					<td>{{ $producto->qty }}</td>
 					<td>${{ $producto->price }}</td>
-					<td>${{ $producto->options->codigo }}</td>
-					<td>${{ $producto->options->medida }}</td>
+					<td>{{ $producto->options->codigo }}</td>
+					<td>{{ $producto->options->medida }}</td>
 				</tr>
 			@endforeach
 		</tbody>

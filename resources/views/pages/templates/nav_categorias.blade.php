@@ -24,7 +24,7 @@
             </a>
             <div class="collapsible-body">
                 <ul>
-                    @foreach($cat->productos as $producto)
+                    @foreach($productos as $producto)
                     <li style="margin: 4px 0;">
                         <a href="{{ route('productoinfo2', $producto->id)}}">
                             <span>

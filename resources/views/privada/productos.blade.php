@@ -30,10 +30,7 @@
                             PRODUCTO
                         </th>
                         <th class="">
-                            CODIGO
-                        </th>
-                        <th class="">
-                            MEDIDA
+                            CODIGO / MEDIDA
                         </th>
                         <th style="width: 128px" class="">
                             PRECIO UNITARIO
@@ -51,8 +48,7 @@
                 </thead>
                 <tbody>
                     @foreach($productos as $producto)
-                    @foreach($producto->modelos as $modelo)
-                     {!! Form::open(['route'=>'carrito.add','id'=>'formpedido','METHOD'=>'POST'])!!}
+                     {!! Form::open(['route'=>'carrito.add','METHOD'=>'POST'])!!}
                         <tr>
                             <div><input type="hidden" value="{{$producto->id}}" name="id"></div>
                             <td class="timagen " style="width: 95px; height: 85px;">
@@ -65,7 +61,7 @@
                                     @endif
                             @endforeach
                             </td>
-                            <td class="tdescripcion ">
+                            <td class="tdescripcion"  style="width: 29%;">
                             <a href="" data-target="modal{!! $producto->id !!}" class="modal-trigger" style="color: #7D0045"> 
                                 {!! $producto->nombre !!}
                             </a>
@@ -96,13 +92,13 @@
     </div>
   </div>
                             </td>
-                            <td class="">
-                                {!! $modelo->codigo !!}
-                                {{ Form::hidden('codigo', $modelo->codigo) }}
-                            </td>
-                            <td class="">
-                                {!! $modelo->medida !!}
-                                {{ Form::hidden('medida', $modelo->medida) }}
+                            <td>
+                                <select class="browser-default" name="modelo_id" style="width: 60%!important;">
+
+                                @foreach($producto->modelos as $modelo)
+                                    <option value={{$modelo->id}}>{{$modelo->codigo}}/{{$modelo->medida}}</option>
+                                @endforeach
+                                </select>  
                             </td>
                             <td class="">
                                 {!! '$'.$producto->precio !!}
@@ -121,11 +117,9 @@
                                 @isset($items)
 
                                 @foreach($items as $item)
-                            @if($item->options->codigo==$modelo->codigo)
                             @if($item->id==$producto->id)
                                 <?php $shop = 1; ?>
                                 <button type="submit" name="submit" style="padding-bottom: 0px;padding-right: 0px;border-top-width: 0px;padding-left: 0px;background-color: white;border-left-width: 0px;margin-right: 0px;border-right-width: 0px;    border-bottom-width: 0px;"><i class="material-icons" style="color: green; background-color: transparent!important;">check_circle</i></button>
-                            @endif
                             @endif
                             @endforeach
                             @endisset
@@ -139,7 +133,6 @@
                         </tr>
                     {!!Form::close()!!}
 
-                    @endforeach
                     @endforeach
                 </tbody>
             </table>

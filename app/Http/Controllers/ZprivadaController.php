@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Catalogo;
+use App\Categoria;
 use App\Dato;
 use App\Descuento;
 use App\Pedido;
@@ -27,6 +28,7 @@ class ZprivadaController extends Controller
         $aux       = Producto::orderBy('orden', 'ASC')->get();
         $prod      = $aux->toJson();
         $modelos = Modelo::orderBy('codigo', 'ASC')->get();
+        $categorias = Categoria::orderBy('nombre', 'ASC')->pluck('nombre', 'id')->all();
        // dd($modelo);
         // dd($carrito->all());
         return view('privada.productos', compact('modelos', 'categorias', 'shop', 'carrito', 'activo', 'productos', 'ready', 'prod', 'config', 'items'));
@@ -46,7 +48,6 @@ class ZprivadaController extends Controller
         $productos = Producto::OrderBy('orden', 'DESC')->get();
         $producto  = Producto::find($request->id);
         //dd($request->medida);
-        $model = Modelo::find($request->modelo_id);
         foreach ($producto->imagenes as $img) {
             $imagen = $img->imagen;
             if ($im == 0) {
@@ -54,10 +55,9 @@ class ZprivadaController extends Controller
             }
         }
         
-        $codigo = $request->codigo;
-
-
-        $medida = $request->medida;
+        $model = Modelo::find($request->modelo_id);
+        $codigo = $model->codigo;
+        $medida = $model->medida;
         $categoria = $producto->categoria->nombre;
         $rubro = $producto->rubro->nombre;
 
