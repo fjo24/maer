@@ -5,21 +5,70 @@
 @section('contenido')
 <link href="{{ asset('css/privada/zproductos.css') }}" rel="stylesheet" type="text/css"/>
 <link href="{{ asset('css/privada/zproductos2.css') }}" rel="stylesheet" type="text/css"/>
+<link href="{{ asset('css/privada/descuentos.css') }}" rel="stylesheet" type="text/css"/>
 <body class="wide comments tprivada">
     <div class="fw-body">
         <div class="container" style="width: 85%">
+
+<div class="row">
+    <div class="col l12 m12 s12" style="margin-top: 5%;">
+        <div class="box_descuento1 left col l6 m6 s12">
+            <span class="descuento col l12 m12 s12">
+                Descuento
+            </span>
+            @foreach($descuentos as $d)
+                <div class="itemsdescuento col l12 m12 s12">
+                    <div class="col l10 m10 s10">
+                        @if(($d->minimo==1)&&($d->maximo==null))
+                            {!! $d->minimo !!} unidad
+                        @else
+                            @empty($d->maximo)
+                                +
+                            @endisset
+                                {!! $d->minimo !!}
+                            @isset($d->maximo)
+                                    a
+                                {!! $d->maximo !!}
+                            @endisset
+                                unidades
+                        @endif
+                    </div>
+                    <div class="col l2 m2 s2" style="color:#F07D00; font-weight: bold;">
+                        {!! $d->porcentaje !!}%
+                    </div>
+                    <br>
+                    <hr class="descuentoline">
+                </div>
+            @endforeach
+        </div>
+        <div class="box_descuento2 right col l6 m6 s12">
+            <div class="col l12 m12 s12 center">
+                    <img class="campana" alt="" src="{{asset('img/campana.png')}}">
+                                        </img>
+                    <img class="etiqueta" alt="" src="{{asset('img/etiqueta.png')}}">
+                                        </img>
+            </div>
+            <div class="col l12 m12 s12 center" style="margin-top: 3%;">
+                <div class="descuento_box2">
+                    ¡Descuento de 5% por pago al contado!
+                </div>
+                <hr class="lineadescuento2"/>
+                <div class="diferencia_box2">
+                    @if($diferencia!=null)  
+                    Sumando {!! $diferencia !!} productos accedés al descuento de {!! $proximo->porcentaje !!}% en el total de tu compra
+                    @else
+                        Tiene un descuento del {!! $desc !!}%
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>  
+</div>
+
     <div class="masiva">
         PEDIDOS
     </div>
     <br>
-            <div class="center buscadorprivado">
-
-
-                {!!  Form::open(['route' => 'buscador', 'method' => 'POST', 'id'=>'buscador']) !!}
-                <input id="pbuscar" name="pbuscar" type="psearch">
-                </input>
-                    {!! Form::close() !!}
-            </div>
             <table class="display" id="tprivada" style="width:100%;margin-bottom: 11%;">
                 <thead>
                     <tr class="trprincipal">
@@ -93,8 +142,8 @@
   </div>
                             </td>
                             <td>
-                                <select class="browser-default" name="modelo_id" style="width: 60%!important;">
-
+                                <select class="browser-default" name="modelo_id" style="width: 60%!important;" required>
+                                    <option value="" disabled selected>Selecciona modelo</option>
                                 @foreach($producto->modelos as $modelo)
                                     <option value={{$modelo->id}}>{{$modelo->codigo}}/{{$modelo->medida}}</option>
                                 @endforeach
@@ -108,7 +157,26 @@
                             </td>
                             <td class="">
                                 <label for="cantidad">Cantidad</label>
-                            <input type="number" name="cantidad" value="1" style="width: 46px;">
+                                @if (count(Cart::content())>0) 
+     
+                @php
+                                $car = 0;
+                            @endphp
+                    @foreach(Cart::content()  as $row)
+                        @if($row->id==$producto->id)
+                            <input type="number" name="cantidad" value="{!! $row->qty!!}" style="width: 46px;" required>
+                            @php
+                                $car = 1;
+                            @endphp
+                            @break
+                        @endif
+                    @endforeach
+                    @if($car==0)
+                            <input type="number" name="cantidad" value="" style="width: 46px;" required>
+                        @endif
+                            @else
+                            <input type="number" name="cantidad" value="" style="width: 46px;" required>
+                            @endif
                             </td>
                             {{ Form::hidden('precio', $producto->precio) }}
 
@@ -133,11 +201,12 @@
                         </tr>
                     {!!Form::close()!!}
 
+                    
                     @endforeach
                 </tbody>
             </table>
             <div class="right"><a href="{{ route('carrito') }}">
-<button class="enviar" class="bg-azul" href="" style="position: relative;bottom:95px;border-radius: 12px;padding: initial!important;color:white; padding: 20px; background-color: #3F3F3F; border: none; width: 181px;height: 42px!important;"><span style="font-family: 'Monserrat';font-size: 13px;font-weight: bold;">FINALIZAR COMPRA</span></button></a>
+<button class="enviar" class="bg-azul" href="" style="position: relative;bottom:95px;border-radius: 12px;padding: initial!important;color:white; padding: 20px; background-color: #3F3F3F; border: none; width: 181px;height: 42px!important;"><span style="font-family: 'Montserrat';font-size: 13px;font-weight: bold;">FINALIZAR COMPRA</span></button></a>
 </div>
               <!-- Modal Trigger -->
           

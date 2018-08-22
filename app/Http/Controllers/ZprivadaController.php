@@ -19,10 +19,16 @@ class ZprivadaController extends Controller
     public function productos()
     {
         $activo    = 'pedidos';
+        $descuentos  = Descuento::OrderBy('porcentaje', 'ASC')->get();
         $carrito   = Cart::content();
         $items     = $carrito->all();
         $ready     = 0;
+        $total_items = 0;
+        $diferencia = null;
+        $carrito     = Cart::content();
         $config    = 4;
+        $id_desc = 0;
+        $desc = 0;
         $shop      = 0;
         $productos = Producto::OrderBy('orden', 'ASC')->where('visible', '<>', 'privado')->get();
         $aux       = Producto::orderBy('orden', 'ASC')->get();
@@ -31,7 +37,45 @@ class ZprivadaController extends Controller
         $categorias = Categoria::orderBy('nombre', 'ASC')->pluck('nombre', 'id')->all();
        // dd($modelo);
         // dd($carrito->all());
-        return view('privada.productos', compact('modelos', 'categorias', 'shop', 'carrito', 'activo', 'productos', 'ready', 'prod', 'config', 'items'));
+        if (count($carrito)>0) {
+            # code...
+        foreach (Cart::content() as $row) {
+            if ($row->options->aplica_desc==1) {
+                $total_items = $total_items + $row->qty;
+            }
+        }
+    }
+        //  dd($total_items);
+        foreach ($descuentos as $descuento) {
+            if ($total_items >= $descuento->minimo) {
+                $desc    = $descuento->porcentaje;
+                $id_desc = $descuento->id;
+                $sw = 1;
+            } else {
+                if ($sw=1) {
+                    break;
+                }else{                    
+                    $desc    = 0;
+                    $id_desc = null;
+                }
+            }
+        }
+//ubicar la diferencia para proximo descuento str_replace(array(',','.','*','/')
+        $max               = Descuento::all()->max('minimo');
+        $maximo = Descuento::Where('minimo', $max)->first();
+        //dd($maximo);
+        $diferencia=null;
+        if ($maximo->id==$id_desc) {
+            $diferencia==null;
+        }elseif($total_items>0){
+        $proximo = Descuento::find($id_desc+1);
+        $diferencia = $proximo->minimo-$total_items;
+        }else{
+            $proximo = Descuento::first();
+            $diferencia = $proximo->minimo;
+        }
+
+        return view('privada.productos', compact('modelos', 'diferencia', 'proximo', 'descuentos', 'categorias', 'shop', 'carrito', 'activo', 'productos', 'ready', 'prod', 'config', 'items'));
     }
 
     public function add(Request $request)
@@ -80,7 +124,6 @@ class ZprivadaController extends Controller
     public function carrito(Request $request)
     {
 
-
         $activo = 'carrito';
         $descuentos  = Descuento::OrderBy('porcentaje', 'ASC')->get();
         $total_items = 0;
@@ -91,6 +134,8 @@ class ZprivadaController extends Controller
         $subtotal   = str_replace(',', '', $subtotal);
         $diferencia = null;
         $id_desc = 0;
+        $descuento_item = 0;
+        $descuento_total = 0;
         $desc = 0;
         $total_iva = 0;
 
@@ -100,9 +145,7 @@ class ZprivadaController extends Controller
             if ($row->options->aplica_desc==1) {
                 $total_items = $total_items + $row->qty;
             }
-            $r_iva=($row->price*$row->qty)*$row->options->iva;
-            $iva_p = $r_iva/100;
-            $total_iva = $total_iva + $iva_p;
+            
         }
 
       //  dd($total_items);
@@ -135,10 +178,31 @@ class ZprivadaController extends Controller
             $diferencia = $proximo->minimo;
         }
 
+        if (count($carrito)>0) {
+            # code...
+        foreach (Cart::content() as $row) {
+
+                $constante = $desc/100;
+               // dd($constante);
+                $costo_item = $row->price*$row->qty;
+               // dd($costo_item);
+                $descuento_item = $costo_item*$constante;
+                //dd($descuento_item);
+                $r_iva=($costo_item-$descuento_item)*$row->options->iva;
+                //dd($r_iva);
+                $iva_p = $r_iva/100;
+                //dd($iva_p);
+                $total_iva = $total_iva + $iva_p;
+                $descuento_total = $descuento_item + $descuento_total;
+
+        }
+        //dd($descuento_total);
+    }
+$constante = $desc/100;
+
 //dd($desc);
 //descuento en pesos
-        $constante = $desc/100;
-        $descuento = $subtotal*$constante;
+        $descuento = $descuento_total;
 //iva
         $subtotal_desc = $subtotal-$descuento;
         $iva = $total_iva;
@@ -146,7 +210,7 @@ class ZprivadaController extends Controller
         $totales = ($subtotal-$descuento)+$iva;
       //  $descuento = $total;
         }
-        return view('privada.carrito', compact('activo', 'desc', 'descuento', 'iva', 'totales', 'descuentos', 'diferencia', 'proximo'));
+        return view('privada.carrito', compact('activo', 'constante','desc', 'descuento', 'iva', 'totales', 'descuentos', 'diferencia', 'proximo'));
     }
 
     public function send(Request $request)
@@ -195,13 +259,14 @@ class ZprivadaController extends Controller
 //iva
         $subtotal_desc = $subtotal-$descuento;
 //total
-        $totales = ($subtotal-$descuento)+$total_iva;
+       // dd($request->totales);
+        $totales = $request->totales;
         $totales      = str_replace(',', '', $totales);
         $pedido               = new Pedido;
         $pedido->fecha        = $fecha;
         $pedido->total        = $totales;
-        $pedido->subtotal     = $subtotal;
-        $total_iva            = number_format($total_iva, 2, '.', ',');
+        $pedido->subtotal     = $request->total_con_descuento;
+        $total_iva            = number_format($request->total_iva, 2, '.', ',');
         $pedido->iva          = $total_iva;
         $pedido->fecha        = $fecha;
         $pedido->descuento_id = $id_desc;

@@ -6,24 +6,24 @@
 @section('contenido')
 
 <div class="container" style="width: 84%;">
-    <div class="row" style="position: relative;top: 0px;height: 500px;">
+    <div class="row" style="position: relative;top: 0px;">
     <div class="col l12 m12 s12">
         <div class="izqcalidad col l7 m7 s12">
-            <span class="nombrecalidad">
+            <div class="nombrecalidad">
                 {!! $contenidosup->nombre !!}
-            </span>
-            <span class="descripcioncalidad">
+            </div>
+            <div class="descripcioncalidad">
                 {!! $contenidosup->descripcion !!}
-            </span>
-            <span class="contenidocalidad">
+            </div>
+            <div class="contenidocalidad">
                 {!! $contenidosup->contenido !!}
-            </span>
+            </div>
         </div>
         <div class="dercalidad col l5 m5 s12">
             <hr class="lineacalidad left" />
-             <span class="descripcion2calidad">
+             <div class="descripcion2calidad">
                 {!! $contenidosup->descripcion2!!}
-            </span>
+            </div>
         </div>
         </div>
     </div>
@@ -38,24 +38,24 @@
         <hr class="lineabanner"/>
     </div>
 </div>
-<div class="container" style="width: 84%;">
-    <div class="row" style="position: relative;top: 50px;height: 500px;">
+<div class="container" style="width: 84%;    margin-bottom: 3%;">
+    <div class="row" style="position: relative;top: 50px;">
         <div class="izqcalidad col l7 m7 s12">
-            <span class="nombrecalidad">
+            <div class="nombrecalidad">
                 {!! $contenido->nombre !!}
-            </span>
-            <span class="descripcioncalidad">
+            </div>
+            <div class="descripcioncalidad">
                 {!! $contenido->descripcion !!}
-            </span>
-            <span class="contenidocalidad">
+            </div>
+            <div class="contenidocalidad">
                 {!! $contenido->contenido !!}
-            </span>
+            </div>
         </div>
         <div class="dercalidad col l5 m5 s12">
             <hr class="lineacalidad left" />
-             <span class="descripcion2calidad">
+             <div class="descripcion2calidad">
                 {!! $contenido->descripcion2!!}
-            </span>
+            </div>
         </div>
     </div>
 </div>

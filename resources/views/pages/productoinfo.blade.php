@@ -150,19 +150,6 @@
                 {!! $p->caracteristicas !!}
             </div>
 </div>
-<div class="col l12 m12 s12" style="">
-    <div class="col l4 m12 s12 ">
-    <img alt="" class="responsive-img" src="{{asset($p->imagen_presentacion)}}" style="">
-    </div>
-    <div class="col l8 m12 s12 " style="font-family: 'Montserrat';padding-left: 35px;padding-right: 73px;font-size: 17px;color: #5F5F5F;">
-    <div class="tituloinfo" style="margin-bottom: 2%">
-                PRESENTACIÓN
-            </div>
-            <div class="">
-                {!! $p->presentacion !!}
-            </div>
-    </div>
-</div>
 
                             </div>
 

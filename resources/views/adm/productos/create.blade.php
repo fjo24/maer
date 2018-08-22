@@ -32,6 +32,56 @@
                         {!!Form::text('precio', null , ['class'=>'', ''])!!}
             </div>
             <div class="file-field input-field col l6 s12">
+            {!! Form::label('Sistema') !!}<br />
+                {!! Form::select('categoria_id', $categorias, null, ['class' => 'form-control', 'placeholder' => 'Sistema', 'required']) !!}
+            </div>
+            <div class="input-field col l6 s12">
+                {!! Form::label('rubros') !!}<br />
+                {!! Form::select('rubros[]', $rubros, null, ['class' => 'form-control', 'multiple' => 'multiple']) !!}
+            </div>
+            <div class="input-field col l6 s12">
+                {!! Form::label('Aplicaciones') !!}<br />
+                {!! Form::select('aplicaciones[]', $aplicaciones, null, ['class' => 'form-control', 'multiple' => 'multiple']) !!}
+            </div>
+            <div class="input-field col l6 s12">
+                {!! Form::label('modelos') !!}<br />
+                {!! Form::select('modelos[]', $modelos, null, ['class' => 'form-control', 'multiple' => 'multiple']) !!}
+            </div>
+            <div class="input-field col l6 s12">
+                {!! Form::select('categoria_pregunta_id', $categoria_preguntas, null, ['class' => 'form-control', 'placeholder' => 'Categoria de preguntas']) !!}
+            </div>
+            <div class="input-field col l6 s12">
+                {!! Form::select('visible', ['publico' => 'publico', 'privado' => 'privado', 'ambos' => 'ambos'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione visibilidad']) !!}
+            </div>
+            <div class="input-field col l6 s12">
+                {!!Form::label('Orden:')!!}
+                        {!!Form::text('orden', null , ['class'=>'', ''])!!}
+            </div>
+            <div class="input-field col l6 s12">
+                {!! Form::select('tipo', ['novedad' => 'novedad', 'oferta' => 'oferta', 'ninguna' => 'ninguna'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione tipo de producto']) !!}
+            </div>
+
+            <div class="input-field col l6 s12">
+                {!! Form::select('iva', ['21' => '21%', '10.5' => '10,5%'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione iva para producto']) !!}
+            </div>
+            <div class="input-field col l6 s12">
+                <label>Aplica para descuento?</label>
+                <br>
+            <p>
+      <label>
+        <input class="with-gap" name="aplica_desc" type="radio" value="1"  />
+        <span>Si</span>
+      </label>
+    </p>
+    <p>
+      <label>
+        <input class="with-gap" name="aplica_desc" type="radio" value="0" />
+        <span>No</span>
+      </label>
+    </p>
+            </div>
+        </div>
+            <div class="file-field input-field col l6 s12">
                 <div class="btn">
                     <span>
                         Manual
@@ -53,70 +103,6 @@
                     {!! Form::text('despiece',null, ['class'=>'file-path']) !!}
                 </div>
             </div>
-            <div class="file-field input-field col l6 s12">
-                <div class="btn">
-                    <span>
-                        Imagen de presentacion
-                    </span>
-                    {!! Form::file('imagen_presentacion') !!}
-                </div>
-                <div class="file-path-wrapper">
-                    {!! Form::text('imagen_presentacion',null, ['class'=>'file-path']) !!}
-                </div>
-            </div>
-            <div class="input-field col l6 s12">
-                {!!Form::label('Presentacion:')!!}
-                        {!!Form::text('presentacion', null , ['class'=>'', ''])!!}
-            </div>
-            <div class="input-field col l6 s12">
-                {!! Form::select('categoria_id', $categorias, null, ['class' => 'form-control', 'placeholder' => 'Sistema', 'required']) !!}
-            </div>
-            <div class="input-field col l6 s12">
-                {!! Form::label('rubros') !!}<br />
-                {!! Form::select('rubros[]', $rubros, null, ['class' => 'form-control', 'multiple' => 'multiple']) !!}
-            </div>
-            <div class="input-field col l6 s12">
-                {!! Form::select('categoria_pregunta_id', $categoria_preguntas, null, ['class' => 'form-control', 'placeholder' => 'Categoria de preguntas']) !!}
-            </div>
-            <div class="input-field col l6 s12">
-                {!! Form::select('visible', ['publico' => 'publico', 'privado' => 'privado', 'ambos' => 'ambos'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione visibilidad']) !!}
-            </div>
-            <div class="input-field col l6 s12">
-                {!!Form::label('Orden:')!!}
-                        {!!Form::text('orden', null , ['class'=>'', ''])!!}
-            </div>
-            <div class="input-field col l6 s12">
-                {!! Form::select('tipo', ['novedad' => 'novedad', 'oferta' => 'oferta', 'ninguna' => 'ninguna'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione tipo de producto']) !!}
-            </div>
-
-            <div class="input-field col l6 s12">
-                {!! Form::label('Aplicaciones') !!}<br />
-                {!! Form::select('aplicaciones[]', $aplicaciones, null, ['class' => 'form-control', 'multiple' => 'multiple']) !!}
-            </div>
-            <div class="input-field col l6 s12">
-                {!! Form::label('modelos') !!}<br />
-                {!! Form::select('modelos[]', $modelos, null, ['class' => 'form-control', 'multiple' => 'multiple']) !!}
-            </div>
-            <div class="input-field col l6 s12">
-                {!! Form::select('iva', ['21' => '21%', '10.5' => '10,5%'], null, ['class' => 'form-control', 'placeholder' => 'Seleccione iva para producto']) !!}
-            </div>
-            <div class="input-field col l6 s12">
-                <label>Aplica para descuento?</label>
-                <br>
-            <p>
-      <label>
-        <input class="with-gap" name="aplica_desc" type="radio" value="1"  />
-        <span>Si</span>
-      </label>
-    </p>
-    <p>
-      <label>
-        <input class="with-gap" name="aplica_desc" type="radio" value="0" />
-        <span>No</span>
-      </label>
-    </p>
-            </div>
-        </div>
         <label class="col l12 s12" for="descripcion">
             Descripcion
         </label>

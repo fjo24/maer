@@ -105,11 +105,6 @@
                         <div class="collapsible-body">
                             <ul>
                                 <li>
-                                    <a href="{{route('destacadoshomes.index')}}">
-                                        Editar Destacados
-                                    </a>
-                                </li>
-                                <li>
                                     <a href="{{route('homes.index')}}">
                                         Editar Contenido
                                     </a>
@@ -166,6 +161,16 @@
                         <div class="collapsible-body">
                             <ul>
                                 <li>
+                                    <a href="{{route('productos.create')}}">
+                                        Crear Producto
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{route('productos.index')}}">
+                                        Editar Producto
+                                    </a>
+                                </li>
+                                <li>
                                     <a href="{{route('categorias.create')}}">
                                         Crear Sistema
                                     </a>
@@ -203,16 +208,6 @@
                                 <li>
                                     <a href="{{route('aplicaciones.index')}}">
                                         Editar aplicacion
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{route('productos.create')}}">
-                                        Crear Producto
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{route('productos.index')}}">
-                                        Editar Producto
                                     </a>
                                 </li>
                             </ul>
@@ -323,7 +318,7 @@
                             <i class="material-icons">
                                 home
                             </i>
-                            Calidad
+                            Escuela Maer
                         </a>
                         <div class="collapsible-body">
                             <ul>

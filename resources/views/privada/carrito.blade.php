@@ -90,25 +90,25 @@
 						<thead style="border-bottom: 3px solid #000000;background-color: #FAFAFA;">
 
 							<th></th>
-							<th>IMAGEN</th>
+							<th></th>
 
-							<th>MODELO</th>
+							<th style="text-align: right;">MODELO</th>
 
-							<th>CODIGO</th>
+							<th style="text-align: right;">CODIGO</th>
 
-							<th>MEDIDA</th>
+							<th style="text-align: right;">MEDIDA</th>
 
-							<th>SUMA A DESCUENTO</th>
+							<th style="text-align: right;">SUMA A DESCUENTO</th>
 
-							<th>CANTIDAD</th>
+							<th style="text-align: right;">CANTIDAD</th>
 
-							<th>PRECIO UNITARIO</th>
+							<th style="text-align: right;">PRECIO UNITARIO</th>
 
-							<th>SUBTOTAL</th>
+							<th style="text-align: right;">SUBTOTAL</th>
 
-							<th>IVA</th>
+							<th style="text-align: right;width: 10%;">IVA</th>
 
-							<th>ELIMINAR</th>
+							<th></th>
 
 						</thead>
 						
@@ -122,27 +122,30 @@
 									
 									<td></td>
 									<td class="timagen " style="width: 95px; height: 85px;"><img class="responsive-img" src="{{ asset($row->options->imagen) }}"/></td>
-									<td>{{ $row->name }}</td>
-									<td>{{ $row->options->codigo }}</td>
-									<td>{{ $row->options->medida }}</td>
-									<td>
+									<td style="text-align: right;">{{ $row->name }}</td>
+									<td style="text-align: right;">{{ $row->options->codigo }}</td>
+									<td style="text-align: right;">{{ $row->options->medida }}</td>
+									<td style="text-align: right;">
 										@if($row->options->aplica_desc==1)
-											<center>Si</center>
+											Si
 										@else
-											<center>No</center>
+											No
 										@endif
 									</td>
-									<td>{{ $row->qty }}</td>
-									<td>{{ '$'.$row->price }}</td>
-									<td>{{ '$'.$row->price*$row->qty }}</td>
+									<td style="text-align: right;">{{ $row->qty }}</td>
+									<td style="text-align: right;">{{ '$'.number_format($row->price, 2, ',','.') }}</td>
+									<td style="text-align: right;">{{ '$'.number_format($row->price*$row->qty, 2, ',','.') }}</td>
 									@php
-										$r_iva=($row->price*$row->qty)*$row->options->iva;
+										$p_total = $row->price*$row->qty;
+										$p_desc = $p_total*$constante;
+										$t_p = $p_total-$p_desc;
+										$r_iva=$t_p*$row->options->iva;
 										$iva_p = $r_iva/100;
 										$total_iva = $total_iva + $iva_p;
 									@endphp
-									<td>{{ '$'.$iva_p.'('.$row->options->iva.'%)' }}
+									<td style="text-align: right;">{{''.$row->options->iva.'%' }}
 									</td>
-									<td>
+									<td style="text-align: right;">
 										<a href="{{ url('carrito/delete/'.$row->rowId) }}">
 											<i class="material-icons" style="color:lightgray;">cancel</i>
 										</a>
@@ -155,29 +158,41 @@
 								@if(Cart::count() > 0)
 							{!! Form::open(['route'=>'carrito.enviar', 'method'=>'POST']) !!}
 								<tr style="border-top: 3px solid black;border-bottom: none;height:150%;color: #595959">
-									<td colspan="9">
+									<td colspan="8">
 							        <textarea id="mensaje" name="mensaje" class="materialize-textarea" placeholder="Mensaje"></textarea>
 									</td>
-									<td class="total fs24 azul bold">Subtotal</td>
+									<td colspan="2" class="total fs24 azul bold">Subtotal</td>
 									<td>{{ '$'.number_format($total, 2, ',','.') }}</td>
+									{{ Form::hidden('total', $total) }}
 
 								</tr>
 								<tr style="border-bottom: none;">
-									<td colspan="9"></td>
-									<td class="total fs24 azul bold">Descuento ({{ $desc .'%'}})</td>
+									<td colspan="8"></td>
+									<td colspan="2" class="total fs24 azul bold">Descuento ({{ $desc .'%'}})</td>
 									<td>{{ '$'.number_format($descuento, 2, ',','.') }}</td>
+									{{ Form::hidden('descuento', $descuento) }}
 								</tr>
 								<tr style="border-bottom: none;">
-									<td colspan="9"></td>
-									<td class="total fs24 azul bold">IVA</td>
+									<td colspan="8"></td>
+									<td colspan="2" class="total fs24 azul bold">Subtotal (Con descuento)</td>
+									@php
+										$total_con_descuento = $total-$descuento;
+									@endphp
+									<td>{{ '$'.number_format($total_con_descuento, 2, ',','.') }}</td>
+									{{ Form::hidden('total_con_descuento', $total_con_descuento) }}
+								</tr>
+								<tr style="border-bottom: none;">
+									<td colspan="8"></td>
+									<td colspan="2" class="total fs24 azul bold">IVA</td>
 									
 									<td>{{ '$'.number_format($total_iva, 2, ',','.') }}</td>
+									{{ Form::hidden('total_iva', $total_iva) }}
 								</tr>
 								<tr style="border-bottom: none;">
-									<td colspan="9"></td>
-									<td class="total fs24 azul bold">Total (IVA incluido)</td>
-									
-									<td><strong>{{ '$'.number_format($totales, 2, ',','.') }}</strong></td>
+									<td colspan="8"></td>
+									<td colspan="2" style="font-weight: bold;font-size: 20px" class="total fs24 azul bold">Total (IVA incluido)</td>
+									<td style="font-weight: bold;font-size: 20px">{{ '$'.number_format($totales, 2, ',','.') }}</td>
+									{{ Form::hidden('totales', $totales) }}
 								</tr>
 								@endif
 							</tbody>
@@ -196,7 +211,7 @@
 									</div>
 									<div class="col s6">
 										<button class="enviar" class="bg-azul" href="#modal1" style="color:white; padding: 20px; background-color: #3F3F3F; border: none; width: 181px;border-radius: 6px;
-    height: 42px!important;"><span style="font-family: 'Monserrat';font-size: 13px;position: relative;bottom: 8px;font-weight: bold;">REALIZAR PEDIDO</span></button></a>
+    height: 42px!important;"><span style="font-family: 'Montserrat';font-size: 13px;position: relative;bottom: 8px;font-weight: bold;">REALIZAR PEDIDO</span></button></a>
 									</div>
 									
 									  <!-- Modal Structure -->
@@ -212,7 +227,7 @@
 									{!! Form::close() !!}
 								</div>
 
-									<a href="{{ url('/zonaprivada/productos') }}" style="position: relative;right: -20%;cursor: pointer;" class="right"><button class="boton seguircomprando" style="height: 42px;border: 1px solid #3F3F3F; color:#3F3F3F; background-color: white; padding: 20px; width: 181px;position: relative;border-radius: 6px;"><span style="font-family: 'lato';font-size: 13px;position: relative;bottom: 8px;font-weight: bold;">SEGUIR COMPRANDO</span></button></a>
+									<a href="{{ url('/zonaprivada/productos') }}" style="position: relative;right: -20%;cursor: pointer;" class="right"><button class="boton seguircomprando" style="height: 42px;border: 1px solid #3F3F3F; color:#3F3F3F; background-color: white; padding: 20px; width: 181px;position: relative;border-radius: 6px;"><span style="font-family: 'Montserrat';font-size: 12px;position: relative;bottom: 8px;font-weight: bold;">SEGUIR COMPRANDO</span></button></a>
 						</div>
 					@endif
 				</div>

@@ -13,6 +13,9 @@
         <div class="row">
     <div class="col s12">
         <table class="highlight bordered">
+        @php
+            $total = 0;
+        @endphp
             <thead>
                 <th>
                     NOMBRE
@@ -40,14 +43,17 @@
                         {!!$producto->pivot->cantidad!!}
                     </td>
                     <td>
-                        {!!$producto->pivot->costo/$producto->pivot->cantidad!!}
+                        {{ '$'.number_format($producto->pivot->costo/$producto->pivot->cantidad, 2, ',','.') }}
                     </td>
                     <td class="">
                         {!! $producto->iva .'%' !!}
                     </td>
                     <td>
-                        {!!$producto->pivot->costo!!}
+                        {{ '$'.number_format($producto->pivot->costo, 2, ',','.') }}
                     </td>
+                    @php
+                                    $total = $total + $producto->pivot->costo;
+                                    @endphp
                 </tr>
                 @endforeach
                 <tr style="border-top: 3px solid black;border-bottom: none;height:150%;color: #595959">
@@ -55,7 +61,7 @@
                                     <textarea id="mensaje" name="mensaje" class="materialize-textarea" placeholder="Mensaje"></textarea>
                                     </td>
                                     <td class="total fs24 azul bold">Subtotal</td>
-                                    <td>{{ '$'.$pedido->subtotal }}</td>
+                                    <td>{{ '$'.number_format($total, 2, ',','.') }}</td>
                                 </tr>
                                 <tr style="border-bottom: none;">
                                     <td colspan="3"></td>
@@ -66,18 +72,23 @@
                                     Descuento(0%)
                                     @endif
                                     </td>
-                                    <td>{{ '$'.$descuento }}</td>
+                                    <td>{{ '$'.number_format($total-$pedido->subtotal, 2, ',','.') }}</td>
+                                </tr>
+                                <tr style="border-bottom: none;">
+                                    <td colspan="3"></td>
+                                    <td class="total fs24 azul bold">Subtotal (Con descuento)</td>
+                                    <td>{{ '$'.number_format($pedido->subtotal, 2, ',','.') }}</td>
                                 </tr>
                                 <tr style="border-bottom: none;">
                                     <td colspan="3"></td>
                                     <td class="total fs24 azul bold">IVA</td>
-                                    <td>{{ '$'.$iva}}</td>
+                                    <td>{{ $iva }}</td>
                                 </tr>
                                 <tr style="border-bottom: none;">
                                     <td colspan="3"></td>
                                     <td class="total fs24 azul bold">Total (IVA incluido)</td>
                                     
-                                    <td name>{{ '$'.$pedido->total }}</td>
+                                    <td name>{{ '$'.number_format($pedido->total, 2, ',','.') }}</td>
                                 </tr>
             </tbody>
         </table>
