@@ -97,10 +97,13 @@
                 </thead>
                 <tbody>
                     @foreach($productos as $producto)
-                     {!! Form::open(['route'=>'carrito.add','METHOD'=>'POST'])!!}
+                    @php
+                        $conteo = count($producto->modelos);
+                    @endphp
+                     
                         <tr>
-                            <div><input type="hidden" value="{{$producto->id}}" name="id"></div>
-                            <td class="timagen " style="width: 95px; height: 85px;">
+                            
+                            <td rowspan="{{ $conteo}}" class="timagen " style="width: 95px; height: 85px;">
                             @foreach($producto->imagenes as $img)
                             <a href="" data-target="modal{!! $producto->id !!}" class="modal-trigger" style="color: #7D0045">
                             <img class="responsive-img" src="{{ asset($img->imagen) }}"/>
@@ -110,7 +113,7 @@
                                     @endif
                             @endforeach
                             </td>
-                            <td class="tdescripcion"  style="width: 29%;">
+                            <td rowspan="{{ $conteo}}"  class="tdescripcion"  style="width: 29%;">
                             <a href="" data-target="modal{!! $producto->id !!}" class="modal-trigger" style="color: #7D0045"> 
                                 {!! $producto->nombre !!}
                             </a>
@@ -141,21 +144,20 @@
     </div>
   </div>
                             </td>
-                            <td>
-                                <select class="browser-default" name="modelo_id" style="width: 60%!important;" required>
-                                    <option value="" disabled selected>Selecciona modelo</option>
-                                @foreach($producto->modelos as $modelo)
-                                    <option value={{$modelo->id}}>{{$modelo->codigo}}/{{$modelo->medida}}</option>
-                                @endforeach
-                                </select>  
+                    @foreach($producto->modelos as $modelo)
+                    {!! Form::open(['route'=>'carrito.add','METHOD'=>'POST'])!!}
+                    <div><input type="hidden" value="{{$producto->id}}" name="id"></div>
+                            <td class="tablamodelos">
+                                {!! $modelo->codigo!!}/{!!$modelo->medida !!}
+                                {{ Form::hidden('modelo_id', $modelo->id) }}
                             </td>
-                            <td class="">
+                            <td class="tablamodelos">
                                 {!! '$'.$producto->precio !!}
                             </td>
-                            <td class="">
+                            <td class="tablamodelos">
                                 {!! $producto->iva .'%' !!}
                             </td>
-                            <td class="">
+                            <td class="tablamodelos">
                                 <label for="cantidad">Cantidad</label>
                                 @if (count(Cart::content())>0) 
      
@@ -164,11 +166,13 @@
                             @endphp
                     @foreach(Cart::content()  as $row)
                         @if($row->id==$producto->id)
+                        @if($row->options->codigo==$modelo->codigo)
                             <input type="number" name="cantidad" value="{!! $row->qty!!}" style="width: 46px;" required>
                             @php
                                 $car = 1;
                             @endphp
                             @break
+                            @endif
                         @endif
                     @endforeach
                     @if($car==0)
@@ -180,14 +184,16 @@
                             </td>
                             {{ Form::hidden('precio', $producto->precio) }}
 
-                            <td class="">
+                            <td class="tablamodelos">
                                 
                                 @isset($items)
 
                                 @foreach($items as $item)
                             @if($item->id==$producto->id)
+                            @if($item->options->codigo==$modelo->codigo)
                                 <?php $shop = 1; ?>
                                 <button type="submit" name="submit" style="padding-bottom: 0px;padding-right: 0px;border-top-width: 0px;padding-left: 0px;background-color: white;border-left-width: 0px;margin-right: 0px;border-right-width: 0px;    border-bottom-width: 0px;"><i class="material-icons" style="color: green; background-color: transparent!important;">check_circle</i></button>
+                            @endif
                             @endif
                             @endforeach
                             @endisset
@@ -200,7 +206,7 @@
                             </td>
                         </tr>
                     {!!Form::close()!!}
-
+@endforeach
                     
                     @endforeach
                 </tbody>
