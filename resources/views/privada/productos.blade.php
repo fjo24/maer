@@ -8,7 +8,7 @@
 <link href="{{ asset('css/privada/descuentos.css') }}" rel="stylesheet" type="text/css"/>
 <body class="wide comments tprivada">
     <div class="fw-body">
-        <div class="container" style="width: 85%">
+        <div class="container" style="width: 90%">
 
 <div class="row">
     <div class="col l12 m12 s12" style="margin-top: 5%;">
@@ -100,12 +100,7 @@
                     @php
                         $conteo = count($producto->modelos);
                     @endphp
-                        @if($conteo<=0)
-                            $conteo = 1;
-                            $model = 0;
-                        @else
-                            $model = 1;
-                        @endif
+
                      
                         <tr>
                             
@@ -213,6 +208,7 @@
                         </tr>
                     {!!Form::close()!!}
 @endforeach
+
                     
                     @endforeach
                 </tbody>

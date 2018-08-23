@@ -18,7 +18,7 @@
 }
 
 .box_descuento1{
-	width: 561px!important;
+	width: 48%!important;
     height: 265px;
     background: #F9F9F9;
     border: 1px solid #D3D3D3;
@@ -42,7 +42,7 @@
 }
 
 .box_descuento2{
-	width: 561px!important;
+	width: 48%!important;
 	height: 265px;
 	background: #F07D00;
 	border: 1px solid #D3D3D3;
