@@ -100,6 +100,12 @@
                     @php
                         $conteo = count($producto->modelos);
                     @endphp
+                        @if($conteo<=0)
+                            $conteo = 1;
+                            $model = 0;
+                        @else
+                            $model = 1;
+                        @endif
                      
                         <tr>
                             
