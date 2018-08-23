@@ -60,7 +60,7 @@ class PaginasController extends Controller
         $activo    = 'productos';
         $ready = 0;
         $categoria = 99;
-        $productos = Producto::OrderBy('orden', 'asc')->get();
+        $productos = Producto::OrderBy('orden', 'asc')->where('visible', '<>', 'privado')->get();
         $categorias = Rubro::OrderBy('orden', 'asc')->get();
         return view('pages.rubros', compact('productos', 'categoria', 'ready', 'categorias', 'id', 'activo'));
     }
@@ -70,7 +70,7 @@ class PaginasController extends Controller
         $activo    = 'productos';
         $categoria = Rubro::find($id);
         $ready = 0;
-        $productos = Producto::OrderBy('orden', 'asc')->get();
+        $productos = Producto::OrderBy('orden', 'asc')->where('visible', '<>', 'privado')->get();
         $categorias = Rubro::OrderBy('orden', 'asc')->get();
         return view('pages.rubroproductos', compact('productos', 'categoria', 'ready', 'categorias', 'id', 'activo'));
     }
@@ -80,7 +80,7 @@ class PaginasController extends Controller
         $activo    = 'productos';
         $ready = 0;
         $categoria = 99;
-        $productos = Producto::OrderBy('orden', 'asc')->get();
+        $productos = Producto::OrderBy('orden', 'asc')->where('visible', '<>', 'privado')->get();
         $categorias = Categoria::OrderBy('orden', 'asc')->get();
         return view('pages.sistemas', compact('productos', 'categoria', 'ready', 'categorias', 'id', 'activo'));
     }
@@ -125,7 +125,7 @@ class PaginasController extends Controller
         $activo    = 'productos';
         $categoria = Categoria::find($id);
         $ready = 0;
-        $productos = Producto::OrderBy('orden', 'asc')->where('categoria_id', $id)->get();
+        $productos = Producto::OrderBy('orden', 'asc')->where('visible', '<>', 'privado')->where('categoria_id', $id)->get();
         $categorias = Categoria::OrderBy('orden', 'asc')->get();
         return view('pages.sistemaproductos', compact('productos', 'categoria', 'ready', 'categorias', 'id', 'activo'));
     }

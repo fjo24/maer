@@ -69,3 +69,7 @@
 	font-size: 22px;
 	margin-top: 4%;
 }
+
+tr {
+    border-bottom: 3px solid rgba(0,0,0,0.12)!important;
+}
