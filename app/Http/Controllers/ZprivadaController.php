@@ -75,7 +75,7 @@ class ZprivadaController extends Controller
             $diferencia = $proximo->minimo;
         }
 
-        return view('privada.productos', compact('modelos', 'diferencia', 'proximo', 'descuentos', 'categorias', 'shop', 'carrito', 'activo', 'productos', 'ready', 'prod', 'config', 'items'));
+        return view('privada.productos', compact('modelos', 'desc', 'diferencia', 'proximo', 'descuentos', 'categorias', 'shop', 'carrito', 'activo', 'productos', 'ready', 'prod', 'config', 'items'));
     }
 
     public function add(Request $request)

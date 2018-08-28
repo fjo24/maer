@@ -57,8 +57,8 @@
                             {!!Form::open(['route'=>'logindistribuidor', 'method'=>'POST'])!!}
                             <div class="row">
                         <div class="input-field col s12">
-                            {!!Form::text('username',null,['class'=>''])!!}
-                            {!!Form::label('Usuario')!!}
+                            <label for="Usuario">Usuario</label>
+                            <input class="" name="username" type="text">
                             <hr>
                         </div>
                     </div>
