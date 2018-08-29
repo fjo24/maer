@@ -57,16 +57,14 @@
                             {!!Form::open(['route'=>'logindistribuidor', 'method'=>'POST'])!!}
                             <div class="row">
                         <div class="input-field col s12">
-                            <label for="Usuario">Usuario</label>
-                            <input class="" name="username" type="text">
-                            <hr>
+                            <label for="Usuario" style="height: 65%;">Usuario</label>
+                            <input class="" name="username" type="text" style="border-bottom: 1px solid black;margin-top: 11%;">
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            {!!Form::password('password')!!}
-                            {!!Form::label('Contraseña')!!}
-                            <hr>
+                            <label for="password" style="height: 65%;">Contraseña</label>
+                            <input class="" name="password" type="password" style="border-bottom: 1px solid black;margin-top: 11%;">
                         </div>
                     </div>
                             <style type="text/css">
