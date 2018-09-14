@@ -64,10 +64,14 @@
         </div>
     </div>  
 </div>
-
+<div class="col l12 m12 s12">
     <div class="masiva">
         PEDIDOS
     </div>
+    <div class="right"><a href="{{ route('carrito') }}">
+<button class="enviar" class="bg-azul" href="" style="position: relative;bottom:30px;border-radius: 12px;padding: initial!important;color:white; padding: 20px; background-color: #3F3F3F; border: none; width: 181px;height: 42px!important;"><span style="font-family: 'Montserrat';font-size: 13px;font-weight: bold;">FINALIZAR COMPRA</span></button></a>
+</div>
+</div>
     <br>
             <table class="display" id="tprivada" style="width:100%;margin-bottom: 11%;">
                 <thead>
@@ -199,7 +203,12 @@
                             @endforeach
                             @endisset
                             @if($shop==0)
-                                <button type="submit" name="submit" style="padding-bottom: 0px;padding-right: 0px;border-top-width: 0px;padding-left: 0px;background-color: white;border-left-width: 0px;margin-right: 0px;border-right-width: 0px;    border-bottom-width: 0px;"><i class="material-icons" style="color: #F07D00; background-color: transparent!important;">shopping_cart</i></button>
+
+
+                                <div class=""><a href="{{ route('carrito') }}">
+                                <button class="enviar" class="bg-azul" href="" style="    position: relative;border-radius: 8px;padding: initial!important;    color: white;padding: 20px;background-color: #F07D00;
+    border: none;width: 112px;height: 42px!important;"><span style="font-family: 'Asap';font-size: 11px;font-weight: bold;">AGREGAR A CARRITO</span></button></a>
+                                </div>
                             @endif
                             <?php $shop = 0; ?>
                             </td>

@@ -26,6 +26,7 @@ class DistribuidorController extends Controller
         $usuario->social    = $request->social;
         $usuario->cuit      = $request->cuit;
         $usuario->telefono  = $request->telefono;
+        $usuario->activo  = 1;
         $usuario->direccion = $request->direccion;
         $usuario->postal       = $request->postal;
         $usuario->email     = $request->email;

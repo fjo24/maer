@@ -39,7 +39,7 @@ Route::get('/empresa', 'PaginasController@empresa')->name('empresa');
 Route::get('/calidad', 'PaginasController@calidad')->name('calidad');
 
 //INFO DE PRODUCTO
-Route::get('productoinfo/{id}', 'PaginasController@productoinfo')->name('productoinfo');
+Route::get('productoinfo/{id}/{cat}', 'PaginasController@productoinfo')->name('productoinfo');
 
 //INFO DE PRODUCTO
 Route::get('productoinfo2/{id}', 'PaginasController@productoinfo2')->name('productoinfo2');

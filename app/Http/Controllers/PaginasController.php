@@ -84,15 +84,16 @@ class PaginasController extends Controller
         $categorias = Categoria::OrderBy('orden', 'asc')->get();
         return view('pages.sistemas', compact('productos', 'categoria', 'ready', 'categorias', 'id', 'activo'));
     }
-    public function productoinfo($id)
+    public function productoinfo($id, $cat)
     {
         $p     = Producto::find($id);
-        $categoria = Rubro::find($p->rubro_id);
+        $categoria = Rubro::find($cat);
+    
         $ready         = 0;
         $relacionados  = Producto::OrderBy('orden', 'ASC')->Where('categoria_id', $p->categoria_id)->get();
         $activo        = 'productos';
         $categorias    = Rubro::OrderBy('orden', 'asc')->get();
-        $productos     = Producto::OrderBy('categoria_id', 'ASC')->get();
+        $productos     = Producto::OrderBy('orden', 'ASC')->get();
 
         return view('pages.productoinfo', compact('categorias', 'categoria', 'productos', 'productos_directos', 'ready', 'activo', 'ref', 'subref', 'sub', 'cat', 'p', 'relacionados'));
     }
@@ -100,6 +101,7 @@ class PaginasController extends Controller
     public function productoinfo2($id)
     {
         $p     = Producto::find($id);
+
         $categoria = Categoria::find($p->categoria_id);
         $ready         = 0;
         //$relacionados  = Producto::OrderBy('orden', 'ASC')->Where('categoria_id', $p->categoria_id)->get();

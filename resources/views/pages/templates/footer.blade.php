@@ -82,51 +82,50 @@
                     <h5 class="titulo-footer3" style="margin-top: 13%;">
                         Maer Sistemas de Pintar
                     </h5>
-              
-                        <div class="listlinks2 col l12 m12 s12">
-                            <ul>
-                                <li>
-                                    <div class="rightlist">
-                                        <div class="col s1" style="">
-                                            <img alt="" class="" src="{{asset('img/layouts/ubicacion.png')}}">
-                                            </img>
-                                        </div>
+                    <div class="listlinks2 col l12 m12 s12">
+                        <ul>
+                            <li>
+                                <div class="rightlist">
+                                    <div class="col s1" style="">
+                                        <img alt="" class="" src="{{asset('img/layouts/ubicacion.png')}}">
+                                        </img>
                                     </div>
-                                    <div class="rightlist">
-                                        <div class="col s11" style="line-height: 18px!important;">
-                                            {{$direccion->descripcion}}
-                                        </div>
+                                </div>
+                                <div class="rightlist">
+                                    <div class="col s11" style="line-height: 18px!important;">
+                                        {{$direccion->descripcion}}
                                     </div>
-                                </li>
-                                <li>
-                                    <div class="rightlist">
-                                        <div class="col s1" style="">
-                                            <img alt="" class="" src="{{asset('img/layouts/telefono.png')}}">
-                                            </img>
-                                        </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="rightlist">
+                                    <div class="col s1" style="">
+                                        <img alt="" class="" src="{{asset('img/layouts/telefono.png')}}">
+                                        </img>
                                     </div>
-                                    <div class="rightlist col s11" style="line-height: 29px!important">
-                                            {{$telefono->descripcion}}
-                                            <br>
-                                            {{$telefono2->descripcion}}
+                                </div>
+                                <div class="rightlist col s11" style="line-height: 29px!important">
+                                    {{$telefono->descripcion}}
+                                    <br>
+                                        {{$telefono2->descripcion}}
+                                    </br>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="rightlist">
+                                    <div class="col s1" style="">
+                                        <img alt="" class="" src="{{asset('img/layouts/email.png')}}">
+                                        </img>
                                     </div>
-                                </li>
-                                <li>
-                                    <div class="rightlist">
-                                        <div class="col s1" style="">
-                                            <img alt="" class="" src="{{asset('img/layouts/email.png')}}">
-                                            </img>
-                                        </div>
+                                </div>
+                                <div class="rightlist">
+                                    <div class="col s11" style="line-height: 29px!important;">
+                                        {{$email->descripcion}}
                                     </div>
-                                    <div class="rightlist">
-                                        <div class="col s11" style="line-height: 29px!important;">
-                                            {{$email->descripcion}}
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                 
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

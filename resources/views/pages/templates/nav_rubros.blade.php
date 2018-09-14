@@ -8,8 +8,7 @@
             <a href="{{ route('rubroproductos', $cat->id)}}">
                                             @if($categoria->id==$cat->id)
                 <div class="activo categorias_header collapsible-header">
-                    {{$cat->nombre}}
-                                        
+                    {{$cat->nombre}}          
                     <i class="flechita material-icons" style="color:black!important; position: absolute;left: 23%;">
                         keyboard_arrow_down
                     </i>
@@ -28,7 +27,7 @@
                     @foreach($categoria->productos as $pro)
                             @if($pro->id==$producto->id)
                     <li style="margin: 4px 0;">
-                        <a href="{{ route('productoinfo', $pro->id)}}">
+                        <a href="{{ route('productoinfo', ['id' => $producto->id,'cat' => $categoria->id])}}">
                             <span>
                                 {{$pro->nombre}}
                             </span>

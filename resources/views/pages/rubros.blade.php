@@ -24,7 +24,13 @@
                             @foreach($productos as $producto)
                             <div class="col l4 s12 m4">
                                 <div class="div-product">
-                                    <a href="{{ route('productoinfo', $producto->id)}}">
+                                @php
+                                foreach ($producto->rubros as $rubro) {
+                                    $r = $rubro->id;
+                                    break;
+                                }
+                            @endphp
+                                    <a href="{{ route('productoinfo', ['id' => $producto->id,'cat' => $r])}}">
                                         @foreach($producto->imagenes as $imagen)
                                         <img alt="" class="responsive-img" src="{{asset($imagen->imagen)}}" style="width: 373px;height: 284px;">
                                             @if($ready == 0)	

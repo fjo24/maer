@@ -10,7 +10,13 @@
         <div class="galeria col l12 m12 s12">
             @foreach($productos as $prod)
             @if($prod->visible!='privado')
-            <a href="{{ route('productoinfo', $prod->id)}}">
+            @php
+                                foreach ($prod->rubros as $rubro) {
+                                    $r = $rubro->id;
+                                    break;
+                                }
+                            @endphp
+            <a href="{{ route('productoinfo', ['id' => $prod->id,'cat' => $r])}}">
                 <div class="col l4 m12 s12 oyn">
                     @foreach($prod->imagenes as $img)
                     <div class="efecto">

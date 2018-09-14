@@ -55,7 +55,7 @@ class ZprivadaController extends Controller
                 if ($sw=1) {
                     break;
                 }else{                    
-                    $desc    = 0;
+                    $desc    = 20;
                     $id_desc = null;
                 }
             }
@@ -158,7 +158,7 @@ class ZprivadaController extends Controller
                 if ($sw=1) {
                     break;
                 }else{                    
-                    $desc    = 0;
+                    $desc    = 20;
                     $id_desc = null;
                 }
             }
@@ -210,7 +210,10 @@ $constante = $desc/100;
         $totales = ($subtotal-$descuento)+$iva;
       //  $descuento = $total;
         }
-        return view('privada.carrito', compact('activo', 'constante','desc', 'descuento', 'iva', 'totales', 'descuentos', 'diferencia', 'proximo'));
+
+        $success = 'Pedido creado correctamente';
+
+        return view('privada.carrito', compact('activo', 'constante','desc', 'descuento', 'iva', 'totales', 'descuentos', 'diferencia', 'proximo', 'success'));
     }
 
     public function send(Request $request)
@@ -248,7 +251,7 @@ $constante = $desc/100;
                 if ($sw=1) {
                     break;
                 }else{                    
-                    $desc    = 0;
+                    $desc    = 20;
                     $id_desc = null;
                 }
             }
@@ -287,7 +290,8 @@ $constante = $desc/100;
             $total_costo = $total_ivap + $costo;
             //$idproducto = $row->rowId
             $total_items = $total_items + $row->qty;
-            $pedido->productos()->attach($producto, ['cantidad' => $row->qty, 'pedido_id' => $pedidoid, 'producto_id' => $row->id, 'costo' => $row->price * $row->qty, 'iva' => $total_ivap, 'total' => $total_costo]);
+           /* $pedido->productos()->attach($producto, ['cantidad' => $row->qty, 'pedido_id' => $pedidoid, 'producto_id' => $row->id, 'costo' => $row->price * $row->qty, 'iva' => $total_ivap, 'total' => $total_costo]);
+           */
         }
 
         $carrito = Cart::content();
@@ -309,7 +313,7 @@ $constante = $desc/100;
         Mail::send('privada.mailpedido', ['total' => $totales, 'username' => $username, 'nombre' => $nombre, 'apellido' => $apellido, 'social' => $social, 'cuit' => $cuit, 'telefono' => $telefono, 'direccion' => $direccion, 'emailcliente' => $emailcliente, 'items' => $items, 'row' => $row, 'subtotal' => $subtotal, 'mensaje' => $mensaje, 'iva' => $total_iva, 'descuento' => $descuento], function ($message) use ($nombre, $apellido) {
 
             $dato = Dato::where('tipo', 'email')->first();
-            $message->from('info@aberturastolosa.com.ar', 'MAER | Pedidos');
+            $message->from('ventas@maer.com.ar', 'MAER | Pedidos');
 
             $message->to($dato->descripcion);
 
@@ -328,7 +332,8 @@ $constante = $desc/100;
         }
 
         Cart::destroy();
-    return redirect()->route('carrito');
+
+    return redirect()->route('carrito')->with('success', $success);
      //   return view('privada.carrito', compact('activo', 'success'));
 
     }

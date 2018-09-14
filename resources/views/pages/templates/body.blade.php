@@ -67,21 +67,7 @@ header('Access-Control-Allow-Origin: *');
     $(".dropdown-trigger").dropdown({
         closeOnClick:false,
     });
-    $(".dropdown-trigger2").dropdown({
-        closeOnClick:false,
-    });
-    $(".dropdown-trigger3").dropdown({
-        closeOnClick:false,
-    });
-
-
-
   });
-
-
-        $('.dropdown-button').dropdown({
-          hover: true
-        });
 $(document).ready(function(){
     $('.modal').modal();
   });

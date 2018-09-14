@@ -13,19 +13,26 @@
 
 	<div class="container" style="width:87%;">
 
-@if(isset($success))
-	@if($success == 'Ha ocurrido un error al enviar el correo')
-		<div class="col s12 card-panel red lighten-4 white-text text-darken-4" style="position: relative;top: 26px;height: 123px;text-align: center;font-size: 27px;">
-		{{($success) }}
-		</div>
-	@endif
+@if(session('error'))
 
-	@if($success == 'Pedido enviado correctamente')
-		<div class="col s12 card-panel green lighten-4 black-text text-darken-4" style="height: 70px;margin-top: 4%;">
-		{{($success) }}
+		<div class="col s12 card-panel red lighten-4 red-text text-darken-4">
+
+			{{ session('error') }}
+
 		</div>
-	@endif
-@endif
+
+
+		@endif
+
+		@if(session('success'))
+
+		<div class="col s12 card-panel green lighten-4 green-text text-darken-4">
+
+			{{ session('success') }}
+
+		</div>
+
+		@endif 
 <div class="row">
 	<div class="col l12 m12 s12">
 		<div class="box_descuento1 left col l6 m6 s12">

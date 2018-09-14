@@ -26,7 +26,7 @@
                             @if($pro->id==$producto->id)
                             <div class="col l4 s12 m4">
                                 <div class="div-product">
-                                    <a href="{{ route('productoinfo', $pro->id)}}">
+                                    <a href="{{ route('productoinfo', ['id' => $pro->id,'cat' => $categoria->id])}}">
                                         @foreach($pro->imagenes as $imagen)
                                         <div class="efecto hide-on-med-and-down">
                                                     <span class="central">

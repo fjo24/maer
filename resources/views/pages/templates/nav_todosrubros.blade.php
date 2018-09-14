@@ -13,7 +13,7 @@
                 <ul>
                     @foreach($cat->productos as $producto)
                     <li style="margin: 4px 0;">
-                        <a href="{{ route('productoinfo', $producto->id)}}">
+                        <a href="{{ route('productoinfo', ['id' => $producto->id,'cat' => $cat->id])}}">
                             <span>
                                 {{$producto->nombre}}
                             </span>
