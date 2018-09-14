@@ -6,6 +6,29 @@
 <link href="{{ asset('css/privada/zproductos.css') }}" rel="stylesheet" type="text/css"/>
 <link href="{{ asset('css/privada/zproductos2.css') }}" rel="stylesheet" type="text/css"/>
 <link href="{{ asset('css/privada/descuentos.css') }}" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">
+      function agregarCarrito(producto, cont){
+
+          var data = new Array();
+
+          var cantidad = $('#cantidad'+cont).val();
+
+          $.ajax({
+            type: "POST",
+            url: "./ajax/agregarCarrito.php",
+            data: {producto: producto, cantidad: cantidad},
+            beforeSend: function(objeto){
+              $("#carrito"+cont).html("<img src='./img/iconos/loader.gif' style='height: 25px; margin:auto; display: block;'>");
+            },
+            success:function(data){
+              $("#carrito"+cont).html("<img src='./img/iconos/check.png' style='height: 25px; margin:auto; display: block; margin-top: 5px; margin-bottom: 5px;'>");
+              $("#cantidad"+cont).prop('disabled', true);
+
+              actualizarPrincipal();
+            }
+            });
+        }
+  </script>
 <body class="wide comments tprivada">
     <div class="fw-body">
         <div class="container" style="width: 90%">
@@ -103,6 +126,7 @@
                     @foreach($productos as $producto)
                     @php
                         $conteo = count($producto->modelos);
+                        $cont++;
                     @endphp
 
                      
@@ -204,11 +228,8 @@
                             @endisset
                             @if($shop==0)
 
-
-                                <div class=""><a href="{{ route('carrito') }}">
-                                <button class="enviar" class="bg-azul" href="" style="    position: relative;border-radius: 8px;padding: initial!important;    color: white;padding: 20px;background-color: #F07D00;
-    border: none;width: 112px;height: 42px!important;"><span style="font-family: 'Asap';font-size: 11px;font-weight: bold;">AGREGAR A CARRITO</span></button></a>
-                                </div>
+                                <div  style="    position: relative;border-radius: 8px;padding: initial!important;    color: white;padding: 20px;background-color: #F07D00;
+    border: none;width: 112px;height: 42px!important;" id="carrito<?php echo($cont) ?>"><div class="agregar_carrito" onclick="javascript: agregarCarrito(<?php echo($producto->id) ?>,<?php echo($cont) ?>);">agregar al carrito</div></div>
                             @endif
                             <?php $shop = 0; ?>
                             </td>

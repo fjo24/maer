@@ -29,6 +29,7 @@ class ZprivadaController extends Controller
         $config    = 4;
         $id_desc = 0;
         $desc = 0;
+        $cont = 0;
         $shop      = 0;
         $productos = Producto::OrderBy('orden', 'ASC')->where('visible', '<>', 'publico')->get();
         $aux       = Producto::orderBy('orden', 'ASC')->get();
@@ -75,7 +76,7 @@ class ZprivadaController extends Controller
             $diferencia = $proximo->minimo;
         }
 
-        return view('privada.productos', compact('modelos', 'desc', 'diferencia', 'proximo', 'descuentos', 'categorias', 'shop', 'carrito', 'activo', 'productos', 'ready', 'prod', 'config', 'items'));
+        return view('privada.productos', compact('modelos', 'desc', 'diferencia', 'proximo', 'descuentos', 'categorias', 'shop', 'carrito', 'activo', 'productos', 'ready', 'prod', 'config', 'items', 'cont'));
     }
 
     public function add(Request $request)
