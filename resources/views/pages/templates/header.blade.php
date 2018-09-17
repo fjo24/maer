@@ -50,45 +50,6 @@
                                         </a>
                                     </div>
                                 @endif
-                    <!-- Dropdown LOGIN -->
-                <div class="areaprivada">
-                    <ul class="dropdown-content" id="dropdown1" style="background: none, width:400px!important; height: 282px!important;">
-                        <div class="container" style="background: #FAFAFA; margin-top: 19px !important; outline: none; width: 282px;height: 62px;">
-                            {!!Form::open(['route'=>'logindistribuidor', 'method'=>'POST'])!!}
-                            <div class="row">
-                        <div class="input-field col s12">
-                            <label for="Usuario" style="height: 65%;">Usuario</label>
-                            <input class="" name="username" type="text" style="border-bottom: 1px solid black;margin-top: 11%;">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <label for="password" style="height: 65%;">Contraseña</label>
-                            <input class="" name="password" type="password" style="border-bottom: 1px solid black;margin-top: 11%;">
-                        </div>
-                    </div>
-                            <style type="text/css">
-                                .color-del-boton{
-                 background-color: #01A0E2;
-            }
-            .color-del-boton:hover{
-                 background-color: #01A0E2;
-            }
-                            </style>
-                            <div class="col s12" style="position: relative;right: 24%;margin-top: 9%;
-    margin-bottom: 2%;">
-                                <input class="waves-effect waves-light btn right colorboton" style="color: white;font-family: 'Lato';font-weight: bold;padding-top: 4%;" type="submit" value="INGRESAR">
-                                </input>
-                            </div>
-                            <li class="center" style="font-size: 12px;color: pink; text-decoration: none;">
-                                <a href="{{ url('registro') }}" style="color: #F07D00!important; text-align: center;">
-                                    CREAR UNA CUENTA NUEVA
-                                </a>
-                            </li>
-                            {!!Form::close()!!}
-                        </div>
-                    </ul>
-                </div>
                 <!-- Dropdown LOGIN FIN -->
                                 </li>
                             </ul>
@@ -96,6 +57,7 @@
                 </div>
             </div>
         </div>
+                
         {{-- BARRA SUPERIOR --}}
     <div class="top hide-on-med-and-down">
         <div class="container hide-on-med-and-down" style="width: 76%;">
