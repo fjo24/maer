@@ -29,6 +29,11 @@ Route::post('productos/buscar', [
     'as'   => 'buscar',
 ]);
 
+Route::get('/getRequest', function(){
+    if (Request::ajax()) {
+        return 'getRequest has loaded';
+    }
+});
 //VIDEOS
 Route::get('/videos', 'PaginasController@videos')->name('videos');
 

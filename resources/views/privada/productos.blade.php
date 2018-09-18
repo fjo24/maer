@@ -7,27 +7,7 @@
 <link href="{{ asset('css/privada/zproductos2.css') }}" rel="stylesheet" type="text/css"/>
 <link href="{{ asset('css/privada/descuentos.css') }}" rel="stylesheet" type="text/css"/>
 <script type="text/javascript">
-      function agregarCarrito(producto, cont){
 
-          var data = new Array();
-
-          var cantidad = $('#cantidad'+cont).val();
-
-          $.ajax({
-            type: "POST",
-            url: "./ajax/agregarCarrito.php",
-            data: {producto: producto, cantidad: cantidad},
-            beforeSend: function(objeto){
-              $("#carrito"+cont).html("<img src='./img/iconos/loader.gif' style='height: 25px; margin:auto; display: block;'>");
-            },
-            success:function(data){
-              $("#carrito"+cont).html("<img src='./img/iconos/check.png' style='height: 25px; margin:auto; display: block; margin-top: 5px; margin-bottom: 5px;'>");
-              $("#cantidad"+cont).prop('disabled', true);
-
-              actualizarPrincipal();
-            }
-            });
-        }
   </script>
 <body class="wide comments tprivada">
     <div class="fw-body">
@@ -228,8 +208,10 @@
                             @endisset
                             @if($shop==0)
 
-                                <div  style="    position: relative;border-radius: 8px;padding: initial!important;    color: white;padding: 20px;background-color: #F07D00;
-    border: none;width: 112px;height: 42px!important;" id="carrito<?php echo($cont) ?>"><div class="agregar_carrito" onclick="javascript: agregarCarrito(<?php echo($producto->id) ?>,<?php echo($cont) ?>);">agregar al carrito</div></div>
+                                <div class=""><a href="{{ route('carrito') }}">
+                                <button class="enviar" class="bg-azul" href="" style="    position: relative;border-radius: 8px;padding: initial!important;    color: white;padding: 20px;background-color: #F07D00;
+    border: none;width: 112px;height: 42px!important;"><span style="font-family: 'Asap';font-size: 11px;font-weight: bold;">AGREGAR A CARRITO</span></button></a>
+                                </div>
                             @endif
                             <?php $shop = 0; ?>
                             </td>
@@ -247,7 +229,9 @@
 <button class="enviar" class="bg-azul" href="" style="position: relative;bottom:95px;border-radius: 12px;padding: initial!important;color:white; padding: 20px; background-color: #3F3F3F; border: none; width: 181px;height: 42px!important;"><span style="font-family: 'Montserrat';font-size: 13px;font-weight: bold;">FINALIZAR COMPRA</span></button></a>
 </div>
               <!-- Modal Trigger -->
-          
+          <button type="btn-flat" id="getRequest">
+              getRequest
+          </button>
 
         </div>
     </div>
@@ -260,12 +244,20 @@
     /*$(document).ready(function() {
     $('#example').DataTable();
 } );*/
-$(document).ready(function(){
-    $("#formpedido").on("change", "input:checkbox", function(){
-        $("#formpedido").submit();
-    });
-});
 
+    $(document).ready(function(){
+        $('#getRequest').click(function(){
+            $.get('getRequest', function(data){
+                console.log(data);
+            });
+        });
+    });    
+
+    $(document).ready(function(){
+        $("#formpedido").on("change", "input:checkbox", function(){
+            $("#formpedido").submit();
+        });
+    });
 
   $(document).ready(function(){
     $('.modal').modal();
@@ -275,7 +267,6 @@ $(document).ready(function(){
     $('select').formSelect();
   });
           
-
 </script>
 
 @endsection
