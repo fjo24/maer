@@ -228,10 +228,24 @@
             <div class="right"><a href="{{ route('carrito') }}">
 <button class="enviar" class="bg-azul" href="" style="position: relative;bottom:95px;border-radius: 12px;padding: initial!important;color:white; padding: 20px; background-color: #3F3F3F; border: none; width: 181px;height: 42px!important;"><span style="font-family: 'Montserrat';font-size: 13px;font-weight: bold;">FINALIZAR COMPRA</span></button></a>
 </div>
-              <!-- Modal Trigger -->
-          <button type="btn-flat" id="getRequest">
-              getRequest
-          </button>
+              <!-- formulario de pruebas -->
+
+            <form id="frmproductos" name="frmproductos" class="form-horizontal" novalidate="">
+                <div class="form-group error">
+                <label for="inputName" class="col-sm-3 control-label">Nombre</label>
+                <div class="col-sm-9">
+                 <input type="text" class="form-control has-error" id="nombre" name="nombre" placeholder="Product Name" value="">
+                </div>
+               </div>
+               <div class="form-group">
+                <label for="inputDetail" class="col-sm-3 control-label">Descripcion</label>
+                <div class="col-sm-9">
+                 <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="details" value="">
+                </div>
+               </div>
+              </form>
+<button type="button" class="btn btn-primary" id="btn-save" value="add">Guardar</button>
+      <input type="hidden" id="producto_id" name="producto_id" value="0">
 
         </div>
     </div>
@@ -245,6 +259,32 @@
     $('#example').DataTable();
 } );*/
 
+//var url = "http://localhost:8000/producto";
+
+// crear nuevo producto / actualizar producto existente
+$("#btn-save").click(function (e) {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        }
+    })
+    e.preventDefault();
+    var formData = {
+        nombre: $('#nombre').val(),
+        descripcion: $('#descripcion').val(),
+    }
+    // utilizado para determinar el metodo http que se va a utilizar [add = POST], [update = PUT]
+    var state = $('#btn-save').val();
+    var type = "POST"; // para crear un nuevo recurso
+    var producto_id = $('#producto_id').val();;
+    var my_url = url;
+    if (state == "update") {
+        type = "PUT"; // para actualizar recursos existentes
+        my_url += '/' + producto_id;
+    }
+   // console.log(formData);
+});
+//
     $(document).ready(function(){
         $('#getRequest').click(function(){
             $.get('getRequest', function(data){

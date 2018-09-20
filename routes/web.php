@@ -10,6 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::post('producto',function(Request $request){   
+    $producto = App\Producto::create($request->input());
+    return view('welcome');
+});
 
 Route::get('/', function () {
     return view('welcome');
