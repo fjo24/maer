@@ -18,6 +18,7 @@ class ZprivadaController extends Controller
 {
     public function productos()
     {
+
         $activo    = 'pedidos';
         $descuentos  = Descuento::OrderBy('porcentaje', 'ASC')->get();
         $carrito   = Cart::content();
@@ -31,6 +32,7 @@ class ZprivadaController extends Controller
         $desc = 0;
         $cont = 0;
         $shop      = 0;
+        //dd($carrito);
         $productos = Producto::OrderBy('orden', 'ASC')->where('visible', '<>', 'publico')->get();
         $aux       = Producto::orderBy('orden', 'ASC')->get();
         $prod      = $aux->toJson();
@@ -92,6 +94,7 @@ public function store(Request $request){
         $ready     = 0;
         $config    = 4;
         $im        = 0;
+        $existe = 0;
         $shop      = 0;
         $total_items = 0;
         $productos = Producto::OrderBy('orden', 'DESC')->get();
@@ -103,7 +106,16 @@ public function store(Request $request){
                 break;
             }
         }
-        
+        foreach($items as $item){
+            $existe = 0;
+            if($item->options->modelo_id==$modelo){
+                if ($item->qty > 0) {
+                    $existe = 1;
+                    $rowId =$item->rowId;
+                    break;
+                }
+            }
+        }
         $model = Modelo::find($modelo);
         $codigo = $model->codigo;
         $medida = $model->medida;
@@ -115,14 +127,17 @@ public function store(Request $request){
             }
         }
         
-
-        if ($cantidad > 0) {
-            Cart::add(['id' => $producto->id, 'name' => $producto->nombre, 'price' => $producto->precio, 'qty' => $cantidad, 'options' => ['orden' => $producto->orden, 'imagen' => $imagen, 'categoria' => $categoria, 'rubro' => $rubro, 'codigo' => $codigo, 'medida' => $medida, 'iva' => $producto->iva, 'aplica_desc' => $producto->aplica_desc]]);
-            //dd($categoria);
-//            dd($items);
-            return redirect()->route('zproductos', compact('shop', 'medida', 'carrito', 'activo', 'productos', 'ready', 'prod', 'config', 'items', 'codigo', 'desc', 'iva'));
-        } else {
-            return back();
+        if ($existe == 0) {
+            if ($cantidad > 0) {
+                Cart::add(['id' => $producto->id, 'name' => $producto->nombre, 'price' => $producto->precio, 'qty' => $cantidad, 'options' => ['orden' => $producto->orden, 'imagen' => $imagen, 'categoria' => $categoria, 'rubro' => $rubro, 'codigo' => $codigo, 'medida' => $medida, 'iva' => $producto->iva, 'aplica_desc' => $producto->aplica_desc, 'modelo_id' => $model->id]]);
+                //dd($categoria);
+    //            dd($items);
+                return redirect()->route('zproductos', compact('shop', 'medida', 'carrito', 'activo', 'productos', 'ready', 'prod', 'config', 'items', 'codigo', 'desc', 'iva'));
+            } else {
+                return back();
+            }
+        }else{
+            Cart::update($rowId, $cantidad); // Will update the quantity
         }
     }
 

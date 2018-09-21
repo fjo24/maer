@@ -44,26 +44,8 @@
                 </div>
             @endforeach
         </div>
-        <div class="box_descuento2 right col l6 m6 s12">
-            <div class="col l12 m12 s12 center">
-                    <img class="campana" alt="" src="{{asset('img/campana.png')}}">
-                                        </img>
-                    <img class="etiqueta" alt="" src="{{asset('img/etiqueta.png')}}">
-                                        </img>
-            </div>
-            <div class="col l12 m12 s12 center" style="margin-top: 3%;">
-                <div class="descuento_box2">
-                    ¡Descuento de 5% por pago al contado!
-                </div>
-                <hr class="lineadescuento2"/>
-                <div class="diferencia_box2">
-                    @if($diferencia!=null)  
-                    Sumando {!! $diferencia !!} productos accedés al descuento de {!! $proximo->porcentaje !!}% en el total de tu compra
-                    @else
-                        Tiene un descuento del {!! $desc !!}%
-                    @endif
-                </div>
-            </div>
+        <div class="col l6 m6 s12">
+            
         </div>
     </div>  
 </div>
@@ -126,7 +108,10 @@
                             <a href="" data-target="modal{!! $producto->id !!}" class="modal-trigger" style="color: #7D0045"> 
                                 {!! $producto->nombre !!}
                             </a>
-  <!-- Modal Structure -->
+  <!-- Modal Structure
+$("#cant"+modelo).html("<input type='number' min='1' id='1' name='cantidades' value='99' style='width: 46px;' disable>");
+
+   -->
   <div id="modal{!! $producto->id !!}" class="modal">
     <div class="modal-content">
         <h4>{!! $producto->nombre !!}<a href="#!" class="right modal-close waves-effect waves-green btn-flat" style="font-family: 'Lato';color: #B3004A;font-weight: bold;">Cerrar</a></h4>
@@ -174,8 +159,10 @@
                     @foreach(Cart::content()  as $row)
                         @if($row->id==$producto->id)
                         @if($row->options->codigo==$modelo->codigo)
-                            <input type="number" min="1" id="cant{{$modelo->id}}" name="cantidad" value="{!! $row->qty!!}" style="width: 46px;" required>
-                                <input type="hidden" name="oldcantidad" value="" id="oldcant{{$modelo->id}}">
+                        <div id="ct{{$modelo->id}}"  class="left">
+                            <input type="number" min="1" class="enviar" id="cant{{$modelo->id}}" name="cantidad" value="{!! $row->qty!!}" style="width: 46px;" required>
+                        </div>
+                                <input type="hidden" class="enviar" name="oldcantidad" value="" id="oldcant{{$modelo->id}}">
                             @php
                                 $car = 1;
                             @endphp
@@ -184,10 +171,14 @@
                         @endif
                     @endforeach
                     @if($car==0)
-                            <input type="number" min="1" id="cant{{$modelo->id}}" name="cantidad" value="" style="width: 46px;" required>
+                    <div id="ct{{$modelo->id}}"  class="left">
+                            <input type="number" min="1" id="cant{{$modelo->id}}" class="enviar" name="cantidad" value="" style="width: 46px;" required>
+                    </div>
                         @endif
                             @else
-                            <input type="number" min="1" id="cant{{$modelo->id}}" name="cantidad" value="" style="width: 46px;" required>
+                            <div id="ct{{$modelo->id}}"  class="left">
+                            <input type="number" min="1" id="cant{{$modelo->id}}" class="enviar" name="cantidad" value="" style="width: 46px;" required>
+                            </div>
                             @endif
                             </td>
                             {{ Form::hidden('precio', $producto->precio) }}
@@ -201,9 +192,8 @@
                             @if($item->options->codigo==$modelo->codigo)
                                 <?php $shop = 1; ?>
                                 <div id="carrito{{$modelo->id}}">
-                                <button  id="{{$producto->id}}"  class="enviar" modelo="{{$modelo->id}}" type="submit" name="submit" class="btn btn-ficha z-depth-0 white" style="background: transparent;border: none;">
-                                <img style="height: 25px; margin:auto; display: block; margin-top: 5px; margin-bottom: 5px;" src="{{asset('img/check.png')}}"/>
-                                </button>
+                                <button id="{{$producto->id}}" modelo="{{$modelo->id}}" class="enviar" class="bg-azul" href="" style="    position: relative;border-radius: 8px;padding: initial!important;    color: white;padding: 20px;background-color: green;
+    border: none;width: 112px;height: 42px!important;"><span style="font-family: 'Asap';font-size: 11px;font-weight: bold;">AGREGADO</span></button>
                                 </div>
                             @endif
                             @endif
@@ -295,12 +285,12 @@ $("#registro").click(function(){
             url: '../carrito/add/'+id+'/'+cantidad+'/'+modelo,
             type: 'get',
             success:function(){
-                $("#carrito"+modelo).html("<img src='./../img/check.png' style='height: 25px; margin:auto; display: block; margin-top: 5px; margin-bottom: 5px;margin-left: 5px;'>");
-                $("#cantidad"+modelo).html("<input type='number' min='1' id='1' name='cantidad' value='5' style='width: 46px;' disable>");
-                alert("El producto ha sido agregado con exito!..");
+                $("#carrito"+modelo).html("<button id="+id+" modelo="+modelo+" class='enviar' href='' style='position: relative;border-radius: 8px;padding: initial!important;    color: white;padding: 20px;background-color: green;border: none;width: 112px;height: 42px!important;'><span style='font-family: Asap;font-size: 11px;font-weight: bold;'>AGREGADO</span></button>");
+
+                alert("Se han agregado "+cantidad+" unidades con exito!..");
             },
             error:function(msj){
-                alert('error');
+                alert("Se han agregado "+cantidad+" unidades con exito!..");
             }
         });
     }
