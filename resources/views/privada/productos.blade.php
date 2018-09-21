@@ -154,8 +154,6 @@
   </div>
                             </td>
                     @foreach($producto->modelos as $modelo)
-                    {!! Form::open(['route'=>'carrito.add','METHOD'=>'POST'])!!}
-                    <div><input type="hidden" value="{{$producto->id}}" name="id"></div>
                             <td class="tablamodelos">
                                 {!! $modelo->codigo!!}/{!!$modelo->medida !!}
                                 {{ Form::hidden('modelo_id', $modelo->id) }}
@@ -176,7 +174,8 @@
                     @foreach(Cart::content()  as $row)
                         @if($row->id==$producto->id)
                         @if($row->options->codigo==$modelo->codigo)
-                            <input type="number" name="cantidad" value="{!! $row->qty!!}" style="width: 46px;" required>
+                            <input type="number" min="1" id="cant{{$modelo->id}}" name="cantidad" value="{!! $row->qty!!}" style="width: 46px;" required>
+                                <input type="hidden" name="oldcantidad" value="" id="oldcant{{$modelo->id}}">
                             @php
                                 $car = 1;
                             @endphp
@@ -185,10 +184,10 @@
                         @endif
                     @endforeach
                     @if($car==0)
-                            <input type="number" name="cantidad" value="" style="width: 46px;" required>
+                            <input type="number" min="1" id="cant{{$modelo->id}}" name="cantidad" value="" style="width: 46px;" required>
                         @endif
                             @else
-                            <input type="number" name="cantidad" value="" style="width: 46px;" required>
+                            <input type="number" min="1" id="cant{{$modelo->id}}" name="cantidad" value="" style="width: 46px;" required>
                             @endif
                             </td>
                             {{ Form::hidden('precio', $producto->precio) }}
@@ -201,16 +200,20 @@
                             @if($item->id==$producto->id)
                             @if($item->options->codigo==$modelo->codigo)
                                 <?php $shop = 1; ?>
-                                <button type="submit" name="submit" style="padding-bottom: 0px;padding-right: 0px;border-top-width: 0px;padding-left: 0px;background-color: white;border-left-width: 0px;margin-right: 0px;border-right-width: 0px;    border-bottom-width: 0px;"><i class="material-icons" style="color: green; background-color: transparent!important;">check_circle</i></button>
+                                <div id="carrito{{$modelo->id}}">
+                                <button  id="{{$producto->id}}"  class="enviar" modelo="{{$modelo->id}}" type="submit" name="submit" class="btn btn-ficha z-depth-0 white" style="background: transparent;border: none;">
+                                <img style="height: 25px; margin:auto; display: block; margin-top: 5px; margin-bottom: 5px;" src="{{asset('img/check.png')}}"/>
+                                </button>
+                                </div>
                             @endif
                             @endif
                             @endforeach
                             @endisset
                             @if($shop==0)
 
-                                <div class=""><a href="{{ route('carrito') }}">
-                                <button class="enviar" class="bg-azul" href="" style="    position: relative;border-radius: 8px;padding: initial!important;    color: white;padding: 20px;background-color: #F07D00;
-    border: none;width: 112px;height: 42px!important;"><span style="font-family: 'Asap';font-size: 11px;font-weight: bold;">AGREGAR A CARRITO</span></button></a>
+                                <div id="carrito{{$modelo->id}}"  class="left">
+                                <button id="{{$producto->id}}" modelo="{{$modelo->id}}" class="enviar" class="bg-azul" href="" style="    position: relative;border-radius: 8px;padding: initial!important;    color: white;padding: 20px;background-color: #F07D00;
+    border: none;width: 112px;height: 42px!important;"><span style="font-family: 'Asap';font-size: 11px;font-weight: bold;">AGREGAR A CARRITO</span></button>
                                 </div>
                             @endif
                             <?php $shop = 0; ?>
@@ -218,34 +221,16 @@
   
                             </td>
                         </tr>
-                    {!!Form::close()!!}
 @endforeach
 
                     
                     @endforeach
+                   
                 </tbody>
             </table>
             <div class="right"><a href="{{ route('carrito') }}">
 <button class="enviar" class="bg-azul" href="" style="position: relative;bottom:95px;border-radius: 12px;padding: initial!important;color:white; padding: 20px; background-color: #3F3F3F; border: none; width: 181px;height: 42px!important;"><span style="font-family: 'Montserrat';font-size: 13px;font-weight: bold;">FINALIZAR COMPRA</span></button></a>
 </div>
-              <!-- formulario de pruebas -->
-
-            <form id="frmproductos" name="frmproductos" class="form-horizontal" novalidate="">
-                <div class="form-group error">
-                <label for="inputName" class="col-sm-3 control-label">Nombre</label>
-                <div class="col-sm-9">
-                 <input type="text" class="form-control has-error" id="nombre" name="nombre" placeholder="Product Name" value="">
-                </div>
-               </div>
-               <div class="form-group">
-                <label for="inputDetail" class="col-sm-3 control-label">Descripcion</label>
-                <div class="col-sm-9">
-                 <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="details" value="">
-                </div>
-               </div>
-              </form>
-<button type="button" class="btn btn-primary" id="btn-save" value="add">Guardar</button>
-      <input type="hidden" id="producto_id" name="producto_id" value="0">
 
         </div>
     </div>
@@ -255,36 +240,27 @@
 @endsection
 @section('js')
 <script class="init" type="text/javascript">
-    /*$(document).ready(function() {
-    $('#example').DataTable();
-} );*/
+$("#registro").click(function(){
+    var dato = $("#genre").val();
+    var route = "/genero";
+    var token = $("#token").val();
 
-//var url = "http://localhost:8000/producto";
+    $.ajax({
+        url: route,
+        headers: {'X-CSRF-TOKEN': token},
+        type: 'POST',
+        dataType: 'json',
+        data:{genre: dato},
 
-// crear nuevo producto / actualizar producto existente
-$("#btn-save").click(function (e) {
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        success:function(){
+            $("#msj-success").fadeIn();
+        },
+        error:function(msj){
+            $("#msj").html(msj.responseJSON.genre);
+            $("#msj-error").fadeIn();
         }
-    })
-    e.preventDefault();
-    var formData = {
-        nombre: $('#nombre').val(),
-        descripcion: $('#descripcion').val(),
-    }
-    // utilizado para determinar el metodo http que se va a utilizar [add = POST], [update = PUT]
-    var state = $('#btn-save').val();
-    var type = "POST"; // para crear un nuevo recurso
-    var producto_id = $('#producto_id').val();;
-    var my_url = url;
-    if (state == "update") {
-        type = "PUT"; // para actualizar recursos existentes
-        my_url += '/' + producto_id;
-    }
-   // console.log(formData);
+    });
 });
-//
     $(document).ready(function(){
         $('#getRequest').click(function(){
             $.get('getRequest', function(data){
@@ -305,6 +281,29 @@ $("#btn-save").click(function (e) {
 
   $(document).ready(function(){
     $('select').formSelect();
+  });
+
+  $('.enviar').click(function(){
+    var id = $(this).attr('id');
+    var modelo = $(this).attr('modelo');
+    var cantidad = $('#cant'+modelo).val();
+    var oldcantidad = $('#oldcant'+modelo).val();
+    var suma = parseInt(cantidad) + parseInt(oldcantidad);
+    if(cantidad>0)
+    {
+        $.ajax({
+            url: '../carrito/add/'+id+'/'+cantidad+'/'+modelo,
+            type: 'get',
+            success:function(){
+                $("#carrito"+modelo).html("<img src='./../img/check.png' style='height: 25px; margin:auto; display: block; margin-top: 5px; margin-bottom: 5px;margin-left: 5px;'>");
+                $("#cantidad"+modelo).html("<input type='number' min='1' id='1' name='cantidad' value='5' style='width: 46px;' disable>");
+                alert("El producto ha sido agregado con exito!..");
+            },
+            error:function(msj){
+                alert('error');
+            }
+        });
+    }
   });
           
 </script>

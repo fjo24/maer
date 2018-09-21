@@ -10,10 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::post('producto',function(Request $request){   
-    $producto = App\Producto::create($request->input());
-    return view('welcome');
-});
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -38,6 +35,10 @@ Route::get('/getRequest', function(){
         return 'getRequest has loaded';
     }
 });
+
+//TESTTS
+Route::post('/store', 'ZprivadaController@store')->name('store');
+
 //VIDEOS
 Route::get('/videos', 'PaginasController@videos')->name('videos');
 
@@ -217,7 +218,8 @@ Route::get('/zonaprivada/listadeprecios', 'ZprivadaController@listadeprecios')->
 
 //CARRITO
 Route::group(['prefix' => 'carrito'], function () {
-    Route::post('add', ['uses' => 'ZprivadaController@add', 'as' => 'carrito.add'])->middleware('auth');
+ //   Route::post('add', ['uses' => 'ZprivadaController@add', 'as' => 'carrito.add'])->middleware('auth');
+    Route::get('add/{id}/{cantidad}/{modelo}', 'ZprivadaController@add')->middleware('auth');
     Route::get('carrito', ['uses' => 'ZprivadaController@carrito', 'as' => 'carrito'])->middleware('auth');
     Route::get('delete/{id}', ['uses' => 'ZprivadaController@delete', 'as' => 'carrito.delete'])->middleware('auth');
     Route::post('enviar', ['uses' => 'ZprivadaController@send', 'as' => 'carrito.enviar'])->middleware('auth');

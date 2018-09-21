@@ -71,11 +71,11 @@
     <table class="highlight bordered" style="margin-top: 1.8%;color: #595959;height: 40px;">
             <tbody>
                 <tr>    
-                    <td style="width: 22%;border: 1px solid #A2A2A2;color: #595959;">
-                        {!!$modelo->codigo!!}
+                    <td style="width: 30%;border: 1px solid #A2A2A2;color: #595959;">
+                       Codigo: {!!$modelo->codigo!!}
                     </td>
                     <td style="border: 1px solid #A2A2A2;color: #595959;">
-                        {!!$modelo->medida!!}
+                        Medida: {!!$modelo->medida!!}
                     </td>
                 </tr>
             </tbody>

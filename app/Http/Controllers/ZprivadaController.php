@@ -78,10 +78,57 @@ class ZprivadaController extends Controller
 
         return view('privada.productos', compact('modelos', 'desc', 'diferencia', 'proximo', 'descuentos', 'categorias', 'shop', 'carrito', 'activo', 'productos', 'ready', 'prod', 'config', 'items', 'cont'));
     }
+public function store(Request $request){
+      //$expediente = Expediente::create($request->all()); //Obtengo todos los campos enviados desde el formulario y creo el expediente
+      return "Expediente creado!!!";
+    }
 
-    public function add(Request $request)
+    public function add($id, $cantidad, $modelo)
     {
-        $descuentos  = Descuento::OrderBy('porcentaje', 'ASC')->get();
+  $descuentos  = Descuento::OrderBy('porcentaje', 'ASC')->get();
+        $activo    = 'productos';
+        $carrito   = Cart::content();
+        $items     = $carrito->all();
+        $ready     = 0;
+        $config    = 4;
+        $im        = 0;
+        $shop      = 0;
+        $total_items = 0;
+        $productos = Producto::OrderBy('orden', 'DESC')->get();
+        $producto  = Producto::find($id);
+        //dd($request->medida);
+        foreach ($producto->imagenes as $img) {
+            $imagen = $img->imagen;
+            if ($im == 0) {
+                break;
+            }
+        }
+        
+        $model = Modelo::find($modelo);
+        $codigo = $model->codigo;
+        $medida = $model->medida;
+        $categoria = $producto->categoria->nombre;
+        foreach ($producto->rubros as $rub) {
+            $rubro = $rub->nombre;
+            if ($im == 0) {
+                break;
+            }
+        }
+        
+
+        if ($cantidad > 0) {
+            Cart::add(['id' => $producto->id, 'name' => $producto->nombre, 'price' => $producto->precio, 'qty' => $cantidad, 'options' => ['orden' => $producto->orden, 'imagen' => $imagen, 'categoria' => $categoria, 'rubro' => $rubro, 'codigo' => $codigo, 'medida' => $medida, 'iva' => $producto->iva, 'aplica_desc' => $producto->aplica_desc]]);
+            //dd($categoria);
+//            dd($items);
+            return redirect()->route('zproductos', compact('shop', 'medida', 'carrito', 'activo', 'productos', 'ready', 'prod', 'config', 'items', 'codigo', 'desc', 'iva'));
+        } else {
+            return back();
+        }
+    }
+
+    /*public function add(Request $request)
+    {
+  $descuentos  = Descuento::OrderBy('porcentaje', 'ASC')->get();
         $activo    = 'productos';
         $carrito   = Cart::content();
         $items     = $carrito->all();
@@ -120,7 +167,7 @@ class ZprivadaController extends Controller
         } else {
             return back();
         }
-    }
+    }*/
 
     public function carrito(Request $request)
     {
